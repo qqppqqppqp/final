@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 커밋하고 푸쉬하기1212 -->
-    <title>SEOULLIVE</title>
+    <title>SEOULLIVE > 자유게시판</title>
     <!-- layout css -->
     <link rel="stylesheet" href="../../../../resources/static/css/free/list&write.css">
     <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
