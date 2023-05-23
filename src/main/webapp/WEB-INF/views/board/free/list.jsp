@@ -7,11 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 커밋하고 푸쉬하기1212 -->
-    <title>SEOULLIVE > 자유게시판LIST2222222</title>
+    <title>SEOULLIVE > </title>
     <!-- layout css -->
     <link rel="stylesheet" href="../../../../resources/static/css/free/list&write.css">
     <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
 
+<%--    테스트 주석  --%>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
