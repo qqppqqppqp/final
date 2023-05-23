@@ -1,4 +1,4 @@
-@import url(../../css/reset.css);
+@import url('../../reset.css');
 
 
 /* 헤더 */
@@ -19,6 +19,7 @@
     text-align: center;
     top: 40px;
     right: 20px;
+    cursor: pointer;
 }
 #header{
     width: 1200px;
