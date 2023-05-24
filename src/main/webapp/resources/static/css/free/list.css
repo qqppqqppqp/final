@@ -1,7 +1,7 @@
 @import url(../reset.css);
 
 
-#container{margin:0 auto;margin-bottom: 200px; max-width:1200px;}
+#container{margin:0 auto;max-width:1200px;}
 
 .title_box{padding:0 0 50px;}
 .title_box h2{font-size:30px;line-height:40px;text-align:center;}
@@ -50,7 +50,3 @@
 .board_write_box .input_box .b_input{width: 100%;}
 .board_write_box textarea{width:100%;text-align:left;border-color:#ccc;}
 .board_write_box select{position: relative;padding:13px 10px;height:45px;width: 100%;max-width: 150px;border:1px solid #ccc;}
-
-
-
-
