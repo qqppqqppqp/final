@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.seoulive.member.join.domain.UserDTO;
 import org.zerock.seoulive.member.join.domain.UserVO;
-import org.zerock.seoulive.member.join.exception.ControllerException;
 import org.zerock.seoulive.member.join.service.UserService;
 
 
@@ -28,7 +27,7 @@ public class LoginController {
     private UserService service;
 
     @PostMapping("/loginPost")
-    String loginPost(UserDTO dto, Model model, RedirectAttributes rttrs) throws ControllerException {
+    String loginPost(UserDTO dto, Model model, RedirectAttributes rttrs) throws Exception {
         log.trace("loginPost({}, model) invoked.", dto);
 
         try {
@@ -44,7 +43,7 @@ public class LoginController {
                 return "redirect:/member/login/email";
             } // if-else
         } catch(Exception e) {
-            throw new ControllerException(e);
+            throw new Exception(e);
         } // try-catch
     } // loginPost
 

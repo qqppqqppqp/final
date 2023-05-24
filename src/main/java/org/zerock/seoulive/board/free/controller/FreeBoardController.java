@@ -41,6 +41,7 @@ public class FreeBoardController {
 
         return "board/free/list";
     }
+
     @GetMapping("/write")
     public String write() {
         return "board/free/write";
@@ -90,11 +91,6 @@ public class FreeBoardController {
         freeService.remove(seq);
         return "redirect:/board/free/list";
     }
-
-
-
-
-
 
 
 }

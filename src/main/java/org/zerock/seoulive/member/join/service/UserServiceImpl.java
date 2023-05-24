@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.member.join.domain.UserDTO;
 import org.zerock.seoulive.member.join.domain.UserVO;
-import org.zerock.seoulive.member.join.exception.ServiceException;
 import org.zerock.seoulive.member.join.mapper.UserMapper;
 
 import java.util.Objects;
@@ -26,24 +25,24 @@ public class UserServiceImpl
     private UserMapper dao;        // 영속성 계층의 DAO 빈 주입
 
     @Override
-    public Boolean register(UserDTO dto) throws ServiceException {
+    public Boolean register(UserDTO dto) throws Exception {
         log.trace("register({}) invoked.", dto);
 
         try {
             return (this.dao.insert(dto) == 1);
         } catch(Exception e) {
-            throw new ServiceException(e);
+            throw new Exception(e);
         } // try-catch
     } // register
 
     @Override
-    public UserVO authenticate(UserDTO dto) throws ServiceException {
+    public UserVO authenticate(UserDTO dto) throws Exception {
         log.trace("authenticate({}) invoked.", dto);
 
         try {
             return this.dao.selectUser(dto);
         } catch(Exception e) {
-            throw new ServiceException(e);
+            throw new Exception(e);
         } // try-catch
     } // authenticate
 

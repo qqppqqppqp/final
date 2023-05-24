@@ -1,7 +1,5 @@
 package org.zerock.seoulive.board.free.controller;
 
-import lombok.Getter;
-import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.core.io.FileSystemResource;

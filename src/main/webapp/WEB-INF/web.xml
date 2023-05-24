@@ -53,6 +53,7 @@
 	<!-- GET, POST 어느 전송방식으로 전송되는 파라미터가 깨지지 않고 수신가능하도록
    Spring MVC에서 제공하는 필터(Filter) 설정 -->
 
+
 	<filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
