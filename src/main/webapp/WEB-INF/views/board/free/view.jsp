@@ -17,8 +17,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/free/view.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
+    <link rel="stylesheet" href="../../../../resources/static/css/free/view.css">
+    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
 
 
 

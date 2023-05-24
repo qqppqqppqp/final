@@ -12,8 +12,8 @@
 
     <title>SEOULLIVE</title>
     <!-- layout css -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/free/list&write.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
+    <link rel="stylesheet" href="../../../../resources/static/css/free/list&write.css">
+    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
 
     <%-- 제이쿼리 --%>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>

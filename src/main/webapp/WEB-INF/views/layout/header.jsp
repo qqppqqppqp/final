@@ -5,22 +5,19 @@
 <div id="header">
     <div class="wrap">
         <h1 class="logo">
-            <a href="#"><img src="${pageContext.request.contextPath}/resources/static/img/img-logo.png" width="240" height="60"></a>
+            <a href="#"><img src="../../../resources/static/img/img-logo.png" width="240" height="60"></a>
         </h1>
         <ul class="bn">
-            <span class="fl" id="travelBoard">
-                <li>여행지</li>
-            </span>
             <a href="#" class="fl">
-                <li>코스</li>
+                <li>여행지</li>
             </a>
             <a href="#" class="fl">
-                <li>리뷰</li>
+                <li>일정</li>
             </a>
 
-            <span class="fl" id="freeBoard">
+            <a href="/board/free/list" class="fl">
                 <li>자유게시판</li>
-            </span>
+            </a>
 
         </ul>
 
@@ -75,14 +72,6 @@
 
         $('#myPageBtn').on('click', function () {
             self.location.href = '#';
-        }); // .onclick
-
-        $('#travelBoard').on('click', function () {
-            self.location.href = '/board/travel/list';
-        }); // .onclick
-
-        $('#freeBoard').on('click', function () {
-            self.location.href = '/board/free/list';
         }); // .onclick
 
     }); // .jq
