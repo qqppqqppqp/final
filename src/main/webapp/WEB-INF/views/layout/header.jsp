@@ -8,9 +8,9 @@
             <a href="#"><img src="${pageContext.request.contextPath}/resources/static/img/img-logo.png" width="240" height="60"></a>
         </h1>
         <ul class="bn">
-            <a href="#" class="fl">
+            <span class="fl" id="travelBoard">
                 <li>여행지</li>
-            </a>
+            </span>
             <a href="#" class="fl">
                 <li>코스</li>
             </a>
@@ -74,6 +74,10 @@
 
         $('#myPageBtn').on('click', function () {
             self.location.href = '#';
+        }); // .onclick
+
+        $('#travelBoard').on('click', function () {
+            self.location.href = '/board/travel/list';
         }); // .onclick
 
         $('#freeBoard').on('click', function () {

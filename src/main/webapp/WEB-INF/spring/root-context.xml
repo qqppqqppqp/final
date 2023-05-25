@@ -19,7 +19,7 @@
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@o9o6yubutmsjch3b_high?TNS_ADMIN=/opt/OracleCloudWallet/VFX"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@o9o6yubutmsjch3b_high?TNS_ADMIN=/Users/sungjaehyun/temp/VFX"/>
 		<property name="username" value="SEOULIVE"/>
 		<property name="password" value="Oracle12345678"/>
 
