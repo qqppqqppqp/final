@@ -1,5 +1,6 @@
 package org.zerock.seoulive.board.free.service.impl;
 
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.free.domain.Criteria;
@@ -12,7 +13,7 @@ import java.util.List;
 @Service
 public class FreeServiceImpl implements FreeService {
 
-    @Autowired
+    @Setter(onMethod_=@Autowired)
     FreeDAO freeDAO;
 
 //    public FreeServiceImpl(FreeDAO freeDAO) {

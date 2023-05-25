@@ -1,4 +1,5 @@
 @charset "utf8";
+@import url('reset.css');
 
 .search_make {
     width: 1220px;

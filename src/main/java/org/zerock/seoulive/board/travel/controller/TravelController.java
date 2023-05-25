@@ -31,18 +31,18 @@ public class TravelController {
     @Setter(onMethod_ = {@Autowired})
     private service service;
 
-    @GetMapping("/list")
-    void list(Model model) throws ControllerException {
-
-        try {
-            List<VO> list = this.service.getList();
-
-            // Request Scope 공유속성 생성
-            model.addAttribute("__LIST__", list);
-        } catch(Exception e) {
-            throw new ControllerException(e);
-        } // try-catch
-    } // list
+//    @GetMapping("/list")
+//    void list(Model model) throws ControllerException {
+//
+//        try {
+//            List<VO> list = this.service.getList();
+//
+//            // Request Scope 공유속성 생성
+//            model.addAttribute("__LIST__", list);
+//        } catch(Exception e) {
+//            throw new ControllerException(e);
+//        } // try-catch
+//    } // list
 
     @PostMapping(value = "/write")
     String write(DTO dto, RedirectAttributes rttrs) throws ControllerException {

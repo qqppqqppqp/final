@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 import org.zerock.seoulive.board.course.domain.CourseCommVO;
 import org.zerock.seoulive.board.course.domain.CourseDTO;
 import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
@@ -14,6 +15,7 @@ import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
 import org.zerock.seoulive.board.course.domain.CourseWriteVO;
 import org.zerock.seoulive.board.travel.domain.TravelBoardDTO;
 
+@Repository
 public interface CourseDAO {
 	
 //	// 1. 과연 게시판 목록조회, C/R/U/D에 필요한 메소드는 무엇일까?

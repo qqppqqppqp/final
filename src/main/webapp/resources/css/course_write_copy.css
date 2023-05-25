@@ -1,4 +1,5 @@
 @charset "utf8";
+@import url('reset.css');
 
 .write {
     border: 1px solid black;

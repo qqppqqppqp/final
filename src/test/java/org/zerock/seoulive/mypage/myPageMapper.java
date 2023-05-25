@@ -20,8 +20,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
-import org.zerock.seoulive.myapge.domain.Criteria;
-import org.zerock.seoulive.myapge.domain.tbl_likeVO;
+import org.zerock.seoulive.mypage.domain.Criteria;
+import org.zerock.seoulive.mypage.domain.tbl_likeVO;
 import org.zerock.seoulive.mypage.mapper.MyPageBoardMapper;
 
 import lombok.NoArgsConstructor;

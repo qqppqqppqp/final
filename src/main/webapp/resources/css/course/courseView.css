@@ -1,4 +1,4 @@
-@import url(../reset.css);
+@import url('../reset.css');
 .hide{display: block;position:absolute;width:0;height:0;text-indent:-9999999px;overflow:hidden;}
 
 
