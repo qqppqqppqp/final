@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
 
-    <link rel="stylesheet" href="../../../../resources/static/css/member/login/login.css">
-    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/member/login/login.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -17,8 +17,8 @@
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script src="https://kit.fontawesome.com/507ab4987a.js" crossorigin="anonymous"></script>
 
-    <link rel="shortcut icon" href="../../../../resources/static/img/logo_ico.png" type="image/x-icon">
-    <link rel="icon" href="../../../../resources/static/img/logo_ico.png" type="image/x-icon">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
   </head>
 
   <jsp:include page="../../layout/header.jsp" />
@@ -28,7 +28,7 @@
     <div class="container">
 
       <div class="logo_wrap">
-        <img src="../../../../resources/static/img/logo_ico.png">
+        <img src="${pageContext.request.contextPath}/resources/static/img/logo_ico.png">
         <p>서울 지금, SEOULIVE</p>
       </div>
 

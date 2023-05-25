@@ -163,7 +163,7 @@ textarea {
     width: 100px;
     height: 100px;
     margin: 0 5px 5px 0;
-    background-image: url(../../../../resources/static/img/bg_upload.png) ;
+    background-image: url(bg_upload.png) ;
     background-repeat: no-repeat;
     background-position: center;
     border: none;

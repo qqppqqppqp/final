@@ -125,7 +125,7 @@
 
           $.ajax({
             type: 'get',
-            url: '<c:url value ="/member/join/register/mailCheck?email="/>' + email, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
+            url: '<c:url value ="/member/join/register/mailCheck?email="/>' + email,
             success: function (data) {
               console.log("data : " + data);
               checkInput.attr('disabled', false);

@@ -104,7 +104,7 @@ input {
     width: 65px;
     height: 65px;
     margin: 0 5px 5px 0;
-    background-image: url(../../../../resources/static/img/bg_upload.png);
+    background-image: url(bg_upload.png);
     background-repeat: no-repeat;
     border: none;
     font-size: 0;
