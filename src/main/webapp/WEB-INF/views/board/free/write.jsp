@@ -14,14 +14,14 @@
 
     <title>SEOULLIVE</title>
     <!-- layout css -->
-    <link rel="stylesheet" href="../../../../resources/static/css/free/list&write.css">
-    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/free/list&write.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
-    <script src="../../../../resources/static/js/free/write&modify.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/static/js/free/write&modify.js"></script>
 <%--    summernote dependency--%>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>

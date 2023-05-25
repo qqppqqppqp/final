@@ -66,7 +66,6 @@
 
 
 	<context:component-scan base-package="org.zerock.seoulive.member.join.controller"/>
-	<context:component-scan base-package="org.zerock.seoulive.member.join.exception"/>
 	<context:component-scan base-package="org.zerock.seoulive.member.join.interceptor"/>
 
 	<context:component-scan base-package="org.zerock.seoulive.board"/>

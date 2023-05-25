@@ -1,7 +1,4 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-
 
 <!-- 퀵메뉴 시작 -->
 <aside>
@@ -23,7 +20,7 @@
     <div class="footer_wrap">
         <div class="footer_box">
             <div class="logo_box">
-                <a href="#a"><img src="../../../resources/static/img/img-footer-logo.png"/></a>
+                <a href="#a"><img src="${pageContext.request.contextPath}/resources/static/img/img-footer-logo.png"/></a>
             </div>
             <div>
                 <ul>
@@ -31,7 +28,7 @@
                     <li><a href="#a">개인정보처리방침</a></li>
                     <li><a href="#a">사이트맵</a></li>
                 </ul>
-                <p class="copyright">Copyright © seoullive. All Rights Reserved</p>
+                <p class="copyright">Copyright © seoulive. All Rights Reserved</p>
             </div>
         </div>
     </div>
