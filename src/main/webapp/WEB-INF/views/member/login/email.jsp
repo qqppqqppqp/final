@@ -15,18 +15,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>이메일 로그인</title>
 
-  <link rel="stylesheet" href="../../../../resources/static/css/member/login/login_email.css">
-  <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/member/login/login_email.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
 
-  <script defer src="../../../../resources/static/js/member/login/login.js"></script>
+  <script defer src="${pageContext.request.contextPath}/resources/static/js/member/login/login.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
   <script src="https://kit.fontawesome.com/507ab4987a.js" crossorigin="anonymous"></script>
 
-  <link rel="shortcut icon" href="../../../../resources/static/img/logo_ico.png" type="image/x-icon">
-  <link rel="icon" href="../../../../resources/static/img/logo_ico.png" type="image/x-icon">
+  <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
+  <link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
 </head>
 
 <jsp:include page="../../layout/header.jsp" />

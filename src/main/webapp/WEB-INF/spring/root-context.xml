@@ -48,13 +48,11 @@
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.free.persistence" />
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.travel.mapper" />
 	<mybatis-spring:scan base-package="org.zerock.seoulive.member.join.mapper" />
-	<mybatis-spring:scan base-package="org.zerock.seoulive.member.join.controller" />
 
 
 	<!-- ================= Start Of AOP ================== -->
 	<context:annotation-config />
 	<aop:aspectj-autoproxy />
-	<!--		<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
 	<!--		<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
 
 	<!--	<context:component-scan base-package="org.zerock.seoulive" />-->

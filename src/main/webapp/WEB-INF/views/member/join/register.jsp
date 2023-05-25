@@ -78,7 +78,7 @@
           <div class="join_container inner">
             <div class="join_wrap profile">
               <p>프로필 설정</p>
-              <img src="../../../../resources/static/img/profile.png">
+              <img src="${pageContext.request.contextPath}/resources/static/img/profile.png">
               <div id="image_container"></div>
             </div>
 
