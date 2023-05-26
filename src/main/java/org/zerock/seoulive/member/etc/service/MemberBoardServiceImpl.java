@@ -1,20 +1,18 @@
 package org.zerock.seoulive.member.etc.service;
 
-import java.util.List;
-import java.util.Objects;
-
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zerock.seoulive.exception.ServiceException;
 import org.zerock.seoulive.member.etc.domain.tbl_memberDTO;
 import org.zerock.seoulive.member.etc.domain.tbl_memberVO;
-import org.zerock.seoulive.member.etc.exception.ServiceException;
 import org.zerock.seoulive.member.etc.mapper.MemberBoardMapper;
 
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import java.util.Objects;
 
 @Log4j2
 @NoArgsConstructor

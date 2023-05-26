@@ -2,7 +2,7 @@ package org.zerock.seoulive.board.course.service;
 
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.course.domain.*;
-import org.zerock.seoulive.board.course.exception.ServiceException;
+import org.zerock.seoulive.exception.ServiceException;
 
 import java.util.List;
 

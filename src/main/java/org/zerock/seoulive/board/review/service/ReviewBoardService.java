@@ -1,12 +1,10 @@
 package org.zerock.seoulive.board.review.service;
 
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.zerock.seoulive.board.review.domain.Criteria;
 import org.zerock.seoulive.board.review.domain.ReviewBoardDTO;
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
-import org.zerock.seoulive.board.review.domain.Criteria;
-import org.zerock.seoulive.board.review.exception.ServiceException;
+import org.zerock.seoulive.exception.ServiceException;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface ReviewBoardService {

@@ -1,24 +1,20 @@
 package org.zerock.seoulive.board.review.service;
 
-import java.util.List;
-import java.util.Objects;
-
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.zerock.seoulive.board.review.domain.Criteria;
 import org.zerock.seoulive.board.review.domain.ReviewBoardDTO;
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
-import org.zerock.seoulive.board.review.domain.Criteria;
-import org.zerock.seoulive.board.review.exception.ServiceException;
 import org.zerock.seoulive.board.review.mapper.ReviewBoardMapper;
+import org.zerock.seoulive.exception.ServiceException;
 
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
-
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Objects;
 
 @Log4j2
 @NoArgsConstructor

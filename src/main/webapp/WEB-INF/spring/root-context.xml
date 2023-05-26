@@ -54,7 +54,7 @@
 	<context:component-scan base-package="org.zerock.seoulive.board.course.persistence" />
 
 	<context:component-scan base-package="org.zerock.seoulive.board.review.service" />
-	
+
 	<context:component-scan base-package="org.zerock.seoulive.board.free.service" />
 
 	<context:component-scan base-package="org.zerock.seoulive.board.travel.controller" />

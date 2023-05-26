@@ -1,26 +1,18 @@
 package org.zerock.seoulive.member.etc.controller;
 
 
-
-import java.util.Objects;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.zerock.seoulive.member.etc.domain.tbl_memberVO;
-import org.zerock.seoulive.member.etc.exception.ControllerException;
-import org.zerock.seoulive.member.etc.mapper.MemberBoardMapper;
-import org.zerock.seoulive.member.etc.service.MailSendService;
-import org.zerock.seoulive.member.etc.service.MemberBoardSerivce;
-
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.zerock.seoulive.exception.ControllerException;
+import org.zerock.seoulive.member.etc.domain.tbl_memberVO;
+import org.zerock.seoulive.member.etc.mapper.MemberBoardMapper;
+import org.zerock.seoulive.member.etc.service.MailSendService;
+import org.zerock.seoulive.member.etc.service.MemberBoardSerivce;
 
 @Log4j2
 @NoArgsConstructor

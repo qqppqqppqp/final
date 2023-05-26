@@ -1,4 +1,4 @@
-package org.zerock.seoulive.board.course.exception;
+package org.zerock.seoulive.exception;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -14,8 +14,8 @@ import lombok.extern.log4j.Log4j2;
 @NoArgsConstructor
 
 //기본값->모든 패키지    / basePackages로 Controller를 지정해주면, Controller패키지만 처리가능
-@ControllerAdvice(basePackages= {"org.zerock.seoulive.board.course.controller"})		//For one package
-public class CourseControllerExceptionHandler {
+@ControllerAdvice(basePackages= {"org.zerock.seoulive.controller"})		//For one package
+public class ControllerExceptionHandler {
 
 	
 	//Exception을 처리하는 예외처리 메소드

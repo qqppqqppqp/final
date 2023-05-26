@@ -1,22 +1,21 @@
 package org.zerock.seoulive.mypage.service;
 
-import java.util.List;
-
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
+import org.zerock.seoulive.exception.ServiceException;
 import org.zerock.seoulive.mypage.domain.Criteria;
 import org.zerock.seoulive.mypage.domain.tbl_followerVO;
 import org.zerock.seoulive.mypage.domain.tbl_likeVO;
-import org.zerock.seoulive.mypage.exception.ServiceException;
 import org.zerock.seoulive.mypage.mapper.MyPageBoardMapper;
 
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import java.util.List;
 
 @Log4j2
 @NoArgsConstructor

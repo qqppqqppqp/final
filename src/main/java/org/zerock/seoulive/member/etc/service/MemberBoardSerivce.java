@@ -1,9 +1,8 @@
 package org.zerock.seoulive.member.etc.service;
 
 
-
+import org.zerock.seoulive.exception.ServiceException;
 import org.zerock.seoulive.member.etc.domain.tbl_memberVO;
-import org.zerock.seoulive.member.etc.exception.ServiceException;
 
 
 

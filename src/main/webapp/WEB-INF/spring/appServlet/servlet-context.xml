@@ -37,12 +37,12 @@
 	</beans:bean>
 
 	<interceptors>
-		<!--		<interceptor>-->
-		<!--&lt;!&ndash;			회원만 읽기 가능한 게시판&ndash;&gt;-->
-		<!--			<mapping path="/member/join/register"/>-->
+		<interceptor>
+<!--			회원만 읽기 가능한 게시판-->
+			<mapping path="/board/course/write"/>
 
-		<!--			<beans:ref bean="authInterceptor"/>-->
-		<!--		</interceptor>-->
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
 
 		<interceptor>
 			<mapping path="/member/logout"/>
@@ -67,6 +67,8 @@
 
 	<!--	<context:component-scan base-package="org.zerock.seoulive.exception" />-->
 	<!--	<context:component-scan base-package="org.zerock.seoulive.interceptor" />-->
+
+	<context:component-scan base-package="org.zerock.seoulive.controller" />
 
 	<context:component-scan base-package="org.zerock.seoulive.board.course.controller" />
 	<context:component-scan base-package="org.zerock.seoulive.board.travel.controller"/>

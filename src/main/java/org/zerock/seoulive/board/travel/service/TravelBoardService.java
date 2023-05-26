@@ -1,12 +1,11 @@
 package org.zerock.seoulive.board.travel.service;
 
-import java.util.List;
-
+import org.zerock.seoulive.board.travel.domain.Criteria;
 import org.zerock.seoulive.board.travel.domain.TravelBoardDTO;
 import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
-import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
-import org.zerock.seoulive.board.travel.domain.Criteria;
-import org.zerock.seoulive.board.travel.exception.ServiceException;
+import org.zerock.seoulive.exception.ServiceException;
+
+import java.util.List;
 
 
 public interface TravelBoardService {

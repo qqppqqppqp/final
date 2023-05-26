@@ -1,13 +1,9 @@
 package org.zerock.seoulive.mypage.controller;
 
 
-
-
-
-
-import java.util.ArrayList;
-import java.util.List;
-
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,23 +13,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.course.persistence.CourseDAO;
 import org.zerock.seoulive.board.course.service.CourseService;
-
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
 import org.zerock.seoulive.board.review.mapper.ReviewBoardMapper;
 import org.zerock.seoulive.board.review.service.ReviewBoardService;
 import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
 import org.zerock.seoulive.board.travel.mapper.TravelBoardMapper;
 import org.zerock.seoulive.board.travel.service.TravelBoardService;
+import org.zerock.seoulive.exception.ControllerException;
 import org.zerock.seoulive.mypage.domain.Criteria;
 import org.zerock.seoulive.mypage.domain.PageDTO;
 import org.zerock.seoulive.mypage.domain.tbl_likeVO;
-import org.zerock.seoulive.mypage.exception.ControllerException;
 import org.zerock.seoulive.mypage.mapper.MyPageBoardMapper;
 import org.zerock.seoulive.mypage.service.MyPageBoardService;
 
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import java.util.ArrayList;
+import java.util.List;
 
 @Log4j2
 @NoArgsConstructor
@@ -79,7 +73,7 @@ public class MyPageController {
 	//-------------------------------------------//	
 	
 	@GetMapping("/mypage")
-	public String myPage(String email,Model model,Criteria cri)throws ControllerException  {
+	public String myPage(@RequestParam("email")String email,Model model,Criteria cri)throws ControllerException  {
 		
 		log.debug("\t myPage({},{}) invoked.",email);
 		

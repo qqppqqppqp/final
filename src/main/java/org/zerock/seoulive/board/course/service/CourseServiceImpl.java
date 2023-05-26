@@ -15,7 +15,7 @@ import org.zerock.seoulive.board.course.domain.CourseTravelVO;
 import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
 import org.zerock.seoulive.board.course.domain.CourseWriteVO;
-import org.zerock.seoulive.board.course.exception.ServiceException;
+import org.zerock.seoulive.exception.ServiceException;
 import org.zerock.seoulive.board.course.persistence.CourseDAO;
 import org.zerock.seoulive.board.travel.domain.TravelBoardDTO;
 

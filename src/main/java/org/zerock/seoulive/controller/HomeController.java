@@ -1,4 +1,4 @@
-package org.zerock.seoulive.member.join.controller;
+package org.zerock.seoulive.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

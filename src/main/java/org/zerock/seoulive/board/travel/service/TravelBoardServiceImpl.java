@@ -4,16 +4,15 @@ package org.zerock.seoulive.board.travel.service;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.zerock.seoulive.board.travel.domain.TravelBoardDTO;
-import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
-import org.zerock.seoulive.board.travel.domain.Criteria;
-import org.zerock.seoulive.board.travel.exception.ServiceException;
-import org.zerock.seoulive.board.travel.mapper.TravelBoardMapper;
-
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.zerock.seoulive.board.travel.domain.Criteria;
+import org.zerock.seoulive.board.travel.domain.TravelBoardDTO;
+import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
+import org.zerock.seoulive.board.travel.mapper.TravelBoardMapper;
+import org.zerock.seoulive.exception.ServiceException;
 
 import java.util.List;
 import java.util.Objects;

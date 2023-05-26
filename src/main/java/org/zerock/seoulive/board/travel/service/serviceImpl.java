@@ -7,10 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.travel.domain.DTO;
 import org.zerock.seoulive.board.travel.domain.VO;
-import org.zerock.seoulive.board.travel.exception.ServiceException;
 import org.zerock.seoulive.board.travel.mapper.mapper;
+import org.zerock.seoulive.exception.ServiceException;
 
-import java.sql.Date;
 import java.util.List;
 
 @Log4j2

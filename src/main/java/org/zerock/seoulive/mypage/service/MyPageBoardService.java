@@ -1,15 +1,13 @@
 package org.zerock.seoulive.mypage.service;
 
-import java.util.List;
-
 import org.zerock.seoulive.board.course.domain.CourseVO;
-
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
-
+import org.zerock.seoulive.exception.ServiceException;
 import org.zerock.seoulive.mypage.domain.Criteria;
 import org.zerock.seoulive.mypage.domain.tbl_followerVO;
 import org.zerock.seoulive.mypage.domain.tbl_likeVO;
-import org.zerock.seoulive.mypage.exception.ServiceException;
+
+import java.util.List;
 
 public interface MyPageBoardService {
 	

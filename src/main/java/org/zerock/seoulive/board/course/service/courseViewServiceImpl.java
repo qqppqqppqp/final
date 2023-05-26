@@ -6,7 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.course.domain.*;
-import org.zerock.seoulive.board.course.exception.ServiceException;
+import org.zerock.seoulive.exception.ServiceException;
 import org.zerock.seoulive.board.course.mapper.courseViewMapper;
 
 import java.util.List;

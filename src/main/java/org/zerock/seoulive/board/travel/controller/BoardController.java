@@ -1,7 +1,6 @@
 package org.zerock.seoulive.board.travel.controller;
 
 
-import java.util.List;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
@@ -10,12 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
 import org.zerock.seoulive.board.travel.domain.Criteria;
 import org.zerock.seoulive.board.travel.domain.PageDTO;
-import org.zerock.seoulive.board.travel.exception.ControllerException;
+import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
 import org.zerock.seoulive.board.travel.service.TravelBoardService;
+import org.zerock.seoulive.exception.ControllerException;
+
+import java.util.List;
 
 
 @NoArgsConstructor
