@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserDTO {
     private String email;
     private String password;
-    private String nickName;
+    private String nickname;
     private String birthDate;
     private String gender;
     private String introduction;

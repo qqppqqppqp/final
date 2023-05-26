@@ -58,5 +58,21 @@ public class UserServiceImpl implements UserService {
         } // try-catch
     } // emailCheck
 
+    @Override
+    public int nicknameCheck(String nickname) throws ServiceException {
+        log.trace("nicknameCheck({}) invoked.", nickname);
+
+        try {
+            this.dao = userSqlSession.getMapper(UserMapper.class);
+
+            int result = dao.checkOverNickname(nickname);
+            log.info("\t+result:{}",result);
+//            return dao.checkOverEmail(nickname);
+            return result;
+        } catch(Exception e) {
+            throw new ServiceException(e);
+        } // try-catch
+    } // nicknameCheck
+
 
 } // end class

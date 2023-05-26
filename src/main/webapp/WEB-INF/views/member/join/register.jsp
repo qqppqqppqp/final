@@ -92,7 +92,7 @@
             <div class="join_wrap">
               <p>닉네임</p>
               <div class="join_btn_wrap">
-                <input type="text" id="nickName" name="nickName" placeholder="2~12자" required>
+                <input type="text" id="nickname" name="nickname" placeholder="2~12자" required>
                 <button type="button" class="btn">중복확인</button>
               </div>
               <span id="nickError"></span>
@@ -153,9 +153,7 @@
         });
 
         // 이메일 중복검사
-        // 유효성 검사(1 = 중복 / 0 != 중복)
         var mailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
         $("#email").blur(function() {
           var email = $('#email').val();
           $.ajax({
@@ -167,30 +165,62 @@
               console.log("1 = 중복o / 0 = 중복x : " + data);
 
               if (data === 1) {
-                // 1 : 아이디가 중복되는 문구
+                // 1 : 중복되는 문구
                 $("#emailError").text("사용중인 이메일입니다");
                 $("#emailError").css("color", "red");
                 $("#join_btn").attr("disabled", true);
               } else {
-
                 if(mailCheck.test(email)){
-                  // 0 : 아이디 길이 / 문자열 검사
+                  // 0 : 길이 / 문자열 검사
                   $("#emailError").text("");
                   $("#join_btn").attr("disabled", false);
-
                 } else if(email === ""){
-
                   $('#emailError').text('이메일을 입력해주세요');
                   $('#emailError').css('color', 'red');
                   $("#join_btn").attr("disabled", true);
-
                 } else {
-
                   $('#emailError').text("이메일 형식에 맞게 입력해주세요");
                   $('#emailError').css('color', 'red');
                   $("#join_btn").attr("disabled", true);
                 }
+              }
+            },
+            error: function(e) {
+              console.log(e);
+            }
+          });
+        });
 
+        // 닉네임 중복검사
+        var nickCheck = /^[가-힣a-zA-Z]{2,12}$/;
+        $("#nickname").blur(function() {
+          var nickname = $('#nickname').val();
+          $.ajax({
+            url : '/member/nicknameCheck',
+            type : 'post',
+            data : {nickname : nickname},
+            dataType : "json",
+            success : function(data) {
+              console.log("1 = 중복o / 0 = 중복x : " + data);
+
+              if (data === 1) {
+                $("#nickError").text("사용중인 닉네임입니다");
+                $("#nickError").css("color", "red");
+                $("#join_btn").attr("disabled", true);
+              } else {
+                if(nickCheck.test(nickname)){
+                  // 0 : 길이 / 문자열 검사
+                  $("#nickError").text("");
+                  $("#join_btn").attr("disabled", false);
+                } else if(nickname === ""){
+                  $('#nickError').text('닉네임을 입력해주세요');
+                  $('#nickError').css('color', 'red');
+                  $("#join_btn").attr("disabled", true);
+                } else {
+                  $('#nickError').text("닉네임은 2자에서 12자까지 입력해주세요");
+                  $('#nickError').css('color', 'red');
+                  $("#join_btn").attr("disabled", true);
+                }
               }
             },
             error: function(e) {

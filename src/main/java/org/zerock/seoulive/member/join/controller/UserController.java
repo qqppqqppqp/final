@@ -43,7 +43,7 @@ public class UserController {
 
     @PostMapping(
             value = "/join/register",
-            params = {"email", "password", "birthDate", "gender", "nickName", "introduction"}
+            params = {"email", "password", "birthDate", "gender", "nickname", "introduction"}
     )
     String register(UserDTO dto,  @RequestParam("profileImg") MultipartFile profileImg) throws ControllerException {
         log.trace("register({}, {}) invoked.", dto);
@@ -88,6 +88,23 @@ public class UserController {
             throw new ServiceException(e);
         }
     } // emailCheck
+
+    @PostMapping(value="/nicknameCheck")
+    @ResponseBody
+    public int nicknameCheck(@RequestParam("nickname") String nickname) throws ServiceException {
+        log.trace("nicknameCheck({}) invoked.", nickname);
+
+        try {
+
+            int result = service.nicknameCheck(nickname);
+            log.info("result : {}", result);
+
+//            return service.nicknameCheck(nickname);
+            return result;
+        }catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    } // nicknameCheck
 
 
 

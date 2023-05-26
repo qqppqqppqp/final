@@ -31,19 +31,8 @@ $('.selection_list').each(function () {
 // 회원가입 유효성 검사
 var pwCheck = /^[A-Za-z0-9\d@$!%*?&]{10,20}$/;
 var nickCheck = /^[가-힣]{2,12}$/;
-var mailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 var birthCheck = /^(19|20)[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
 
-// 이메일
-$('#email').blur(function() {
-    if (mailCheck.test($(this).val())) {
-        console.log(mailCheck.test($(this).val()));
-        $('#emailError').text('');
-    } else {
-        $('#emailError').text('이메일을 확인해주세요');
-        $('#emailError').css('color', 'red');
-    }
-});
 // 암호
 $('#password').blur(function() {
     if (pwCheck.test($(this).val())) {
@@ -83,15 +72,15 @@ $('#gender').blur(function() {
     }
 });
 // 닉네임
-$('#nickName').blur(function() {
-    if (nickCheck.test($(this).val())) {
-            console.log(nickCheck.test($(this).val()));
-            $('#nickError').text('');
-    } else {
-        $('#nickError').text('닉네임은 2-12자 이내로 입력해주세요');
-        $('#nickError').css('color', 'red');
-    }
-});
+// $('#nickName').blur(function() {
+//     if (nickCheck.test($(this).val())) {
+//             console.log(nickCheck.test($(this).val()));
+//             $('#nickError').text('');
+//     } else {
+//         $('#nickError').text('닉네임은 2-12자 이내로 입력해주세요');
+//         $('#nickError').css('color', 'red');
+//     }
+// });
 // 가입 클릭시
 var terms = document.getElementById('terms');
 $('#join_btn').click(function(){
