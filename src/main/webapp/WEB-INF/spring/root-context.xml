@@ -42,7 +42,10 @@
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="hikariDataSource"/>
 		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+	</bean>
 
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactoryBean"/>
 	</bean>
 
 <!--    <mybatis-spring:scan base-package="org.zerock.seoulive.board.course.persistence" />-->

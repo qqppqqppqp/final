@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+  <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <!DOCTYPE html>
     <html lang="ko">
 
@@ -17,6 +17,7 @@
 
       <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
       <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<%--      <script src="https://code.jquery.com/jquery-migrate-3.4.0.js"></script>--%>
 
       <script src="https://kit.fontawesome.com/507ab4987a.js" crossorigin="anonymous"></script>
 
@@ -24,7 +25,7 @@
       <link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
     </head>
 
-    <jsp:include page="/WEB-INF/views/layout/header.jsp" />
+    <jsp:include page="../../layout/header.jsp" />
 
     <body>
 
@@ -125,7 +126,7 @@
 
           $.ajax({
             type: 'get',
-            url: '<c:url value ="/member/join/register/mailCheck?email="/>' + email,
+            url: '<c:url value ="/member/join/register/mailCheck?email="/>' + email, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
             success: function (data) {
               console.log("data : " + data);
               checkInput.attr('disabled', false);
@@ -151,10 +152,57 @@
           }
         });
 
+        // 이메일 중복검사
+        // 유효성 검사(1 = 중복 / 0 != 중복)
+        var mailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+        $("#email").blur(function() {
+          var email = $('#email').val();
+          $.ajax({
+            url : '/member/emailCheck',
+            type : 'post',
+            data : {email : email},
+            dataType : "json",
+            success : function(data) {
+              console.log("1 = 중복o / 0 = 중복x : " + data);
+
+              if (data === 1) {
+                // 1 : 아이디가 중복되는 문구
+                $("#emailError").text("사용중인 이메일입니다");
+                $("#emailError").css("color", "red");
+                $("#join_btn").attr("disabled", true);
+              } else {
+
+                if(mailCheck.test(email)){
+                  // 0 : 아이디 길이 / 문자열 검사
+                  $("#emailError").text("");
+                  $("#join_btn").attr("disabled", false);
+
+                } else if(email === ""){
+
+                  $('#emailError').text('이메일을 입력해주세요');
+                  $('#emailError').css('color', 'red');
+                  $("#join_btn").attr("disabled", true);
+
+                } else {
+
+                  $('#emailError').text("이메일 형식에 맞게 입력해주세요");
+                  $('#emailError').css('color', 'red');
+                  $("#join_btn").attr("disabled", true);
+                }
+
+              }
+            },
+            error: function(e) {
+              console.log(e);
+            }
+          });
+        });
+
       </script>
 
     </body>
 
-    <jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+    <jsp:include page="../../layout/footer.jsp" />
 
     </html>

@@ -3,63 +3,60 @@ package org.zerock.seoulive.member.join.service;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.member.join.domain.UserDTO;
 import org.zerock.seoulive.member.join.domain.UserVO;
+import org.zerock.seoulive.exception.ServiceException;
 import org.zerock.seoulive.member.join.mapper.UserMapper;
-
-import java.util.Objects;
 
 
 @Log4j2
 @NoArgsConstructor
 
 @Service("userService")
-public class UserServiceImpl
-        implements UserService, InitializingBean, DisposableBean {
+public class UserServiceImpl implements UserService {
 
     @Setter(onMethod_ = {@Autowired})
-    private UserMapper dao;        // 영속성 계층의 DAO 빈 주입
+    private UserMapper dao;
+    @Setter(onMethod_ = @Autowired)
+    private SqlSessionTemplate userSqlSession;
 
     @Override
-    public Boolean register(UserDTO dto) throws Exception {
+    public Boolean register(UserDTO dto) throws ServiceException {
         log.trace("register({}) invoked.", dto);
 
         try {
             return (this.dao.insert(dto) == 1);
         } catch(Exception e) {
-            throw new Exception(e);
+            throw new ServiceException(e);
         } // try-catch
     } // register
 
     @Override
-    public UserVO authenticate(UserDTO dto) throws Exception {
+    public UserVO authenticate(UserDTO dto) throws ServiceException {
         log.trace("authenticate({}) invoked.", dto);
 
         try {
             return this.dao.selectUser(dto);
         } catch(Exception e) {
-            throw new Exception(e);
+            throw new ServiceException(e);
         } // try-catch
     } // authenticate
 
-    //    InitializingBean, DisposableBean    //
     @Override
-    public void afterPropertiesSet() throws Exception {
-        log.trace("afterPropertiesSet() invoked.");
+    public int emailCheck(String email) throws ServiceException {
+        log.trace("emailCheck({}) invoked.", email);
 
-//        assert this.dao != null;
-        Objects.requireNonNull(this.dao);
-        log.info("\t+ this.dao : {}", this.dao);
-    } // afterPropertiesSet
+        try {
+            this.dao = userSqlSession.getMapper(UserMapper.class);
 
-    @Override
-    public void destroy() throws Exception {
-        log.trace("destroy() invoked.");
+            return dao.checkOverEmail(email);
+        } catch(Exception e) {
+            throw new ServiceException(e);
+        } // try-catch
+    } // emailCheck
 
-    } // destroy
 
 } // end class

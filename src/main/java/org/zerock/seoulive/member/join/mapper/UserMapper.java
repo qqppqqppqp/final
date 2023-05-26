@@ -13,6 +13,9 @@ public interface UserMapper {
     // 회원가입
     public abstract Integer insert(UserDTO dto);
 
+    // 이메일 중복체크
+    public abstract int checkOverEmail(String email);
+
     // 로그인
     public abstract UserVO selectUser(UserDTO dto);
 

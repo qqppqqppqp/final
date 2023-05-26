@@ -6,6 +6,7 @@
 
 <mapper namespace="org.zerock.seoulive.member.join.mapper.UserMapper">
 
+    <!--회원가입-->
     <insert id="insert">
         INSERT INTO tbl_member
             (email,
@@ -23,13 +24,14 @@
             #{birthDate},
             #{gender},
             #{introduction},
-            #{profileImg}
+            #{profileImgName}
             )
     </insert>
 
     <!-- 이메일 중복 검사 -->
-    <select id="check_email" parameterType="String" resultType="int">
-        select count(*) from member where email = #{email}
+<!--    <select id="checkOverEmail" parameterType="String" resultType="int">-->
+    <select id="checkOverEmail" resultType="int">
+        SELECT count(email) FROM tbl_member WHERE email = #{email}
     </select>
 
     <select id="selectUser" resultType="org.zerock.seoulive.member.join.domain.UserVO">
@@ -42,6 +44,7 @@
             AND password = #{password}
     </select>
 
+    <!--자동로그인-->
     <update id="updateUserWithRememberMe">
         UPDATE tbl_member
         SET

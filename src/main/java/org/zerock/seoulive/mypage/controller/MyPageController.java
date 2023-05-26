@@ -73,7 +73,7 @@ public class MyPageController {
 	//-------------------------------------------//	
 	
 	@GetMapping("/mypage")
-	public String myPage(@RequestParam("email")String email,Model model,Criteria cri)throws ControllerException  {
+	public String myPage(String email,Model model,Criteria cri)throws ControllerException  {
 		
 		log.debug("\t myPage({},{}) invoked.",email);
 		

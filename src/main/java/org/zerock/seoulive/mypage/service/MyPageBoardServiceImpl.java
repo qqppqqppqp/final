@@ -31,7 +31,7 @@ public class MyPageBoardServiceImpl
 	private MyPageBoardMapper mapper;
 
 	@Override
-	public List<ReviewBoardVO> getMyReviewList(String email,Criteria cri) throws ServiceException {
+	public List<ReviewBoardVO> getMyReviewList(String email, Criteria cri) throws ServiceException {
 		
 		log.trace("getLikeReviewList({}) invoked.",cri);
 		
@@ -57,7 +57,7 @@ public class MyPageBoardServiceImpl
 	}	// end getLikeReview
 
 	@Override
-	public List<tbl_likeVO> getMyLikeList(String email,Criteria cri) throws ServiceException {
+	public List<tbl_likeVO> getMyLikeList(String email, Criteria cri) throws ServiceException {
 		
 		log.trace("\t getMyLikeList ({},{}) invoked.",email,cri);
 		
