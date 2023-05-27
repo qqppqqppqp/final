@@ -8,42 +8,22 @@
             <a href="#"><img src="${pageContext.request.contextPath}/resources/static/img/img-logo.png" width="240" height="60"></a>
         </h1>
         <ul class="bn">
-            <span class="fl" id="travelBoard">
-                <li>여행지</li>
-            </span>
-            <a href="#" class="fl">
-                <li>코스</li>
-            </a>
-            <a href="#" class="fl">
-                <li>리뷰</li>
-            </a>
-            <span class="fl" id="freeBoard">
-                <li>자유게시판</li>
-            </span>
-
+            <li class="fl" id="travelBoard">여행지</li>
+            <li class="fl" id="courseBoard">코스</li>
+            <li class="fl" id="reviewBoard">리뷰</li>
+            <li class="fl" id="freeBoard">자유게시판</li>
         </ul>
 
         <ul class="bn">
-
             <c:if test="${sessionScope.__AUTH__ == null}">
-                <span class="fr" id="joinBtn">
-                    <li>회원가입</li>
-                </span>
-
-                <span class="fr" id="loginBtn">
-                    <li>로그인</li>
-                </span>
+                <li class="fr" id="joinBtn">회원가입</li>
+                <li class="fr" id="loginBtn">로그인</li>
             </c:if>
 
             <c:if test="${sessionScope.__AUTH__ != null}">
-                <span class="fr" id="logoutBtn">
-                    <li>로그아웃</li>
-                </span>
-                <span class="fr" id="myPageBtn">
-                    <li>마이페이지</li>
-                </span>
+                <li class="fr" id="logoutBtn">로그아웃</li>
+                <li class="fr" id="myPageBtn">마이페이지</li>
             </c:if>
-
         </ul>
 
     </div>
@@ -78,6 +58,14 @@
 
         $('#travelBoard').on('click', function () {
             self.location.href = '/board/travel/list';
+        }); // .onclick
+
+        $('#courseBoard').on('click', function () {
+            self.location.href = '/board/course/list';
+        }); // .onclick
+
+        $('#reviewBoard').on('click', function () {
+            self.location.href = '/board/review/list';
         }); // .onclick
 
         $('#freeBoard').on('click', function () {

@@ -15,9 +15,9 @@ import org.zerock.seoulive.board.course.domain.CourseTravelVO;
 import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
 import org.zerock.seoulive.board.course.domain.CourseWriteVO;
-import org.zerock.seoulive.exception.ServiceException;
+import org.zerock.seoulive.board.course.exception.ServiceException;
 import org.zerock.seoulive.board.course.persistence.CourseDAO;
-import org.zerock.seoulive.board.travel.domain.TravelBoardDTO;
+import org.zerock.seoulive.board.travel.domain.TravelDTO;
 
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -86,7 +86,7 @@ public class CourseServiceImpl
 		return this.dao.getTotalSearch(page.getSearchType(), page.getKeyword());
 	} // getTotal
 	
-	// 6. 
+	// 6. 게시물 작성
 	@Override
 	public void register(CourseWriteDTO dto) throws ServiceException {
 		log.trace("register() invoked.");
@@ -98,7 +98,12 @@ public class CourseServiceImpl
 			throw new ServiceException(e);
 		} // try-catch
 	} // register
-	
+	@Override
+	public Integer getCourseSeq() throws ServiceException{
+		log.trace("getCourseSeq() invoked.");
+		
+		return this.dao.getCourseSeq().getSeq();
+	}
 	@Override
 	public void registerTravel(CourseWriteVO vo) throws ServiceException {
 		log.trace("register() invoked.");
@@ -111,14 +116,14 @@ public class CourseServiceImpl
 		} // try-catch
 	} // register
 	
-	// 7. 
+	// 7. Write에서 여행지 검색
 	@Override
-	public List<TravelBoardDTO> getTravelData(String keyword) throws ServiceException{
+	public List<TravelDTO> getTravelData(String keyword) throws ServiceException{
         return this.dao.getTravelData(keyword);
     } // getTravelData
 	
 	
-	// 8.
+	// 8. 찜 기능
 	public void courseLike(CourseLikeDTO dto) throws ServiceException {
 		
 		try {
@@ -131,7 +136,7 @@ public class CourseServiceImpl
 	}
 	
 	
-	// 9. 
+	// 9. 특정 게시물 상세조회 (READ)
 	@Override
     public CourseVO get(Integer seq) throws ServiceException {
         log.trace("get() invoked");

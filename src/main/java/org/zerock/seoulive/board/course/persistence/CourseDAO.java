@@ -1,21 +1,12 @@
 package org.zerock.seoulive.board.course.persistence;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Repository;
-import org.zerock.seoulive.board.course.domain.CourseCommVO;
-import org.zerock.seoulive.board.course.domain.CourseDTO;
-import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
-import org.zerock.seoulive.board.course.domain.CoursePageTO;
-import org.zerock.seoulive.board.course.domain.CourseTravelVO;
-import org.zerock.seoulive.board.course.domain.CourseVO;
-import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
-import org.zerock.seoulive.board.course.domain.CourseWriteVO;
-import org.zerock.seoulive.board.travel.domain.TravelBoardDTO;
+import org.zerock.seoulive.board.course.domain.*;
+import org.zerock.seoulive.board.travel.domain.TravelDTO;
 
-@Repository
+import java.util.List;
+
 public interface CourseDAO {
 	
 //	// 1. 과연 게시판 목록조회, C/R/U/D에 필요한 메소드는 무엇일까?
@@ -72,9 +63,14 @@ public interface CourseDAO {
 			VALUES (#{WRITER}, #{TITLE}, #{REVIEW}, #{DURATION_START}, #{DURATION_END}, 10)
 			""")
 	public abstract void insertCourse(CourseWriteDTO dto);
+	@Select("""
+			SELECT max(seq)+1 as seq
+			FROM tbl_course
+			""")
+	public abstract SeqDTO getCourseSeq();
 	@Insert("""
-			INSERT INTO tbl_course_travel (BOARD_SEQ, TRAVEL_SEQ, USER_REVIEW)
-			VALUES (COURSE_SEQ.CURRVAL, #{TRAVEL_SEQ}, #{USER_REVIEW})
+			INSERT INTO tbl_course_travel (BOARD_SEQ, TRAVEL_SEQ, USER_REVIEW, TRAVEL_ID)
+			VALUES (#{BOARD_SEQ}, #{TRAVEL_SEQ}, #{USER_REVIEW}, #{TRAVEL_ID})
 			""")
 	public abstract void insertCourseTravel(CourseWriteVO vo);
 	
@@ -84,7 +80,7 @@ public interface CourseDAO {
 			FROM TBL_TRAVEL
 			WHERE TITLE LIKE '%' || #{keyword} || '%'
 			""")
-	public abstract List<TravelBoardDTO> getTravelData(String keyword);
+	public abstract List<TravelDTO> getTravelData(String keyword);
 	
 	// 8. 게시물 찜
 	@Insert("""

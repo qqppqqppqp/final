@@ -1,19 +1,25 @@
 package org.zerock.seoulive.board.course.controller;
 
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.seoulive.board.course.domain.*;
+import org.zerock.seoulive.board.course.exception.ControllerException;
 import org.zerock.seoulive.board.course.service.CourseService;
-import org.zerock.seoulive.board.travel.domain.TravelBoardDTO;
-import org.zerock.seoulive.exception.ControllerException;
+import org.zerock.seoulive.board.travel.domain.TravelDTO;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Log4j2
@@ -23,7 +29,7 @@ import java.util.List;
 @Controller
 public class CourseController {
 	
-	@Autowired
+	@Setter(onMethod_=@Autowired)
 	private CourseService service;
 	
 	
@@ -49,18 +55,16 @@ public class CourseController {
 	
 	// 2. 검색 후 게시판 목록 조회
 	@GetMapping("/list")
-	void search(CoursePageTO page, Model model) throws ControllerException {
+	void search(@RequestParam("currPage")CoursePageTO page, Model model) throws ControllerException {
 		log.trace("list({}, {}) invoked.", page, model);
 		
 		try {
 			List<CourseDTO> list = this.service.searchCourse(page);
-			System.out.println(list.size());
+			
 			// Request Scope 공유속성 생성
 			
-			int size = list.size();
-			System.out.println(size);
 			
-			for (int i = 0; i<size; i++) {
+			for (int i = 0; i<list.size(); i++) {
 				list.get(i).setListVO(this.service.getTravelList(list.get(i)));
 			} // for
 			model.addAttribute("__LIST__", list);
@@ -91,13 +95,29 @@ public class CourseController {
 		} // try-catch
 	} // register
 	
+	@PostMapping("/getSeq")
+	ResponseEntity<Map<String, Integer>> getSeq(Model model) throws ControllerException {
+		log.trace("getSeq() invoked.");
+		
+		try {
+			Integer seq = this.service.getCourseSeq();
+	        Map<String, Integer> response = new HashMap<>();
+	        response.put("seq", seq);
+	        return ResponseEntity.ok(response);
+		} catch(Exception e) {
+			e.getStackTrace();
+			throw new ControllerException(e);
+		} // try-catch
+	} // getSeq
+	
 	@PostMapping(path="/registerTravel")
-	String registerTravel(CourseWriteVO vo) throws ControllerException {
+	String registerTravel(CourseWriteVO vo, Model model) throws ControllerException {
 		log.trace("register({}) invoked.", vo);
 		
 		try {
 			
 			this.service.registerTravel(vo);
+			
 			
 			return null;
 		} catch(Exception e) {
@@ -120,7 +140,7 @@ public class CourseController {
 		
 		try {
 			
-		    List<TravelBoardDTO> travelData = this.service.getTravelData(keyword);
+		    List<TravelDTO> travelData = this.service.getTravelData(keyword);
 		    model.addAttribute("travelData", travelData);
 		    model.addAttribute("resultId", resultId);
 		    return "/board/course/searchTravelData"; 
@@ -165,22 +185,23 @@ public class CourseController {
            throw new ControllerException(e);
        }
     } // get
-
+	
     @PostMapping("/comm_write")
     public String commRegister(String content, Integer seq) throws ControllerException {
 		log.trace("commRegister({}) invoked.", content);
-
+				
 		try {
-
+			
 			this.service.commRegister(content, seq);
-
+			
 			return "redirect:/board/course/get?seq="+seq;
 		} catch(Exception e) {
+			e.getStackTrace();
 			throw new ControllerException(e);
 		} // try-catch
     } // commRegister
 	
-//  수정하기
+  //수정하기
 //    @PostMapping (path = "/modify", params = {"seq"})
 //    public String modify(@RequestParam(value="seq") Integer seq,
 //                       courseDTO dto,courseTravelDTO coursedto,
@@ -203,15 +224,22 @@ public class CourseController {
 //            throw new ControllerException(e);
 //        }
 //    }
-
-//	@GetMapping(path="/modify", params="bno")
-//	void modify(Integer bno, Model model) {	// 단순 수정화면 요청
-//		log.trace("modify() invoked.");
-//
+	
+//	@GetMapping(path="/modify")
+//	void modify(Integer seq, Model model)  throws ControllerException {	// 단순 수정화면 요청
+//		log.trace("modify({}) invoked.", seq);
+//		
+//		try {
+//			
+//			
+//		} catch(Exception e) {
+//			e.getStackTrace();
+//			throw new ControllerException(e);
+//		} // try-catch
 //	} // modify		// get메소드로 이동함
-
-
-	// 5. 특정 게시물 삭제(DELETE)
+	
+	
+//	// 5. 특정 게시물 삭제(DELETE)
 //    @PostMapping("/remove")
 //    public String remove(@RequestParam("seq")
 //                             Integer currPage, Integer seq, RedirectAttributes rttrs) throws ControllerException {
