@@ -29,7 +29,7 @@ $('.selection_list').each(function () {
 
 
 // 회원가입 유효성 검사
-var pwCheck = /^[A-Za-z0-9\d@$!%*?&]{10,20}$/;
+var pwCheck = /^[A-Za-z0-9\d@$!%*?&]{8,20}$/;
 var nickCheck = /^[가-힣]{2,12}$/;
 var birthCheck = /^(19|20)[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
 
@@ -39,7 +39,7 @@ $('#password').blur(function() {
         console.log(pwCheck.test($(this).val()));
         $('#pwError').text('');
     } else {
-        $('#pwError').text('암호는 영문/숫자/특수문자 10자 이상 20자 이하로 입력해주세요');
+        $('#pwError').text('암호는 영문/숫자/특수문자 8자 이상 20자 이하로 입력해주세요');
         $('#pwError').css('color', 'red');
     }
 });
@@ -71,17 +71,7 @@ $('#gender').blur(function() {
         $('#birthError').text('');
     }
 });
-// 닉네임
-// $('#nickName').blur(function() {
-//     if (nickCheck.test($(this).val())) {
-//             console.log(nickCheck.test($(this).val()));
-//             $('#nickError').text('');
-//     } else {
-//         $('#nickError').text('닉네임은 2-12자 이내로 입력해주세요');
-//         $('#nickError').css('color', 'red');
-//     }
-// });
-// 가입 클릭시
+// 가입하기 클릭시
 var terms = document.getElementById('terms');
 $('#join_btn').click(function(){
     // 성별
@@ -96,4 +86,82 @@ $('#join_btn').click(function(){
     } else {
         $('#termsError').text('');
     }
+});
+
+
+// 이메일 중복검사
+var mailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+$("#email").blur(function() {
+    var email = $('#email').val();
+    $.ajax({
+        url : '/member/emailCheck',
+        type : 'post',
+        data : {email : email},
+        dataType : "json",
+        success : function(data) {
+            console.log("1 = 중복o / 0 = 중복x : " + data);
+
+            if (data === 1) {
+                // 1 : 중복되는 문구
+                $("#emailError").text("사용중인 이메일입니다");
+                $("#emailError").css("color", "red");
+                $("#join_btn").attr("disabled", true);
+            } else {
+                if(mailCheck.test(email)){
+                    // 0 : 길이 / 문자열 검사
+                    $("#emailError").text("");
+                    $("#join_btn").attr("disabled", false);
+                } else if(email === ""){
+                    $('#emailError').text('이메일을 입력해주세요');
+                    $('#emailError').css('color', 'red');
+                    $("#join_btn").attr("disabled", true);
+                } else {
+                    $('#emailError').text("이메일 형식에 맞게 입력해주세요");
+                    $('#emailError').css('color', 'red');
+                    $("#join_btn").attr("disabled", true);
+                }
+            }
+        },
+        error: function(e) {
+            console.log(e);
+        }
+    });
+});
+
+// 닉네임 중복검사
+var nickCheck = /^[가-힣a-zA-Z0-9]{2,12}$/;
+$("#nickname").blur(function() {
+    var nickname = $('#nickname').val();
+    $.ajax({
+        url : '/member/nicknameCheck',
+        type : 'post',
+        data : {nickname : nickname},
+        dataType : "json",
+        success : function(data) {
+            console.log("1 = 중복o / 0 = 중복x : " + data);
+
+            if (data === 1) {
+                $("#nickError").text("사용중인 닉네임입니다");
+                $("#nickError").css("color", "red");
+                $("#join_btn").attr("disabled", true);
+            } else {
+                if(nickCheck.test(nickname)){
+                    // 0 : 길이 / 문자열 검사
+                    $("#nickError").text("");
+                    $("#join_btn").attr("disabled", false);
+                } else if(nickname === ""){
+                    $('#nickError').text('닉네임을 입력해주세요');
+                    $('#nickError').css('color', 'red');
+                    $("#join_btn").attr("disabled", true);
+                } else {
+                    $('#nickError').text("닉네임은 2자에서 12자까지 입력해주세요");
+                    $('#nickError').css('color', 'red');
+                    $("#join_btn").attr("disabled", true);
+                }
+            }
+        },
+        error: function(e) {
+            console.log(e);
+        }
+    });
 });

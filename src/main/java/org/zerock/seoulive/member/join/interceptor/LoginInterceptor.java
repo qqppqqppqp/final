@@ -26,30 +26,25 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Setter(onMethod_ = @Autowired)
     UserMapper mapper;
 
-    // 전처리는 이미 사용자가 로그인창에서 아이디/암호를 입력/전송했다는 것은 분명하기 때문에
-    // 로그인 요청을 먼저 가로채서 전처리에서는 로그인 요청을 보낸 웹브라우저에 대응되는 세션객체가 있다면 무조건 파괴
     @Override
     public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler)
-            throws Exception {  // 전처리 - HTTP request가 Request Mapping Table대로, 원래의 컨트롤러 핸들러 메소드로 가기전 가로챔
+            throws Exception {
         log.trace("====================================================");
         log.trace("preHandle(req, res, {}) invoked.", handler);
         log.trace("====================================================");
 
-        // 1) 로그인 요청을 보낸 웹브라우저에 대응되는 세션객체 획득
         HttpSession session = req.getSession(false);
         if(session != null) {
             log.info("\t+ sessionId : {}", session.getId());
 
-            // 2) 기존 세션은 무조건 파괴시켜서 새로운 credential은 새로운 객체에 저장
             session.invalidate();
             log.info("\t+ Session({}) Destroyed.", session.getId());
         } // if
 
-        return true;    // 인증로직은 기존대로 컨트롤러의 핸들러가 처리하도록 함
+        return true;
     } // preHandle
 
-    // 후처리
-    // 자동 로그인 처리를 위한 로직 구현
+    // 자동 로그인 처리
     @Override
     public void postHandle(HttpServletRequest req, HttpServletResponse res, Object handler, ModelAndView modelAndView)
             throws Exception {  // 후처리

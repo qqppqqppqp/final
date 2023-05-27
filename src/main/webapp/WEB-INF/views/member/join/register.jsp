@@ -48,7 +48,7 @@
 
             <div class="join_wrap">
               <p>비밀번호</p>
-              <input type="password" name="password" id="password" placeholder="영문/숫자/특수문자 10자 이상 20자 이하" required
+              <input type="password" name="password" id="password" placeholder="영문/숫자/특수문자 8자 이상 20자 이하" required
                 style="margin: 3px auto;">
               <input type="password" id="password_check" placeholder="비밀번호 확인" required>
               <span id="pwError"></span>
@@ -93,7 +93,7 @@
               <p>닉네임</p>
               <div class="join_btn_wrap">
                 <input type="text" id="nickname" name="nickname" placeholder="2~12자" required>
-                <button type="button" class="btn">중복확인</button>
+<%--                <button type="button" class="btn">중복확인</button>--%>
               </div>
               <span id="nickError"></span>
             </div>
@@ -150,83 +150,6 @@
             $resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요.');
             $resultMsg.css('color', 'red');
           }
-        });
-
-        // 이메일 중복검사
-        var mailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-        $("#email").blur(function() {
-          var email = $('#email').val();
-          $.ajax({
-            url : '/member/emailCheck',
-            type : 'post',
-            data : {email : email},
-            dataType : "json",
-            success : function(data) {
-              console.log("1 = 중복o / 0 = 중복x : " + data);
-
-              if (data === 1) {
-                // 1 : 중복되는 문구
-                $("#emailError").text("사용중인 이메일입니다");
-                $("#emailError").css("color", "red");
-                $("#join_btn").attr("disabled", true);
-              } else {
-                if(mailCheck.test(email)){
-                  // 0 : 길이 / 문자열 검사
-                  $("#emailError").text("");
-                  $("#join_btn").attr("disabled", false);
-                } else if(email === ""){
-                  $('#emailError').text('이메일을 입력해주세요');
-                  $('#emailError').css('color', 'red');
-                  $("#join_btn").attr("disabled", true);
-                } else {
-                  $('#emailError').text("이메일 형식에 맞게 입력해주세요");
-                  $('#emailError').css('color', 'red');
-                  $("#join_btn").attr("disabled", true);
-                }
-              }
-            },
-            error: function(e) {
-              console.log(e);
-            }
-          });
-        });
-
-        // 닉네임 중복검사
-        var nickCheck = /^[가-힣a-zA-Z]{2,12}$/;
-        $("#nickname").blur(function() {
-          var nickname = $('#nickname').val();
-          $.ajax({
-            url : '/member/nicknameCheck',
-            type : 'post',
-            data : {nickname : nickname},
-            dataType : "json",
-            success : function(data) {
-              console.log("1 = 중복o / 0 = 중복x : " + data);
-
-              if (data === 1) {
-                $("#nickError").text("사용중인 닉네임입니다");
-                $("#nickError").css("color", "red");
-                $("#join_btn").attr("disabled", true);
-              } else {
-                if(nickCheck.test(nickname)){
-                  // 0 : 길이 / 문자열 검사
-                  $("#nickError").text("");
-                  $("#join_btn").attr("disabled", false);
-                } else if(nickname === ""){
-                  $('#nickError').text('닉네임을 입력해주세요');
-                  $('#nickError').css('color', 'red');
-                  $("#join_btn").attr("disabled", true);
-                } else {
-                  $('#nickError').text("닉네임은 2자에서 12자까지 입력해주세요");
-                  $('#nickError').css('color', 'red');
-                  $("#join_btn").attr("disabled", true);
-                }
-              }
-            },
-            error: function(e) {
-              console.log(e);
-            }
-          });
         });
 
       </script>

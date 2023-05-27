@@ -3,13 +3,17 @@ package org.zerock.seoulive.member.join.controller;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.seoulive.exception.ControllerException;
 import org.zerock.seoulive.exception.ServiceException;
 import org.zerock.seoulive.member.join.domain.UserDTO;
+import org.zerock.seoulive.member.join.domain.UserVO;
 import org.zerock.seoulive.member.join.service.MailSendService;
 import org.zerock.seoulive.member.join.service.UserService;
 
@@ -28,7 +32,6 @@ public class UserController {
     @Setter(onMethod_ = @Autowired)
     private MailSendService mailService;
 
-
     @GetMapping("/join/main")
     void joinMain() {   // 단순 등록화면 요청
         log.trace("joinMain() invoked.");
@@ -41,26 +44,31 @@ public class UserController {
 
     } // register
 
+    // 회원가입 처리
     @PostMapping(
             value = "/join/register",
             params = {"email", "password", "birthDate", "gender", "nickname", "introduction"}
     )
-    String register(UserDTO dto,  @RequestParam("profileImg") MultipartFile profileImg) throws ControllerException {
+    String register(UserDTO dto, @RequestParam("profileImg") MultipartFile profileImg, RedirectAttributes rttrs) throws ControllerException {
         log.trace("register({}, {}) invoked.", dto);
 
         try {
             Objects.requireNonNull(dto);
 
-//            File savePath = new File("/Users/uneong/temp/upload/" + profileImg.getOriginalFilename());
-            File savePath = new File("file:///opt/uploadfiles/" + profileImg.getOriginalFilename());
+            // 프로필 사진
+            File savePath = new File("/Users/uneong/temp/upload/" + profileImg.getOriginalFilename());
+//            File savePath = new File("file:///opt/uploadfiles/" + profileImg.getOriginalFilename());
             profileImg.transferTo(savePath);
 
             dto.setProfileImgName("static/img/profile/" + profileImg.getOriginalFilename());
 
+            // 회원정보
+            String hashedPw = BCrypt.hashpw(dto.getPassword(), BCrypt.gensalt());
+            dto.setPassword(hashedPw);
             this.service.register(dto);
+            rttrs.addFlashAttribute("msg", "REGISTERED");
 
-
-            return "redirect:/member/join/register";
+            return "redirect:/member/login/email";
         } catch(Exception e) {
             throw new ControllerException(e);
         } // try-catch
@@ -82,7 +90,6 @@ public class UserController {
         log.trace("emailCheck({}) invoked.", email);
 
         try {
-
             return service.emailCheck(email);
         }catch (Exception e) {
             throw new ServiceException(e);
@@ -95,17 +102,11 @@ public class UserController {
         log.trace("nicknameCheck({}) invoked.", nickname);
 
         try {
-
-            int result = service.nicknameCheck(nickname);
-            log.info("result : {}", result);
-
-//            return service.nicknameCheck(nickname);
-            return result;
+            return service.nicknameCheck(nickname);
         }catch (Exception e) {
             throw new ServiceException(e);
         }
     } // nicknameCheck
-
 
 
 } // end class

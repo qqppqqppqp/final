@@ -3,16 +3,23 @@ package org.zerock.seoulive.member.join.controller;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.seoulive.member.join.domain.UserDTO;
 import org.zerock.seoulive.member.join.domain.UserVO;
 import org.zerock.seoulive.member.join.service.UserService;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 
 @Log4j2
@@ -25,26 +32,35 @@ import org.zerock.seoulive.member.join.service.UserService;
 public class LoginController {
     @Setter(onMethod_ = @Autowired)
     private UserService service;
+    @Setter(onMethod_ = @Autowired)
+    BCryptPasswordEncoder passwordEncoder;
 
-    @PostMapping("/loginPost")
-    String loginPost(UserDTO dto, Model model, RedirectAttributes rttrs) throws Exception {
+    @PostMapping(value = "/loginPost")
+    public String loginPost(Model model, UserVO user, UserDTO dto, RedirectAttributes rttrs) throws Exception {
         log.trace("loginPost({}, model) invoked.", dto);
 
-        try {
-            UserVO userVO = this.service.authenticate(dto);
+        UserVO userVO = service.authenticate(dto);
 
-            if (userVO != null) { // 인증성공
-                model.addAttribute("__AUTH__", userVO); // Request scope
+        if (userVO != null) {  // 일치하는 아이디 존재시
+            String rawPw = user.getPassword();   // 사용자가 제출한 비밀번호
+            String encodePw = userVO.getPassword();   // 데이터베이스에 저장한 인코딩 비밀번호
+
+            if (passwordEncoder.matches(rawPw, encodePw)) {   //비밀번호 일치 여부 판단
+                dto.setPassword("");    // 인코딩된 비밀번호 정보 지움
+                model.addAttribute("__AUTH__", userVO);
 
                 return "redirect:/";
-            } else {             // 인증실패
+            } else {
                 rttrs.addAttribute("__RESULT__", "로그인 실패");
 
-                return "redirect:/member/login/email";
+                return "redirect:/member/login/main";
             } // if-else
-        } catch(Exception e) {
-            throw new Exception(e);
-        } // try-catch
+        } else {        // 일치하는 아이디가 존재하지 않을 시
+            rttrs.addAttribute("__RESULT__", "로그인 실패");
+
+            return "redirect:/member/login/main";
+        } // if-else
     } // loginPost
+
 
 } // end class

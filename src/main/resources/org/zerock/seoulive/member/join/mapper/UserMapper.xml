@@ -20,7 +20,7 @@
         VALUES
             (#{email},
             #{password},
-            #{nickName},
+            #{nickname},
             #{birthDate},
             #{gender},
             #{introduction},
@@ -36,14 +36,18 @@
         SELECT count(nickname) FROM tbl_member WHERE nickname = #{nickname}
     </select>
 
+    <!--로그인-->
     <select id="selectUser" resultType="org.zerock.seoulive.member.join.domain.UserVO">
-        SELECT
-            *
-        FROM
-            tbl_member
-        WHERE
-            email = #{email}
-            AND password = #{password}
+<!--        SELECT-->
+<!--            *-->
+<!--        FROM-->
+<!--            tbl_member-->
+<!--        WHERE-->
+<!--            email = #{email}-->
+<!--            AND password = #{password}-->
+        SELECT *
+        FROM tbl_member
+        WHERE email = #{email}
     </select>
 
     <!--자동로그인-->
