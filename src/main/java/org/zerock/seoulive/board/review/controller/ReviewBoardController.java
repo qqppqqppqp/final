@@ -12,13 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.zerock.seoulive.board.review.domain.Criteria;
-import org.zerock.seoulive.board.review.domain.PageDTO;
-import org.zerock.seoulive.board.review.domain.ReviewBoardDTO;
-import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
+import org.zerock.seoulive.board.review.domain.*;
 import org.zerock.seoulive.board.review.service.ReviewBoardService;
 import org.zerock.seoulive.exception.ControllerException;
 
+import java.io.File;
 import java.util.List;
 import java.util.Objects;
 
@@ -65,17 +63,30 @@ public class ReviewBoardController {
         } // try-catch
     } // list
 
+    @PostMapping("/likeList")
+    void likeList(ReviewLikeDTO dto) throws ControllerException {
+        try {
+
+            this.service.likeList(dto);
+
+        } catch(Exception e) {
+            e.getStackTrace();
+            throw new ControllerException(e);
+
+        } //try-catch
+    }
+
 // 2. 새로운 게시물 등록
     @PostMapping(path={"/write"}, params= {"title", "content", "writer","place"})
-    String writer(ReviewBoardDTO dto, RedirectAttributes rttrs) throws ControllerException {
+    String writer(ReviewBoardDTO dto,  MultipartFile file) throws ControllerException {
 
         try {
-            Objects.requireNonNull(dto);
 
-            if(this.service.register(dto)) { // if success
-                rttrs.addAttribute("result", "true");
-                rttrs.addAttribute("seq", dto.getSeq());
-            } // if
+            this.service.register(dto);
+            this.service.fileSave(file);
+
+            String path = "C:/Users/82104/Desktop/seoulliveproject/codeNineSeoulive/src/main/webapp/resources/imgUpload/"+file.getName();
+            file.transferTo(new File(path));
 
             return "redirect:/board/review/list";
         } catch (Exception e) {
@@ -99,6 +110,8 @@ public class ReviewBoardController {
 
         try {
             ReviewBoardVO vo = this.service.get(seq);
+            List<ReviewCommentDTO> list = this.service.commentList(seq);
+            model.addAttribute("__CLIST__", list);
 
             model.addAttribute("__BOARD__", vo);
         } catch(Exception e) {
@@ -123,6 +136,19 @@ public class ReviewBoardController {
             throw new ControllerException(e);
         } //try-catch
     } // modify
+
+    @PostMapping("/commentWrite")
+    String commentWrite(ReviewCommentDTO dto) throws ControllerException {
+        try {
+
+            this.service.commentWrite(dto);
+
+            return "redirect:/board/review/view?seq="+dto.getPost_seq();
+
+        } catch(Exception e) {
+            throw new ControllerException(e);
+        } //try-catch
+    }
     // 5. 특정 게시물 삭제(DELETE)
     @PostMapping("/remove")
     String remove(Integer seq, RedirectAttributes rttrs)

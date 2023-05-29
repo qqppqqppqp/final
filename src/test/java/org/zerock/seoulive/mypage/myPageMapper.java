@@ -14,6 +14,7 @@ import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
 import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
 import org.zerock.seoulive.mypage.domain.Criteria;
+import org.zerock.seoulive.mypage.domain.UserLikeVO;
 import org.zerock.seoulive.mypage.domain.tbl_likeVO;
 import org.zerock.seoulive.mypage.mapper.MyPageBoardMapper;
 
@@ -160,6 +161,16 @@ public class myPageMapper {
 		log.info("\t vo : {}",vo);
 	}
 	
+	@Test
+	@Order(17)
+	@DisplayName("testSelectUserLikeList")
+	@Timeout(value=5,unit=TimeUnit.SECONDS)
+	public void testSelectUserLikeList() {
+		log.trace("\t testSelectUserLikeList() invoked.");
+		String email = "id@gmail.com";
+		List<UserLikeVO> list = this.mapper.selectUserLikeList(email);
+		log.info("\t list : {} ",list);
+	}
 	@AfterAll
 	public void afterAll() {
 		log.trace("\t afterAll() invoked.");

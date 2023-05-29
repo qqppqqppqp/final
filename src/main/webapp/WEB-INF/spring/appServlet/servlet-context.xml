@@ -88,4 +88,10 @@
 
 	<!-- <context:component-scan base-package="org.zerock.seoulive.board.member.controller"/> -->
 	
+
+	<view-resolvers>
+		<jsp prefix="/WEB-INF/views/" suffix=".jsp"/>
+	</view-resolvers>
+
+
 </beans:beans>

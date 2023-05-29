@@ -1,6 +1,7 @@
 package org.zerock.seoulive.board.review.domain;
 
 import lombok.Value;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
 
@@ -16,7 +17,7 @@ import java.sql.Timestamp;
 //   나. 테이블의 각 컬럼의 타입 => 호환가능한 자바 타입으로 선언 (***)
 //   다. 모든 필드(각 컬럼)를 매개변수로 가지는 생성자 선언 (***)
 @Value
-public class ReviewBoardVO {
+public class BoardVO {
 
 
 
@@ -25,14 +26,16 @@ public class ReviewBoardVO {
     private String title;
     private String content;
     private Integer total;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Timestamp write_date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Timestamp modify_date;
     private String place;
 
-    public ReviewBoardDTO toDTO() {
+    public BoardDTO toDTO() {
 
 
-        ReviewBoardDTO dto = new ReviewBoardDTO();
+        BoardDTO dto = new BoardDTO();
         dto.setSeq(seq);
         dto.setWriter(writer);
         dto.setTitle(title);

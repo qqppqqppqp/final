@@ -72,52 +72,47 @@
                 <div class="container">
                     <ul class="list_thumType flnon">
                     
+                     <c:forEach var="USERLIST" items="${__USERLIST__}">
                      
-                        
-                        <c:forEach var="ReviewBoardVO" items="${__reviewList__}">
-	                        <li class="thum thum_2">
-	                            <div class="photo"><a href="/board/review/view?seq=${ReviewBoardVO.seq}"><img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=870e2a7c-eb93-4708-83b0-94cd277b6f04" alt="석촌호수 벚꽃축제">
-	                                <!-- <em class="flag type_before">진행전</em></a> -->
-	                                <!-- <i class="fas fa-heart on"></i> -->
-	                                
-	                            </div>
-	                            <div class="area_txt">
-	                                <div class="tit"><a href="/board/review/view?seq=${ReviewBoardVO.seq}">${ReviewBoardVO.title}</a> </div>
-	                            </div>
-	                        </li>
-                        </c:forEach>
-                        <c:forEach var="tbl_courseVO" items="${__courseList__}">
-	                        <li class="thum thum_2">
-	                            <div class="photo"><a href="/board/course/get?seq=${tbl_courseVO.seq}"><img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=870e2a7c-eb93-4708-83b0-94cd277b6f04" alt="석촌호수 벚꽃축제">
+                     	<c:choose>
+                     		<c:when test= "${USERLIST.board} == 'tbl_course'">
+                     			 <li class="thum thum_2">
+	                            	<div class="photo"><a href="/board/review/view?seq=${USERLIST.seq}"><img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=870e2a7c-eb93-4708-83b0-94cd277b6f04" alt="석촌호수 벚꽃축제">
 	                                <em class="flag type_before">진행전</em></a>
 	                                <i class="fas fa-heart on"></i>
 	                                
-	                            </div>
-	                            <div class="area_txt">
-	                                <div class="tit"><a href="/board/course/get?seq=${tbl_courseVO.seq}">${tbl_courseVO.TITLE}</a> </div>
-	                            </div>
-	                        </li>
-                        </c:forEach>
-
-                        
-                        <c:forEach var="TravelBoardVO" items="${__travelList__}">
-	                        <li class="thum thum_2">
-	                            <div class="photo"><a href="/board/travel/view?seq=${TravelBoardVO.seq }"><img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=870e2a7c-eb93-4708-83b0-94cd277b6f04" alt="석촌호수 벚꽃축제">
-	                                <!-- <em class="flag type_before">진행전</em></a> -->
-	                                <!-- <i class="fas fa-heart on"></i> -->
+	                           	 	</div>
+	                           		 <div class="area_txt">
+	                             	   <div class="tit"><a href="/board/review/view?seq=${USERLIST.seq}">${USERLIST.title} ccc</a> </div>
+	                            	</div>
+	                        	</li>
+                     		</c:when>
+                     		<c:otherwise>
+                     			<li class="thum thum_2">
+	                            	<div class="photo"><a href="/board/review/view?seq=${USERLIST.seq}"><img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=870e2a7c-eb93-4708-83b0-94cd277b6f04" alt="석촌호수 벚꽃축제">
+<!-- 	                                <em class="flag type_before">진행전</em></a> -->
+<!-- 	                                <i class="fas fa-heart on"></i> -->
 	                                
-	                            </div>
-	                            <div class="area_txt">
-	                                <div class="tit"><a href="/board/travel/view?seq=${TravelBoardVO.seq }">${TravelBoardVO.title}</a> </div>
-	                            </div>
-	                        </li>
-                        </c:forEach>
-                        
-                        
+	                           	 	</div>
+	                           		 <div class="area_txt">
+	                             	   <div class="tit"><a href="/board/review/view?seq=${USERLIST.seq}">${USERLIST.title}</a> </div>
+	                            	</div>
+	                        	</li>
+                     		</c:otherwise>
+                     	</c:choose>
+                     </c:forEach>
                     </ul>
                 </div>
 
             </div>
+
+            <Script>
+                $(document).ready(function(){
+                
+                }); // jq
+
+            </Script>
+
             <!-- 내 리뷰 -->
             <div class="my_cont_box">
                 <h2>내 리뷰</h2>
@@ -125,7 +120,7 @@
                 
                 <c:forEach var="BoardVO" items="${__RESULT__}">
                 	<div class="container my_review">
-                		<img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=1ec32eb6-aac2-4c5a-9e56-9ac1c817afd6" alt="마포 나만의 여행">
+                		<a href="/board/review/view?seq=${ BoardVO.seq }"><img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=1ec32eb6-aac2-4c5a-9e56-9ac1c817afd6" alt="마포 나만의 여행"></a>
                 		<div class="desc_wrap">
                 			<h4>
                 				

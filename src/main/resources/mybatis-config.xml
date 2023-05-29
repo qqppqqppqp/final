@@ -34,6 +34,6 @@
         <!-- <mapper resource="org/zerock/seoulive/board/free/persistence/FreeCommentDAOMapper.xml" /> -->
 
     </mappers>
-    
+
 
 </configuration>

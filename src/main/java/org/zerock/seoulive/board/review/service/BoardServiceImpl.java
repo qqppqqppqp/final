@@ -1,27 +1,28 @@
 package org.zerock.seoulive.board.review.service;
 
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import java.util.List;
+import java.util.Objects;
+
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.zerock.seoulive.board.review.domain.*;
+import org.zerock.seoulive.board.review.exception.ServiceException;
 import org.zerock.seoulive.board.review.mapper.ReviewBoardMapper;
-import org.zerock.seoulive.exception.ServiceException;
 
-import java.util.List;
-import java.util.Objects;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @NoArgsConstructor
 
 @Service("BoardService")
-public class ReviewBoardServiceImpl
+public class BoardServiceImpl
         implements
-        ReviewBoardService,
+        BoardService,
         InitializingBean,
         DisposableBean {
 
@@ -30,7 +31,7 @@ public class ReviewBoardServiceImpl
 
     // 1. 게시판 목록 얻어 반환해주는 기능 수행
     @Override
-    public List<ReviewBoardVO> getList(Criteria cri) throws ServiceException {
+    public List<BoardVO> getList(Criteria cri) throws ServiceException {
         log.trace("\n\t getList() invoked.");
 
         try {
@@ -53,16 +54,16 @@ public class ReviewBoardServiceImpl
 
     // 2. 새로운 게시물 등록 기능 수행(CREATE)
     @Override
-    public Boolean register(ReviewBoardDTO dto) throws ServiceException {
+    public void register(BoardDTO dto) throws ServiceException {
         log.trace("\n\t register({}) invoked.", dto);
 
         try {
-            return (this.dao.insert(dto) == 1);
-
+            this.dao.insert(dto);
         } catch (Exception e) {
             throw new ServiceException(e);
         }
     }    //	register
+
     @Override
     public void fileSave(MultipartFile file)throws ServiceException {
         log.trace("\n\t fileSave({}) invoked.", file);
@@ -72,7 +73,7 @@ public class ReviewBoardServiceImpl
 //            String path = "C:/Users/82104/Desktop/seoulliveproject/codeNineSeoulive/src/main/webapp/resources/imgUpload/"+file.getName();
 //            file.transferTo(new File(path));
 
-            ReviewFileDTO fileDto = new ReviewFileDTO();
+            FileDTO fileDto = new FileDTO();
             fileDto.setFile_name(file.getOriginalFilename());
             fileDto.setExtension(file.getContentType());
             fileDto.setFile_size(file.getSize());
@@ -86,16 +87,16 @@ public class ReviewBoardServiceImpl
 
 
     @Override
-    public ReviewBoardVO get(Integer seq) throws ServiceException {
+    public BoardVO get(Integer seq) throws ServiceException {
         log.trace("\n\t BoardVO({}) invoked.", seq);
-        ReviewBoardVO boardVO = dao.select(seq);
+        BoardVO boardVO = dao.select(seq);
         return boardVO;
     }    //	get
 
 
     // 4. 특정 게시물 업데이트(update)
     @Override
-    public Boolean modify(ReviewBoardDTO dto) throws ServiceException {
+    public Boolean modify(BoardDTO dto) throws ServiceException {
         log.trace("\n\t modify({}) invoked.", dto);
 
         try {
@@ -118,6 +119,7 @@ public class ReviewBoardServiceImpl
             throw new ServiceException(e);
         }
     }    //	remove
+
     @Override
     public void commentWrite(ReviewCommentDTO dto)throws ServiceException{
         try {
@@ -141,7 +143,7 @@ public class ReviewBoardServiceImpl
     }
 
     @Override
-    public void  likeList(ReviewLikeDTO dto)throws ServiceException{
+    public void  likeList(LikeDTO dto)throws ServiceException{
         try {
 
             this.dao.likeList(dto);
@@ -149,6 +151,8 @@ public class ReviewBoardServiceImpl
             throw new ServiceException(e);
         }
     }
+
+
 
 //	===================InitializingBean,DisposableBean ==========//
 

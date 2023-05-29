@@ -10,12 +10,13 @@ import java.sql.Timestamp;
 //		 DTO패턴의 객체는, 수정가능하다(mutable)
 
 @Data
-public class ReviewBoardDTO {
+public class BoardDTO {
     private Integer seq;
     private String writer;
     private String title;
     private String content;
     private String place;
+
 
 
 }
