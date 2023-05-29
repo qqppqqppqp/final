@@ -1,6 +1,7 @@
 package org.zerock.seoulive.board.course.persistence;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.zerock.seoulive.board.course.domain.*;
 import org.zerock.seoulive.board.travel.domain.TravelDTO;
@@ -55,7 +56,7 @@ public interface CourseDAO {
 			FROM tbl_course 
 			WHERE ${searchType} LIKE '%' || #{keyword} || '%'
 			""")
-	public abstract int getTotalSearch(String searchType, String keyword);
+	public abstract int getTotalSearch(@Param("searchType") String searchType, @Param("keyword") String keyword);
 	
 	// 6. 새로운 게시물 등록
 	@Insert("""

@@ -82,8 +82,10 @@ public class CourseServiceImpl
 	@Override
 	public Integer getTotalSearch(CoursePageTO page) throws ServiceException {
 		log.trace("getTotal() invoked.");
+		String searchType = page.getSearchType();
+		String keyword = page.getKeyword();
 		
-		return this.dao.getTotalSearch(page.getSearchType(), page.getKeyword());
+		return this.dao.getTotalSearch(searchType, keyword);
 	} // getTotal
 	
 	// 6. 게시물 작성

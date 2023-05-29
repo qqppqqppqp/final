@@ -54,11 +54,14 @@ public class CourseController {
 //	} // list
 	
 	// 2. 검색 후 게시판 목록 조회
-	@GetMapping("/list")
-	void search(@RequestParam("currPage")CoursePageTO page, Model model) throws ControllerException {
+	@GetMapping(path="/list")
+	void search(CoursePageTO page, Model model) throws ControllerException {
 		log.trace("list({}, {}) invoked.", page, model);
 		
 		try {
+			if(page.getSearchType() =="" || page.getSearchType() == null ){
+				page.setSearchType("TITLE");
+			}
 			List<CourseDTO> list = this.service.searchCourse(page);
 			
 			// Request Scope 공유속성 생성
