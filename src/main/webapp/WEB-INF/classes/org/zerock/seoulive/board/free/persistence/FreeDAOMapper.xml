@@ -5,7 +5,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.seoulive.board.free.persistence.FreeDAO">
 
-   <!--  <sql id="criteria">
+    <sql id="criteria">
         <trim prefix="(" suffix=") AND " prefixOverrides="OR">
             <foreach item='type' collection="typeArr">
                 <trim prefix="OR">
@@ -23,7 +23,7 @@
                 </trim>
             </foreach>
         </trim>
-    </sql> -->
+    </sql>
 
     <select id="getList" resultType="org.zerock.seoulive.board.free.domain.FreeDTO">
         SELECT *
@@ -35,7 +35,7 @@
 
 
 
-   <!--  <select id="getListWithPaging"
+    <select id="getListWithPaging"
             resultType="org.zerock.seoulive.board.free.domain.FreeDTO">
         <![CDATA[
   select
@@ -71,21 +71,14 @@
       )
   where rn > (#{pageNum} -1) * #{amount}
   ]]>
-    </select> -->
-    
-     <!-- <select id="getListWithPaging" resultType="java.util.List">
-        SELECT *
-         FROM tbl_course 
-         OFFSET ( #{currPage} - 1) * #{amount} ROW
-         FETCH NEXT #{amount} ROWS ONLY
-    </select> -->
+    </select>
 
     <select id="getTotalCount" resultType="int">
-        select count(*) from tbl_free 
+        select count(*) from tbl_free where
 
-        <!-- <include refid="criteria"></include> -->
+        <include refid="criteria"></include>
 
-        <!-- where seqs > 0 -->
+        seq > 0
 
     </select>
 
@@ -98,7 +91,7 @@
     <select id="read" resultType="org.zerock.seoulive.board.free.domain.FreeDTO">
         SELECT *
         FROM TBL_FREE
-        WHERE seq = #{seq}
+        WHERE seq=#{seq}
     </select>
 
     <update id="update" parameterType="org.zerock.seoulive.board.free.domain.FreeDTO">
