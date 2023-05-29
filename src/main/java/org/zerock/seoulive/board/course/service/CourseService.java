@@ -1,18 +1,10 @@
 package org.zerock.seoulive.board.course.service;
 
+import org.zerock.seoulive.board.course.domain.*;
+import org.zerock.seoulive.board.course.exception.ServiceException;
+import org.zerock.seoulive.board.travel.domain.TravelDTO;
+
 import java.util.List;
-
-import org.zerock.seoulive.board.course.domain.CourseCommVO;
-import org.zerock.seoulive.board.course.domain.CourseDTO;
-import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
-import org.zerock.seoulive.board.course.domain.CoursePageTO;
-import org.zerock.seoulive.board.course.domain.CourseTravelVO;
-import org.zerock.seoulive.board.course.domain.CourseVO;
-import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
-import org.zerock.seoulive.board.course.domain.CourseWriteVO;
-import org.zerock.seoulive.exception.ServiceException;
-import org.zerock.seoulive.board.travel.domain.TravelBoardDTO;
-
 
 public interface CourseService {
 	
@@ -34,10 +26,11 @@ public interface CourseService {
 	
 	// 6. 새로운 게시물 등록 기능 수행 (CREATE)
 	public abstract void register(CourseWriteDTO dto) throws ServiceException;
+	public abstract Integer getCourseSeq() throws ServiceException;
 	public abstract void registerTravel(CourseWriteVO vo) throws ServiceException;
 	
 	// 7. Write에서 여행지 검색
-	public abstract List<TravelBoardDTO> getTravelData(String keyword) throws ServiceException;
+	public abstract List<TravelDTO> getTravelData(String keyword) throws ServiceException;
 	
 	// 8. 찜 기능
 	public abstract void courseLike(CourseLikeDTO dto) throws ServiceException;

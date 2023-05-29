@@ -6,5 +6,27 @@
 
 <mapper namespace="org.zerock.seoulive.board.course.persistence.CourseDAO">
 	
+	<select id="read" resultType="org.zerock.seoulive.board.course.domain.CourseVO">
+        SELECT *
+        FROM tbl_course
+        WHERE seq = #{seq}
+    </select>
+    
+    
+
+    <delete id="delete">
+        delete from tbl_course where seq = #{seq}
+    </delete>
+
+    <update id="update">
+        update tbl_course
+        set writer = #{writer, jdbcType=VARCHAR},
+	        title = #{title,jdbcType=VARCHAR},
+	        review = #{review,jdbcType=VARCHAR},
+	        duration_start = #{duration_start,jdbcType=DATE},
+	        duration_end = #{duration_end,jdbcType=DATE},
+	        modify_date = current_date
+        where seq = #{seq, jdbcType=INTEGER}
+    </update>
 
 </mapper>

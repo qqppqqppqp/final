@@ -15,7 +15,7 @@
         <ul>
             <li><a href="#a">날씨</a></li>
             <li><a href="#a">문의</a></li>
-            <li class="top"><a href="#a"><i class="fas fa-caret-up"></i></a></li>
+            <li class="top" onClick="javascript:window.scrollTo(0,0)"><i class="fas fa-caret-up"></i></li>
             <li class="bottom"><a href="#a"><i class="fas fa-caret-down"></i></a></li>
         </ul>
     </div>

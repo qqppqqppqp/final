@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <% session.removeAttribute("member_mid");
@@ -7,27 +8,7 @@ response.sendRedirect("../main/index.jsp"); %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
 <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
-<script>
-          console.log("<%= session.getAttribute("__AUTH__") %>");
-    </script>
-<script>
-	
-
-    $(function(){
-        $('#course').click(function(){
-            location.href="/board/course/list";
-        })
-        $('#travel').click(function(){
-            location.href="/board/travel/list";
-        })
-        $('#free').click(function(){
-            location.href="/board/free/list";
-        })
-        $('#review').click(function(){
-        	location.href="/board/review/list";
-        })
-    }); // jq
-</script>
+<script>console.log("<%= session.getAttribute("__AUTH__") %>");</script>
 
 <!-- 헤더 시작 -->
 <div id="header">
@@ -36,46 +17,22 @@ response.sendRedirect("../main/index.jsp"); %>
             <a href="#"><img src="${pageContext.request.contextPath}/resources/static/img/img-logo.png" width="240" height="60"></a>
         </h1>
         <ul class="bn">
-            <span class="fl" id="travelBoard">
-                <li>여행지</li>
-            </span>
-            <a href="#" class="fl">
-                <li>코스</li>
-            </a>
-            <a href="#" class="fl">
-                <li>리뷰</li>
-            </a>
-            <span class="fl" id="freeBoard">
-                <li>자유게시판</li>
-            </span>
-            <a href="#"><img src="/resources/static/img/img-logo.png" width="240" height="60"></a>
-        </h1>
-        <ul class="bn">
-            <a href="#" class="fl">
-                <li id="travel">여행지</li>
-            </a>
-            <a href="#" class="fl">
-                <li id="course">코스 </li>
-            </a>
-
-            <a href="#" class="fl">
-                <li id="free">자유게시판</li>
-            </a>
-            <a href="#" class="fl">
-                <li id="review">리뷰</li>
-            </a>
-
+            <li class="fl" id="travelBoard">여행지</li>
+            <li class="fl" id="courseBoard">코스</li>
+            <li class="fl" id="reviewBoard">리뷰</li>
+            <li class="fl" id="freeBoard">자유게시판</li>
         </ul>
 
         <ul class="bn">
+            <c:if test="${sessionScope.__AUTH__ == null}">
+                <li class="fr" id="joinBtn">회원가입</li>
+                <li class="fr" id="loginBtn">로그인</li>
+            </c:if>
 
-            <a href="/member/join/register" class="fr">
-                <li id="regidence">회원가입</li>
-            </a>
-            <a id="loginout" href="/member/login/main" class="fr">
-                <li>로그인</li>
-            </a>
-
+            <c:if test="${sessionScope.__AUTH__ != null}">
+                <li class="fr" id="logoutBtn">로그아웃</li>
+                <li class="fr" id="myPageBtn">마이페이지</li>
+            </c:if>
         </ul>
 
     </div>
@@ -112,9 +69,20 @@ response.sendRedirect("../main/index.jsp"); %>
             self.location.href = '/board/travel/list';
         }); // .onclick
 
+        $('#courseBoard').on('click', function () {
+            self.location.href = '/board/course/list';
+        }); // .onclick
+
+        $('#reviewBoard').on('click', function () {
+            self.location.href = '/board/review/list';
+        }); // .onclick
+
         $('#freeBoard').on('click', function () {
             self.location.href = '/board/free/list';
         }); // .onclick
 
     }); // .jq
+
+</script>
+
 <!-- 헤더 끝 -->

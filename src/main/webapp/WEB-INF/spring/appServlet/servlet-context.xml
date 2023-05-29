@@ -35,18 +35,16 @@
 		<beans:property name="preserveFilename" value="true"/>
 	</beans:bean>
 
-	<context:component-scan base-package="org.zerock.seoulive.exception"/>
-
-	<context:component-scan base-package="org.zerock.seoulive.member.join.controller"/>
-	<context:component-scan base-package="org.zerock.seoulive.member.join.interceptor"/>
-
 	<interceptors>
-<!--			회원만 읽기 가능한 게시판-->
-<!--		<interceptor>-->
-<!--		<mapping path="/board/course/write"/>-->
+		<interceptor>
+			<!--회원만 접근 가능한 게시판-->
+			<mapping path="/board/travel/write"/>
+<!--			<mapping path="/board/course/write"/>-->
+			<mapping path="/board/review/write"/>
+			<mapping path="/board/free/write"/>
 
-<!--		<beans:ref bean="authInterceptor"/>-->
-<!--		</interceptor>-->
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
 
 		<interceptor>
 			<mapping path="/member/logout"/>
@@ -72,6 +70,7 @@
 	<!--	<context:component-scan base-package="org.zerock.seoulive.exception" />-->
 	<!--	<context:component-scan base-package="org.zerock.seoulive.interceptor" />-->
 
+	<context:component-scan base-package="org.zerock.seoulive.exception"/>
 	<context:component-scan base-package="org.zerock.seoulive.controller" />
 
 	<context:component-scan base-package="org.zerock.seoulive.board.course.controller" />
