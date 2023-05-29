@@ -16,6 +16,37 @@ $heartIcon.click(function() {
     alert("좋아요!");
 })
 
+// changeFn() : select option 값을 가져와 tab 활성화
+function changeFn() {
+    var selectedValue = $("#category").val();
+
+    // 모든 탭과 탭 컨텐츠 비활성화
+    $(".tab li").removeClass("on");
+    $(".tabcont").removeClass("on");
+
+    // 선택된 값에 해당하는 탭과 탭 컨텐츠 활성화
+    if (selectedValue === "공연") {
+        $(".tab [data-tab='menu2']").addClass("on");
+        $("#menu2").addClass("on");
+    } else if (selectedValue === "야외활동") {
+        $(".tab [data-tab='menu3']").addClass("on");
+        $("#menu3").addClass("on");
+    } else if (selectedValue === "팝업스토어") {
+        $(".tab [data-tab='menu4']").addClass("on");
+        $("#menu4").addClass("on");
+    } else if (selectedValue === "전시회") {
+        $(".tab [data-tab='menu5']").addClass("on");
+        $("#menu5").addClass("on");
+    } else {
+        // 선택된 값에 해당하는 탭이 없는 경우 전체 탭 활성화
+        $(".tab li:first-child").addClass("on");
+        $("#menu1").addClass("on");
+    }
+} // changeFn()
+
+
+
+
 // calendar
 const days = ["일", "월", "화", "수", "목", "금", "토"];
 const months = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];

@@ -21,7 +21,6 @@ import org.zerock.seoulive.board.travel.mapper.TravelBoardMapper;
 import org.zerock.seoulive.board.travel.service.TravelBoardService;
 import org.zerock.seoulive.exception.ControllerException;
 import org.zerock.seoulive.mypage.domain.Criteria;
-import org.zerock.seoulive.mypage.domain.PageDTO;
 import org.zerock.seoulive.mypage.domain.tbl_likeVO;
 import org.zerock.seoulive.mypage.mapper.MyPageBoardMapper;
 import org.zerock.seoulive.mypage.service.MyPageBoardService;
@@ -79,13 +78,15 @@ public class MyPageController {
 		
 		try {
 //			Criteria cri = new Criteria();
-//			List<tbl_reviewVO> list = this.mapper.selectLikeReviewList(email, cri);
+			List<ReviewBoardVO> list = this.mapper.selectLikeReviewList(email, cri);
 			List<ReviewBoardVO> result = this.service.getMyReviewList(email, cri);
 			model.addAttribute("__RESULT__",result);
 			
-			PageDTO pageDTO = new PageDTO(cri,this.service.getMyPageReviewTotal(email));
-			model.addAttribute("pageMaker",pageDTO);
+//			PageDTO pageDTO = new PageDTO(cri,this.service.getMyPageReviewTotal(email));
+//			model.addAttribute("pageMaker",pageDTO);
 			
+			List<CourseVO> course = this.service.getMyCourseList(email);
+			model.addAttribute("__COURSE__",course);
 			
 			System.out.println("checkPointer1");
 			log.info("\t result : {}", result);
@@ -97,32 +98,28 @@ public class MyPageController {
 			List<TravelBoardVO> tbl_travelList = new ArrayList<>();
 			List<CourseVO> tbl_courseList = new ArrayList<>();
 			List<ReviewBoardVO> tbl_reviewList = new ArrayList<>();
-//			List<FreeDTO> tbl_freeList = new ArrayList<>();
+
 			System.out.println("checkPointer3");
 			for(int i = 0 ; i < tblLike.size();i++) {
 //				System.out.println(tbl_travelList.get(i));
 //				System.out.println(tbl_travelList.get(i).getSeq());
 //				System.out.println(tbl_travelList.get(i).getTitle());
-//				System.out.println(tbl_travelList.get(i).getBoardSeq());
-//				System.out.println(tbl_travelList.get(i).getBoard());
+//				System.out.println(tbl_travelList.get(i).getWriter());
+//				System.out.println(tbl_travelList.get(i).getCategory());
 				
 				switch(tblLike.get(i).getBoard()) {
 					case "tbl_travel" : 
-							tbl_travelList.add(this.TravelService.get(tblLike.get(i).getBoardSeq()));
-							System.out.println("식별용");
-							System.out.println(tbl_travelList.get(0));
-							System.out.println("식별용");
+							tbl_travelList.add(this.service.getMyTravelBoard(tblLike.get(i).getBoardSeq()));
+//							System.out.println("식별용");
+//							System.out.println(tbl_travelList.get(0));
+//							System.out.println("식별용");
 							break; 
 					case "tbl_course" : 
-//							tbl_courseList.add(this.CourseService.get(tblLike.get(i).getBoardSeq()));
-					
+							tbl_courseList.add(this.service.getMyCourse(tblLike.get(i).getBoardSeq()));
 							break;
 					case "tbl_review" : 
 							tbl_reviewList.add(this.ReviewService.get(tblLike.get(i).getBoardSeq())); 
 							
-							break;
-					case "tbl_free"   : 
-//							tbl_freeList.add(this.FreeService.view(tblLike.get(i).getBoardSeq())); 
 							break;
 					default : System.out.println(this.getClass().getName()+"null") ; break;
 				}	// end switch
@@ -133,7 +130,7 @@ public class MyPageController {
 			model.addAttribute("__reviewList__",tbl_reviewList);
 			model.addAttribute("__courseList__",tbl_courseList);
 			model.addAttribute("__travelList__",tbl_travelList);
-//			model.addAttribute("__freeList__",tbl_freeList);
+
 			
 			System.out.println("checkPointer3");
 			log.info("\t tblLike : {}", tblLike);

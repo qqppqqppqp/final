@@ -1,6 +1,5 @@
 package org.zerock.seoulive.board.free.service;
 
-import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.free.domain.Criteria;
 import org.zerock.seoulive.board.free.domain.FreeDTO;
 

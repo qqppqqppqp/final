@@ -2,7 +2,6 @@ package org.zerock.seoulive.board.free.persistence;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.zerock.seoulive.board.free.domain.FreeCommentDTO;
-import org.zerock.seoulive.board.free.domain.FreeDTO;
 
 import java.util.List;
 

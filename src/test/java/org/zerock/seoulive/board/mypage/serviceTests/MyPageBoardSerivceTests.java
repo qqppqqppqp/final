@@ -14,7 +14,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
+import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
 import org.zerock.seoulive.exception.ServiceException;
 import org.zerock.seoulive.mypage.domain.Criteria;
 import org.zerock.seoulive.mypage.domain.tbl_likeVO;
@@ -49,7 +51,7 @@ public class MyPageBoardSerivceTests {
 	private WebApplicationContext ctx;
 	
 	@Setter(onMethod_= {@Autowired})
-	private MyPageBoardService servise;
+	private MyPageBoardService service;
 	
 	private MockMvc mockMvc;
 	
@@ -126,22 +128,91 @@ public class MyPageBoardSerivceTests {
 		log.trace("\t end testGetMyLikeList() complete");
 	}	// end testGetLikeReviewList
 	
+//	@Test
+//	@Order(13)
+//	@DisplayName("testGetMyPageReviewTotal")
+//	@Timeout(value=5,unit=TimeUnit.SECONDS)
+//	public void testGetMyPageReviewTotal() throws ServiceException {
+//		log.trace("\t testGetMyPageReviewTotal() invoked.");
+//		
+//		
+//		String email = "id@gmail.com";
+//		
+//		Integer result = this.servise.getMyPageReviewTotal(email);
+//		
+//		
+//		
+//		log.trace("\t end testGetMyPageReviewTotal({}) complete",result);
+//	}	// end testGetMyPageReviewTotal
+	
 	@Test
-	@Order(13)
-	@DisplayName("testGetMyPageReviewTotal")
+	@Order(14)
+	@DisplayName("testGetMyCourseList")
 	@Timeout(value=5,unit=TimeUnit.SECONDS)
-	public void testGetMyPageReviewTotal() throws ServiceException {
-		log.trace("\t testGetMyPageReviewTotal() invoked.");
-		
+	public void testGetMyCourseList() throws ServiceException{
+		log.trace("\t testGetMyCourseList () invoked.");
 		
 		String email = "id@gmail.com";
 		
-		Integer result = this.servise.getMyPageReviewTotal(email);
+		try {
+			
+			List<CourseVO> list = this.service.getMyCourseList(email);
+			log.info("\t list : {}",list);
+		}catch(Exception e) {
+			throw new ServiceException(e);
+			
+		}
+	}	// end testGetMyCourseList
+	
+	@Test
+	@Order(15)
+	@DisplayName("testGetMyCourse")
+	@Timeout(value=5,unit=TimeUnit.SECONDS)
+	public void testGetMyCourse() throws ServiceException{
+		log.trace("\t testGetMyCourse() invoked.");
 		
+		Integer seq = 6;
+		try {
+			CourseVO result = this.service.getMyCourse(seq);
+			log.info("\t result : {}",result);
+		}catch(Exception e) {
+			throw new ServiceException(e);
+		}
+	}	// testGetMyCourse
+	
+	@Test
+	@Order(16)
+	@DisplayName("tesgGetMyTravelList")
+	@Timeout(value=5,unit=TimeUnit.SECONDS)
+	public void testGetMyTravelList() throws ServiceException{
+		log.trace("\t tesgGetMyTravelList() invoked.");
 		
+		try {
+			String email = "id@gmail.com";
+			List<TravelBoardVO> list = this.service.getMyTravelList(email);
+			log.info("\t list : {}",list);
+		}catch(Exception e) {
+			throw new ServiceException(e);
+		}
 		
-		log.trace("\t end testGetMyPageReviewTotal({}) complete",result);
-	}	// end testGetMyPageReviewTotal
+	}
+	
+	@Test
+	@Order(17)
+	@DisplayName("testGetMyTravelBoard")
+	@Timeout(value=5,unit=TimeUnit.SECONDS)
+	public void testGetMyTravelBoard() throws ServiceException {
+		log.trace("\t testGetMyTravelBoard() invoked.");
+		
+		try {
+			Integer seq = 15;
+			TravelBoardVO result = this.service.getMyTravelBoard(seq);
+			log.info("\t result : {}",result);
+			
+		}catch(Exception e) {
+			throw new ServiceException(e);
+		}
+	}
 	
 	@AfterAll
 	public void afterAll() {

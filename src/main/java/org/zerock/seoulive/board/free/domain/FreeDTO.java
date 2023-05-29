@@ -1,7 +1,6 @@
 package org.zerock.seoulive.board.free.domain;
 
 import lombok.Data;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Date;
 

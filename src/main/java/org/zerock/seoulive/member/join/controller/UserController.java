@@ -5,7 +5,6 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,7 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.seoulive.exception.ControllerException;
 import org.zerock.seoulive.exception.ServiceException;
 import org.zerock.seoulive.member.join.domain.UserDTO;
-import org.zerock.seoulive.member.join.domain.UserVO;
 import org.zerock.seoulive.member.join.service.MailSendService;
 import org.zerock.seoulive.member.join.service.UserService;
 

@@ -1,22 +1,17 @@
 package org.zerock.seoulive.mypage.mapper;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Select;
+import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
+import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
 import org.zerock.seoulive.mypage.domain.Criteria;
 import org.zerock.seoulive.mypage.domain.tbl_likeVO;
 
+import java.util.List;
+
 public interface MyPageBoardMapper {
 	
-	// 1. 과연 게시판 목록조회, C/R/U/D/LIST 에 필요한 메소드는 무엇일까!?	
-//		@Select("""
-//				SELECT /*+ index_desc(tbl_review) */ *
-//				FROM tbl_review
-//				OFFSET ( #{currPage} - 1) * #{amount} ROWS
-//				FETCH NEXT #{amount} ROWS ONLY
-//				""")
-		
+
 		@Select("""
 				select 
 				       		r.seq as review_seq,
@@ -42,10 +37,8 @@ public interface MyPageBoardMapper {
 		
 		// 마이페이지 나의 리뷰 게시물 페이징 처리를 위한 총 게시물 개수를 반환
 		@Select("""
-				SELECT 
-					count(seq)
-				FROM
-					tbl_member m, tbl_like l
+				SELECT count(seq)
+				FROM tbl_member m, tbl_like l
 				WHERE
 					m.email = l.email
 					AND
@@ -54,5 +47,24 @@ public interface MyPageBoardMapper {
 					m.email = #{email}
 				""")
 		public abstract Integer getMyPageReviewTotal(String email);
+		
+		
+		@Select("""
+				select t.* FROM tbl_member m , tbl_travel t
+				WHERE m.nickname = t.writer AND m.email = #{email}
+				""")
+		public abstract List<TravelBoardVO> getMyTravelList(String email);
+		
+		@Select("Select * FROM tbl_travel where seq = #{seq}")
+		public abstract TravelBoardVO getMyTravelBoard(Integer seq);
+		
+		@Select("""
+				SELECT c.* FROM tbl_member m, tbl_course c
+				WHERE m.nickname = c.writer AND m.email = #{email}
+				""")
+		public abstract List<CourseVO> getMyCourseList(String email);
+		
+		@Select("Select * FROM tbl_course where seq = #{seq}")
+		public abstract CourseVO getMyCourse(Integer seq);
 		
 }	// end interface

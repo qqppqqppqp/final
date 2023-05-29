@@ -1,5 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ko">
@@ -13,11 +14,12 @@
 
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="/resources/static/css/layout/reset.css">
-    <!-- layout css -->
-    <link rel="stylesheet" href="/resources/static/css/layout/header.css">
-    <link rel="stylesheet" href="/resources/static/css/layout/footer.css">
+    
+    
+    
+    
     <!-- main css -->
-    <link rel="stylesheet" href="/resources/static/css/layout/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
     <link rel="stylesheet" href="https://kit.fontawesome.com/889f069cfd.css" crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/course_write_copy.css">
@@ -30,41 +32,7 @@
   
   
 </head>
-
-<body>
-    <div id="header">
-        <div class="wrap">
-            <h1 class="logo">
-               <a href="#"><img src="/resources/static/img/img-logo.png" width="240" height="60"></a>
-            </h1>
-            <ul class="bn">
-                <a href="#" class="fl">
-                    <li>여행지</li>
-                </a>
-                <a href="#" class="fl">
-                    <li>일정</li>
-                </a>
-
-                <a href="#" class="fl">
-                    <li>자유게시판</li>
-                </a>
-
-            </ul>
-
-            <ul class="bn">
-
-                <a href="#" class="fr">
-                    <li>회원가입</li>
-                </a>
-                <a href="#" class="fr">
-                    <li>로그인</li>
-                </a>
-
-            </ul>
-
-        </div>
-
-    </div>
+<jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/layout/header.jsp"/>
 <style>
     #main{
         width: 1200px;
@@ -92,7 +60,7 @@
     }
     #left, #right{
         width: 20%;
-        border:1px purple solid;
+/*         border:1px purple solid; */
     }
     #SubBox{
         height:50px;
@@ -102,7 +70,7 @@
         align-items: center;
         display: flex;
         height: 250px;
-        border:1px solid red;
+/*         border:1px solid red; */
     }
 
     form,input,label{
@@ -130,7 +98,15 @@
         height: 100px;
         /* padding:30px 50px; */
     }
-
+	section{
+		height:1000px;
+		
+	}
+	#container{
+	height: 500px;
+    margin: 0 auto;
+    padding-top: 500px;
+	}
     
 </style>
 
@@ -183,12 +159,15 @@
 
                             </tr>
                         </table>
-                        <div id="Box">가입일 ${__BOARD__.join_date}</div>
+                        <div id="Box">
+                        	가입일 <fmt:formatDate value="${__BOARD__.join_date}" pattern="yyyy년MM월dd일"/>
+<%--                         	가입일 ${__BOARD__.join_date} --%>
+                        </div>
                      </div>
                      <div id="SubBox"></div>
                      <div class="pp"></div>
                      <div id="buttonBox1">
-                        <div><button type="button" onclick="location.href='https://www.naver.com'">로그인</button></div>
+                        <div><button type="button" onclick="location.href='/member/login/email'">로그인</button></div>
                         <div id="buttonblock"><button disabled></button></div>
                         <div><button type="button" id="find_password" >비밀번호 찾기</button></div>
                     </div>
@@ -212,37 +191,7 @@
 
 
 <!-- ===================================================================================== -->
-
-    <aside>
-        <div class="quick_box">
-            <p>QUICK LINK</p>
-            <ul>
-                <li><a href="#a">날씨</a></li>
-                <li><a href="#a">문의</a></li>
-                <li class="top"><a href="#a"><i class="fas fa-caret-up"></i></a></li>
-                <li class="bottom"><a href="#a"><i class="fas fa-caret-down"></i></a></li>
-            </ul>
-        </div>
-
-    </aside>
-
-    <footer>
-        <div class="footer_wrap">
-            <div class="footer_box">
-                <div class="logo_box">
-                      <a href="#a"><img src="/resources/static/img/img-footer-logo.png" /></a>
-                </div>
-                <div>
-                    <ul>
-                        <li><a href="#a">이용약관</a></li>
-                        <li><a href="#a">개인정보처리방침</a></li>
-                        <li><a href="#a">사이트맵</a></li>
-                    </ul>
-                    <p class="copyright">Copyright © seoullive. All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
 </body>
 
 </html>

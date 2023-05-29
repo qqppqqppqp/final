@@ -94,7 +94,7 @@
             <c:forEach var="freeDto" items="${list}">
                 <tr>
                     <td>${freeDto.seq}</td>
-                    <td class="title left"><a href="view?seq=${freeDto.seq}">${freeDto.title}</a>
+                    <td class="title left"><a href="/board/free/view?seq=${freeDto.seq}">${freeDto.title}</a>
                         <a href="#" title="자세히 보기"></a>
                     </td>
                     <td>${freeDto.writer}</td>
@@ -123,13 +123,6 @@
                         <a href="${pageMaker.startPage -1}" title="이전 페이지로 이동하기"><i class="fas fa-chevron-left"></i></a>
                     </li>
                 </c:if>
-
-                <%--                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">--%>
-                <%--                    <li class="pageNum  ${pageMaker.cri.pageNum == num ? "active":""} ">--%>
-                <%--                        <a href="${num}">${num}</a>--%>
-                <%--                    </li>--%>
-
-                <%--                </c:forEach>--%>
 
                 <c:forEach var="pageNum" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
                     <li>

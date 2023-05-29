@@ -64,7 +64,7 @@
 	<context:component-scan base-package="org.zerock.seoulive.board.travel.persistence" />
 	<context:component-scan base-package="org.zerock.seoulive.board.travel.service" />
 
-	<context:component-scan base-package="org.zerock.seoulive.member.etc.service" />
+	<context:component-scan base-package="org.zerock.seoulive.member.information.service" />
 	<context:component-scan base-package="org.zerock.seoulive.member.join.service" />
 
 	<context:component-scan base-package="org.zerock.seoulive.mypage.service" />
@@ -76,7 +76,7 @@
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.review.mapper" />
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.travel.mapper" />
 	<mybatis-spring:scan base-package="org.zerock.seoulive.mypage.mapper" />
-	<mybatis-spring:scan base-package="org.zerock.seoulive.member.etc.mapper" />
+	<mybatis-spring:scan base-package="org.zerock.seoulive.member.information.mapper" />
 	<mybatis-spring:scan base-package="org.zerock.seoulive.member.join.mapper" />
 
 

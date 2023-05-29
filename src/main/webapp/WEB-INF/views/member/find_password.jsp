@@ -16,6 +16,7 @@
     <!-- layout css -->
     <link rel="stylesheet" href="/resources/static/css/layout/header.css">
     <link rel="stylesheet" href="/resources/static/css/layout/footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
     <!-- main css -->
     <link rel="stylesheet" href="/resources/static/css/layout/main.css">
     <link rel="stylesheet" href="https://kit.fontawesome.com/889f069cfd.css" crossorigin="anonymous">
@@ -32,39 +33,7 @@
 </head>
 
 <body>
-    <div id="header">
-        <div class="wrap">
-            <h1 class="logo">
-              <a href="#"><img src="/resources/static/img/img-logo.png" width="240" height="60"></a>
-            </h1>
-            <ul class="bn">
-                <a href="#" class="fl">
-                    <li>여행지</li>
-                </a>
-                <a href="#" class="fl">
-                    <li>일정</li>
-                </a>
-
-                <a href="#" class="fl">
-                    <li>자유게시판</li>
-                </a>
-
-            </ul>
-
-            <ul class="bn">
-
-                <a href="#" class="fr">
-                    <li>회원가입</li>
-                </a>
-                <a href="#" class="fr">
-                    <li>로그인</li>
-                </a>
-
-            </ul>
-
-        </div>
-
-    </div>
+ <jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/layout/header.jsp"/>
 <style>
     #main{
         width: 1200px;
@@ -217,7 +186,7 @@
                      
                      <div></div>
                      <div id="returnHome" type="submit" href=""><button>확인</button></div>
-                     <div><button type="button" class="enter">확인 </button></div>
+                     <div><button type="button" class="enter">비밀번호변경 </button></div>
                   
                      
                  </div>
@@ -297,20 +266,7 @@
 
 <!-- ===================================================================================== -->
 
-    <aside>
-        <div class="quick_box">
-            <p>QUICK LINK</p>
-            <ul>
-                <li><a href="#a">날씨</a></li>
-                <li><a href="#a">문의</a></li>
-                <li class="top"><a href="#a"><i class="fas fa-caret-up"></i></a></li>
-                <li class="bottom"><a href="#a"><i class="fas fa-caret-down"></i></a></li>
-            </ul>
-        </div>
-
-    </aside>
-	<jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
-    
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
 </body>
 
 </html>

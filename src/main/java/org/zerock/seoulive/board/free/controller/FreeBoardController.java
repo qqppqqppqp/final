@@ -3,16 +3,16 @@ package org.zerock.seoulive.board.free.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.seoulive.board.free.domain.Criteria;
-import org.zerock.seoulive.board.free.domain.FreeCommentDTO;
 import org.zerock.seoulive.board.free.domain.FreeDTO;
 import org.zerock.seoulive.board.free.domain.PageDTO;
-import org.zerock.seoulive.board.free.persistence.FreeDAO;
 import org.zerock.seoulive.board.free.service.FreeCommentService;
 import org.zerock.seoulive.board.free.service.FreeService;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -41,7 +41,6 @@ public class FreeBoardController {
 
         return "board/free/list";
     }
-
     @GetMapping("/write")
     public String write() {
         return "board/free/write";
@@ -91,6 +90,11 @@ public class FreeBoardController {
         freeService.remove(seq);
         return "redirect:/board/free/list";
     }
+
+
+
+
+
 
 
 }

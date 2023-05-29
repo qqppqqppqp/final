@@ -6,7 +6,8 @@
 		xmlns:context="http://www.springframework.org/schema/context"
 		xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd"
+		>
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 
@@ -15,7 +16,6 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-	<resources mapping="/uploadfiles/**" location="file:///opt/uploadfiles/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<!-- <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -33,16 +33,20 @@
 		<beans:property name="maxUploadSize" value="10485760"/>
 		<beans:property name="maxUploadSizePerFile" value="5242880"/>
 		<beans:property name="preserveFilename" value="true"/>
-		<!--		<beans:property name="uploadTempDir" value="file:/Users/leedongyoung/upload"/>-->
 	</beans:bean>
 
-	<interceptors>
-		<interceptor>
-<!--			회원만 읽기 가능한 게시판-->
-			<mapping path="/board/course/write"/>
+	<context:component-scan base-package="org.zerock.seoulive.exception"/>
 
-			<beans:ref bean="authInterceptor"/>
-		</interceptor>
+	<context:component-scan base-package="org.zerock.seoulive.member.join.controller"/>
+	<context:component-scan base-package="org.zerock.seoulive.member.join.interceptor"/>
+
+	<interceptors>
+<!--			회원만 읽기 가능한 게시판-->
+<!--		<interceptor>-->
+<!--		<mapping path="/board/course/write"/>-->
+
+<!--		<beans:ref bean="authInterceptor"/>-->
+<!--		</interceptor>-->
 
 		<interceptor>
 			<mapping path="/member/logout"/>
@@ -71,18 +75,18 @@
 	<context:component-scan base-package="org.zerock.seoulive.controller" />
 
 	<context:component-scan base-package="org.zerock.seoulive.board.course.controller" />
+
 	<context:component-scan base-package="org.zerock.seoulive.board.travel.controller"/>
 	<context:component-scan base-package="org.zerock.seoulive.board.review.controller"/>
 	<context:component-scan base-package="org.zerock.seoulive.board.free.controller"/>
 	<context:component-scan base-package="org.zerock.seoulive.board.cs.controller"/>
 
-	<context:component-scan base-package="org.zerock.seoulive.board.travel.exception"/>
-
 	<context:component-scan base-package="org.zerock.seoulive.member.join.controller"/>
 	<context:component-scan base-package="org.zerock.seoulive.member.join.interceptor"/>
-	<context:component-scan base-package="org.zerock.seoulive.member.etc.controller"/>
+	<context:component-scan base-package="org.zerock.seoulive.member.information.controller"/>
 
 	<context:component-scan base-package="org.zerock.seoulive.mypage.controller" />
 
-
+	<!-- <context:component-scan base-package="org.zerock.seoulive.board.member.controller"/> -->
+	
 </beans:beans>

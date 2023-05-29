@@ -1,32 +1,25 @@
 package org.zerock.seoulive.mypage;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
-import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
+import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
 import org.zerock.seoulive.mypage.domain.Criteria;
 import org.zerock.seoulive.mypage.domain.tbl_likeVO;
 import org.zerock.seoulive.mypage.mapper.MyPageBoardMapper;
 
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 @Log4j2
 @NoArgsConstructor
@@ -124,6 +117,48 @@ public class myPageMapper {
 		
 	}	// end testGetMyPageReviewTotal
 	
+	@Test
+	@Order(13)
+	@DisplayName("testGetMyCourseList")
+	@Timeout(value=5,unit=TimeUnit.SECONDS)
+	public void testGetMyCourseList() {
+		log.trace("\t testGetMyCourseList() invoked.");
+		List<CourseVO> result = this.mapper.getMyCourseList("id@gmail.com");
+		log.info("\t result : {}",result);
+	}
+	
+	@Test
+	@Order(14)
+	@DisplayName("testGetMyCourse")
+	@Timeout(value=5,unit=TimeUnit.SECONDS)
+	public void testGetMyCourse() {
+		log.trace("\t testGetMyCourse() invoked.");
+		CourseVO result = this.mapper.getMyCourse(258);
+		log.info("\t result : {}",result);
+	}
+	
+	@Test
+	@Order(15)
+	@DisplayName("testGetMyTravelList")
+	@Timeout(value=5,unit=TimeUnit.SECONDS)
+	public void testGetMyTravelList() {
+		log.trace("\t testGetMyTravelList() invoked.");
+		String email = "id@gmail.com";
+		List<TravelBoardVO> list = this.mapper.getMyTravelList(email);
+		
+		log.info("\t list : {}",list);
+	}
+	
+	@Test
+	@Order(16)
+	@DisplayName("testGetMytravelBoard")
+	@Timeout(value=5,unit=TimeUnit.SECONDS)
+	public void testGetMytravelBoard() {
+		log.trace("testGetMytravelBoard() invoked.");
+		Integer seq = 4;
+		TravelBoardVO vo = this.mapper.getMyTravelBoard(seq);
+		log.info("\t vo : {}",vo);
+	}
 	
 	@AfterAll
 	public void afterAll() {

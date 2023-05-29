@@ -1,5 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
+<script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
+
+<<style src="/resources/static/css/layout/footer.css">
+
+</style>
+
 <!-- 퀵메뉴 시작 -->
 <aside>
     <div class="quick_box">
