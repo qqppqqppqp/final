@@ -1,5 +1,4 @@
-@import url(../../css/reset.css);
-
+@import url('../reset.css');
 
 /* 헤더 */
 #header .fl{
@@ -10,6 +9,7 @@
     text-align: center;
     top: 40px;
     left: 40px;
+    cursor: pointer;
 }
 #header .fr{
     position: relative;

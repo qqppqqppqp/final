@@ -79,5 +79,9 @@ public class PageDTO {
 
     } // end PageDTO
 
+<<<<<<< HEAD
 } // end class
 
+=======
+} // end class 
+>>>>>>> origin

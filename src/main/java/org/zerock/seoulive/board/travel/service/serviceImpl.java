@@ -6,8 +6,13 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.zerock.seoulive.board.travel.domain.DTO;
 import org.zerock.seoulive.board.travel.domain.VO;
+<<<<<<< HEAD
 import org.zerock.seoulive.board.travel.exception.ServiceException;
 import org.zerock.seoulive.board.travel.mapper.Mapper;
+=======
+import org.zerock.seoulive.board.travel.mapper.mapper;
+import org.zerock.seoulive.exception.ServiceException;
+>>>>>>> origin
 
 import java.util.List;
 

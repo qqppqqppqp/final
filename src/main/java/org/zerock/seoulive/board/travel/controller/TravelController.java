@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.seoulive.board.travel.domain.DTO;
 import org.zerock.seoulive.board.travel.domain.VO;
+<<<<<<< HEAD
 import org.zerock.seoulive.board.travel.exception.ControllerException;
 import org.zerock.seoulive.board.travel.service.Service;
+=======
+import org.zerock.seoulive.board.travel.service.service;
+import org.zerock.seoulive.exception.ControllerException;
+>>>>>>> origin
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 @Log4j2
@@ -30,18 +34,18 @@ public class TravelController {
     @Setter(onMethod_ = {@Autowired})
     private Service service;
 
-    @GetMapping("/list")
-    void list(Model model) throws ControllerException {
-
-        try {
-            List<VO> list = this.service.getList();
-
-            // Request Scope 공유속성 생성
-            model.addAttribute("__LIST__", list);
-        } catch(Exception e) {
-            throw new ControllerException(e);
-        } // try-catch
-    } // list
+//    @GetMapping("/list")
+//    void list(Model model) throws ControllerException {
+//
+//        try {
+//            List<VO> list = this.service.getList();
+//
+//            // Request Scope 공유속성 생성
+//            model.addAttribute("__LIST__", list);
+//        } catch(Exception e) {
+//            throw new ControllerException(e);
+//        } // try-catch
+//    } // list
 
     @PostMapping(value = "/write")
     String write(DTO dto, RedirectAttributes rttrs) throws ControllerException {

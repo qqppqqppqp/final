@@ -5,6 +5,7 @@
   xmlns="http://xmlns.jcp.org/xml/ns/javaee"
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
   version="4.0">
+	
 
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
@@ -41,8 +42,11 @@
 	
 	<!-- GET, POST 어느 전송방식으로 전송되는 파라미터가 깨지지 않고 수신가능하도록
    Spring MVC에서 제공하는 필터(Filter) 설정 -->
+
+
+
 	<filter>
-		<filter-name>encoding</filter-name>
+		<filter-name>CharacterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
@@ -54,15 +58,9 @@
 		</init-param>
 	</filter>
 	<filter-mapping>
-		<filter-name>encoding</filter-name>
-		<servlet-name>appServlet</servlet-name>
-	</filter-mapping>
-
-	<filter-mapping>
-		<filter-name>encoding</filter-name>
+		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/</url-pattern>
 	</filter-mapping>
-
 
 
 </web-app>
