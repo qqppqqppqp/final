@@ -10,6 +10,7 @@ import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
 import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
 import org.zerock.seoulive.mypage.domain.Criteria;
+import org.zerock.seoulive.mypage.domain.UserLikeVO;
 import org.zerock.seoulive.mypage.domain.tbl_followerVO;
 import org.zerock.seoulive.mypage.domain.tbl_likeVO;
 import org.zerock.seoulive.mypage.exception.ServiceException;
@@ -77,6 +78,18 @@ public class MyPageBoardServiceImpl
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public List<UserLikeVO> getMyLikeList2(String email) throws ServiceException{
+		
+		log.trace("\t getMYListList2() invoked.");
+		try {
+			List<UserLikeVO> list = this.mapper.selectUserLikeList(email);
+			return list;
+		}catch(Exception e) {
+			throw new ServiceException(e);
+		}
+		
+	}	// end getMyLikeList2
 	
 	@Override
 	public List<TravelBoardVO> getMyTravelList(String email) throws ServiceException {

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.course.persistence.CourseDAO;
 import org.zerock.seoulive.board.course.service.CourseService;
-
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
 import org.zerock.seoulive.board.review.mapper.ReviewBoardMapper;
 import org.zerock.seoulive.board.review.service.ReviewBoardService;
@@ -25,7 +24,7 @@ import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
 import org.zerock.seoulive.board.travel.mapper.TravelBoardMapper;
 import org.zerock.seoulive.board.travel.service.TravelBoardService;
 import org.zerock.seoulive.mypage.domain.Criteria;
-import org.zerock.seoulive.mypage.domain.PageDTO;
+import org.zerock.seoulive.mypage.domain.UserLikeVO;
 import org.zerock.seoulive.mypage.domain.tbl_likeVO;
 import org.zerock.seoulive.mypage.exception.ControllerException;
 import org.zerock.seoulive.mypage.mapper.MyPageBoardMapper;
@@ -85,7 +84,7 @@ public class MyPageController {
 		
 		try {
 //			Criteria cri = new Criteria();
-			List<ReviewBoardVO> list = this.mapper.selectLikeReviewList(email, cri);
+//			List<ReviewBoardVO> list = this.mapper.selectLikeReviewList(email, cri);
 			List<ReviewBoardVO> result = this.service.getMyReviewList(email, cri);
 			model.addAttribute("__RESULT__",result);
 			
@@ -96,53 +95,17 @@ public class MyPageController {
 			model.addAttribute("__COURSE__",course);
 			
 			System.out.println("checkPointer1");
-			log.info("\t result : {}", result);
-			
+
 			System.out.println("checkPointer2");
-			
-			List<tbl_likeVO> tblLike = this.service.getMyLikeList(email, cri);
-
-			List<TravelBoardVO> tbl_travelList = new ArrayList<>();
-			List<CourseVO> tbl_courseList = new ArrayList<>();
-			List<ReviewBoardVO> tbl_reviewList = new ArrayList<>();
+						
+			List<UserLikeVO> userLike = this.service.getMyLikeList2(email);
+			model.addAttribute("__USERLIST__",userLike);
 
 			System.out.println("checkPointer3");
-			for(int i = 0 ; i < tblLike.size();i++) {
-//				System.out.println(tbl_travelList.get(i));
-//				System.out.println(tbl_travelList.get(i).getSeq());
-//				System.out.println(tbl_travelList.get(i).getTitle());
-//				System.out.println(tbl_travelList.get(i).getWriter());
-//				System.out.println(tbl_travelList.get(i).getCategory());
-				
-				switch(tblLike.get(i).getBoard()) {
-					case "tbl_travel" : 
-							tbl_travelList.add(this.service.getMyTravelBoard(tblLike.get(i).getBoardSeq()));
-//							System.out.println("식별용");
-//							System.out.println(tbl_travelList.get(0));
-//							System.out.println("식별용");
-							break; 
-					case "tbl_course" : 
-							tbl_courseList.add(this.service.getMyCourse(tblLike.get(i).getBoardSeq()));
-							break;
-					case "tbl_review" : 
-							tbl_reviewList.add(this.ReviewService.get(tblLike.get(i).getBoardSeq())); 
-							
-							break;
-					default : System.out.println(this.getClass().getName()+"null") ; break;
-				}	// end switch
-			}	// end for
-			System.out.println("checkPointer4");
-			
-//			model.addAttribute("__LIKELIST__",tblLike);
-			model.addAttribute("__reviewList__",tbl_reviewList);
-			model.addAttribute("__courseList__",tbl_courseList);
-			model.addAttribute("__travelList__",tbl_travelList);
 
-			
-			System.out.println("checkPointer3");
-			log.info("\t tblLike : {}", tblLike);
-//			tblLike.forEach(log::info);
 			System.out.println("checkPointer4");
+			
+			System.out.println("checkPointer5");
 			
 		}catch(Exception e) {
 			throw new ControllerException(e);

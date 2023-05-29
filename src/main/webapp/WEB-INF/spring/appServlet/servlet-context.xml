@@ -17,94 +17,15 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<!-- <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
-	</beans:bean> -->
 	
 	<view-resolvers>
 		<jsp prefix="/WEB-INF/views/" suffix=".jsp"/>
 	</view-resolvers>
 	
 	
-	
-	
-
-	
-	<context:component-scan base-package="org.zerock.seoulive.member.join.controller"/>
-	<context:component-scan base-package="org.zerock.seoulive.member.join.exception"/>
-	<context:component-scan base-package="org.zerock.seoulive.member.join.interceptor"/>
-	
-	<view-controller path="/member/join/main" status-code="200" view-name="member/join/main"/>
-	<view-controller path="/member/join/register" status-code="200" view-name="member/join/register"/>
-	<view-controller path="/member/login/main" status-code="200" view-name="member/login/main"/>
-	<view-controller path="/member/login/email" status-code="200" view-name="member/login/email"/>
-	
-	<interceptors>
-		<interceptor>
-			<mapping path="/member/logout"/>
-
-			<beans:ref bean="logoutInterceptor"/>
-		</interceptor>
-
-		<interceptor>
-			<mapping path="/member/loginPost"/>
-
-			<beans:ref bean="loginInterceptor"/>
-		</interceptor>
-	</interceptors>
-	
 	 
 	<context:component-scan base-package="org.zerock.seoulive.member.information.controller"/>
 	<context:component-scan base-package="org.zerock.seoulive.mypage.controller" />
 	
-	<context:component-scan base-package="org.zerock.seoulive.board.review.controller"/>
-	
-	<context:component-scan base-package="org.zerock.seoulive.board.travel.controller" />	
-	<context:component-scan base-package="org.zerock.seoulive.member.join.controller" />
-	
-	<!-- <context:component-scan base-package="org.zerock.seoulive.board.member.controller"/> -->
-	
-	 
-	<context:component-scan base-package="org.zerock.seoulive.board.course.controller" />
-	 
-	
-	<!-- 
-	<context:component-scan base-package="org.zerock.seoulive.board.course.exception"/>
-	 -->
-	
-<!-- 	<context:component-scan base-package="org.zerock.seoulive.board.free.controller" />  -->
-	
-	<!-- 
-	<context:component-scan base-package="org.zerock.seoulive.board.member.controller" />
-	 -->
-	
-	
-	
-	<!-- <context:component-scan base-package="org.zerock.seoulive.board"/> -->
-	
-	<!-- 
-	<context:component-scan base-package="org.zerock.seoulive.board.review.exception"/>
-	 -->
-	
-	<!-- 
-	<context:component-scan base-package="org.zerock.seoulive.mypage.exception"/>
-	 -->
-	
-	
-	
-	
-	
-	<!-- 
-	<context:component-scan base-package="org.zerock.seoulive.board.member.exception"/> 
-	 -->
-	
-	
-	<!--  <context:component-scan base-package="org.zerock.seoulive.board"/> -->
-<!--	<context:component-scan base-package="org.zerock.seoulive.exception" />-->
-<!--	<context:component-scan base-package="org.zerock.seoulive.interceptor" />-->
-
-
 
 </beans:beans>

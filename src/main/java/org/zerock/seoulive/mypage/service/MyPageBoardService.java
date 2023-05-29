@@ -3,10 +3,10 @@ package org.zerock.seoulive.mypage.service;
 import java.util.List;
 
 import org.zerock.seoulive.board.course.domain.CourseVO;
-
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
 import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
 import org.zerock.seoulive.mypage.domain.Criteria;
+import org.zerock.seoulive.mypage.domain.UserLikeVO;
 import org.zerock.seoulive.mypage.domain.tbl_followerVO;
 import org.zerock.seoulive.mypage.domain.tbl_likeVO;
 import org.zerock.seoulive.mypage.exception.ServiceException;
@@ -25,7 +25,8 @@ public interface MyPageBoardService {
 	// 6. 총 게시물 개수 반환
 	public abstract Integer getMyPageReview(String email) throws ServiceException;
 		
-	
+	// 자신의 like 조회물 찾기
+	public abstract List<UserLikeVO> getMyLikeList2(String email) throws ServiceException;
 	
 	// 내가 작성한 여행지 코스들 확인하기 list
 	public abstract List<TravelBoardVO> getMyTravelList(String email) throws ServiceException;
