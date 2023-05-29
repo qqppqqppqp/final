@@ -6,7 +6,7 @@ import org.zerock.seoulive.board.travel.exception.ServiceException;
 
 import java.util.List;
 
-public interface service {
+public interface Service {
 
     public abstract List<VO> getList() throws ServiceException;
 

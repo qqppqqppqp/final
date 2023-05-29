@@ -1,13 +1,12 @@
 package org.zerock.seoulive.board.travel.mapper;
 
 import org.apache.ibatis.annotations.*;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.seoulive.board.travel.domain.DTO;
 import org.zerock.seoulive.board.travel.domain.VO;
 
 import java.util.List;
 
-public interface mapper {
+public interface Mapper {
     @Select("""
             SELECT * FROM TBL_TRAVEL
             """)

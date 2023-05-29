@@ -4,22 +4,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.travel.domain.DTO;
 import org.zerock.seoulive.board.travel.domain.VO;
 import org.zerock.seoulive.board.travel.exception.ServiceException;
-import org.zerock.seoulive.board.travel.mapper.mapper;
+import org.zerock.seoulive.board.travel.mapper.Mapper;
 
-import java.sql.Date;
 import java.util.List;
 
 @Log4j2
 @NoArgsConstructor
-@Service("service")
-public class serviceImpl implements service {
+@org.springframework.stereotype.Service("service")
+public class ServiceImpl implements Service {
 
     @Setter(onMethod_ ={@Autowired})
-    private mapper dao;
+    private Mapper dao;
 
     @Override
     public List<VO> getList() throws ServiceException {

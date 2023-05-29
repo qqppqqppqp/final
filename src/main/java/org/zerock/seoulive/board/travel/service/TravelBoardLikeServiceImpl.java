@@ -21,7 +21,7 @@ public class TravelBoardLikeServiceImpl implements TravelBoardLikeService {
 
     @Override
     public void boardLike(TravelBoardLikeDTO dto) {
-        this.dao.boardLike(dto);
+//        this.dao.boardLike(dto);
 
     }
 

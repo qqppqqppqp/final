@@ -14,8 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.seoulive.board.travel.domain.DTO;
 import org.zerock.seoulive.board.travel.domain.VO;
 import org.zerock.seoulive.board.travel.exception.ControllerException;
-import org.zerock.seoulive.board.travel.exception.ServiceException;
-import org.zerock.seoulive.board.travel.service.service;
+import org.zerock.seoulive.board.travel.service.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,7 +28,7 @@ import java.util.Objects;
 public class TravelController {
 
     @Setter(onMethod_ = {@Autowired})
-    private service service;
+    private Service service;
 
     @GetMapping("/list")
     void list(Model model) throws ControllerException {
