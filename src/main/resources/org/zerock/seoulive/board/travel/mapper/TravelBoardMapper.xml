@@ -9,7 +9,7 @@
     <select id="select" resultType="org.zerock.seoulive.board.travel.domain.TravelBoardVO">
         SELECT *
         FROM tbl_travel
-        WHERE title = #{title}
+        WHERE seq = #{seq}
     </select>
 
     <select id="getList" resultType="org.zerock.seoulive.board.travel.domain.TravelBoardVO">

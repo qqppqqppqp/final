@@ -48,17 +48,19 @@
       <label for="rememberMe">로그인 상태 유지</label>
     </div>
     <div class="form_wrap">
-      <input type="submit" value="로그인">
+      <input type="submit" value="로그인" id="mypage">
+      
+      
     </div>
   </form>
-
+	
   <div class="a_wrap">
     <div class="find_wrap">
                 <span class="forgot">
-                    <a href="#">아이디 찾기</a>
+                    <a href="/member/find_email">아이디 찾기</a>
                 </span>
       <span class="forgot">
-                    <a href="#">비밀번호 찾기</a>
+                    <a href="/member/find_password">비밀번호 찾기</a>
                 </span>
     </div>
 
@@ -76,6 +78,13 @@
   if(result != null && result.length > 0) {
     alert(result);
   } // if
+  
+  $(function(){
+		$('#mypage').click(function(){
+	            location.href="/mypage/mypage";
+	        }); // function login 후 ;
+	});
+  
 </script>
 
 </body>

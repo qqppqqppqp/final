@@ -19,9 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.zerock.seoulive.member.etc.domain.tbl_memberDTO;
-import org.zerock.seoulive.member.etc.domain.tbl_memberVO;
-import org.zerock.seoulive.member.etc.mapper.MemberBoardMapper;
+import org.zerock.seoulive.member.information.domain.tbl_memberDTO;
+import org.zerock.seoulive.member.information.domain.tbl_memberVO;
+import org.zerock.seoulive.member.information.mapper.MemberBoardMapper;
 
 import lombok.NoArgsConstructor;
 import lombok.Setter;

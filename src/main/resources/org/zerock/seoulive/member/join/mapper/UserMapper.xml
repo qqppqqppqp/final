@@ -23,7 +23,7 @@
             #{birthDate},
             #{gender},
             #{introduction},
-            #{profileImg}
+            #{profileImgName}
             )
     </insert>
 

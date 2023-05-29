@@ -6,7 +6,8 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd"
+		>
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -25,24 +26,22 @@
 	<view-resolvers>
 		<jsp prefix="/WEB-INF/views/" suffix=".jsp"/>
 	</view-resolvers>
+	
+	
+	
+	
 
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<beans:property name="defaultEncoding" value="utf8"/>
-		<beans:property name="maxInMemorySize" value="10485760"/>
-		<beans:property name="maxUploadSize" value="10485760"/>
-		<beans:property name="maxUploadSizePerFile" value="5242880"/>
-		<beans:property name="preserveFilename" value="true"/>
-<!--		<beans:property name="uploadTempDir" value="file:/Users/leedongyoung/upload"/>-->
-	</beans:bean>
+	
+	<context:component-scan base-package="org.zerock.seoulive.member.join.controller"/>
+	<context:component-scan base-package="org.zerock.seoulive.member.join.exception"/>
+	<context:component-scan base-package="org.zerock.seoulive.member.join.interceptor"/>
+	
+	<view-controller path="/member/join/main" status-code="200" view-name="member/join/main"/>
+	<view-controller path="/member/join/register" status-code="200" view-name="member/join/register"/>
+	<view-controller path="/member/login/main" status-code="200" view-name="member/login/main"/>
+	<view-controller path="/member/login/email" status-code="200" view-name="member/login/email"/>
 	
 	<interceptors>
-<!--		<interceptor>-->
-<!--&lt;!&ndash;			회원만 읽기 가능한 게시판&ndash;&gt;-->
-<!--			<mapping path="/member/join/register"/>-->
-
-<!--			<beans:ref bean="authInterceptor"/>-->
-<!--		</interceptor>-->
-
 		<interceptor>
 			<mapping path="/member/logout"/>
 
@@ -55,25 +54,57 @@
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 	</interceptors>
-
-
-
-	<view-controller path="/member/join/main" status-code="200" view-name="member/join/main"/>
-	<view-controller path="/member/join/register" status-code="200" view-name="member/join/register"/>
-	<view-controller path="/member/login/main" status-code="200" view-name="member/login/main"/>
-	<view-controller path="/member/login/email" status-code="200" view-name="member/login/email"/>
-<!--	<view-controller path="/member/logout" status-code="200" view-name="member/logout"/>-->
-
-
-<!--	<context:component-scan base-package="org.zerock.seoulive"/>-->
-	<context:component-scan base-package="org.zerock.seoulive.member.join.controller"/>
-	<context:component-scan base-package="org.zerock.seoulive.member.join.exception"/>
-	<context:component-scan base-package="org.zerock.seoulive.member.join.interceptor"/>
-
-	<context:component-scan base-package="org.zerock.seoulive.board"/>
-
-
+	
+	 
+	<context:component-scan base-package="org.zerock.seoulive.member.information.controller"/>
+	<context:component-scan base-package="org.zerock.seoulive.mypage.controller" />
+	
+	<context:component-scan base-package="org.zerock.seoulive.board.review.controller"/>
+	
+	<context:component-scan base-package="org.zerock.seoulive.board.travel.controller" />	
+	<context:component-scan base-package="org.zerock.seoulive.member.join.controller" />
+	
+	<!-- <context:component-scan base-package="org.zerock.seoulive.board.member.controller"/> -->
+	
+	 
+	<context:component-scan base-package="org.zerock.seoulive.board.course.controller" />
+	 
+	
+	<!-- 
+	<context:component-scan base-package="org.zerock.seoulive.board.course.exception"/>
+	 -->
+	
+<!-- 	<context:component-scan base-package="org.zerock.seoulive.board.free.controller" />  -->
+	
+	<!-- 
+	<context:component-scan base-package="org.zerock.seoulive.board.member.controller" />
+	 -->
+	
+	
+	
+	<!-- <context:component-scan base-package="org.zerock.seoulive.board"/> -->
+	
+	<!-- 
+	<context:component-scan base-package="org.zerock.seoulive.board.review.exception"/>
+	 -->
+	
+	<!-- 
+	<context:component-scan base-package="org.zerock.seoulive.mypage.exception"/>
+	 -->
+	
+	
+	
+	
+	
+	<!-- 
+	<context:component-scan base-package="org.zerock.seoulive.board.member.exception"/> 
+	 -->
+	
+	
+	<!--  <context:component-scan base-package="org.zerock.seoulive.board"/> -->
 <!--	<context:component-scan base-package="org.zerock.seoulive.exception" />-->
 <!--	<context:component-scan base-package="org.zerock.seoulive.interceptor" />-->
+
+
 
 </beans:beans>

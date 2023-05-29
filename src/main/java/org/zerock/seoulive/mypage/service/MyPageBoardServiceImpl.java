@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
-import org.zerock.seoulive.myapge.domain.Criteria;
-import org.zerock.seoulive.myapge.domain.tbl_followerVO;
-import org.zerock.seoulive.myapge.domain.tbl_likeVO;
+import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
+import org.zerock.seoulive.mypage.domain.Criteria;
+import org.zerock.seoulive.mypage.domain.tbl_followerVO;
+import org.zerock.seoulive.mypage.domain.tbl_likeVO;
 import org.zerock.seoulive.mypage.exception.ServiceException;
 import org.zerock.seoulive.mypage.mapper.MyPageBoardMapper;
 
@@ -76,17 +77,55 @@ public class MyPageBoardServiceImpl
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public List<TravelBoardVO> getMyTravelList(String email) throws ServiceException {
+			log.trace("getMyTravelList ({}) invoked.",email);
+		
+		try {
+			List<TravelBoardVO> list = this.mapper.getMyTravelList(email);	
+			return list;
+		}catch(Exception e) {
+			throw new ServiceException(e);
+		}
+	}	// getMyTravelList
+	
+	@Override
+	public TravelBoardVO getMyTravelBoard(Integer seq) throws ServiceException{
+			log.trace("getMyTravelList ({}) invoked.",seq);
+		
+		try {
+			TravelBoardVO result = this.mapper.getMyTravelBoard(seq);	
+			return result;
+		}catch(Exception e) {
+			throw new ServiceException(e);
+		}
+	}
+	
 
 	@Override
-	public List<CourseVO> getMyCourseList(Criteria cri) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CourseVO> getMyCourseList(String email) throws ServiceException {
+		log.trace("getMyCourseList ({}) invoked.",email);
+		
+		try {
+			List<CourseVO> list = this.mapper.getMyCourseList(email);	
+			return list;
+		}catch(Exception e) {
+			throw new ServiceException(e);
+		}
+		
+		
 	}
 
 	@Override
-	public ReviewBoardVO getMyCourse(Integer seq) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+	public CourseVO getMyCourse(Integer seq) throws ServiceException {
+		log.trace("getMyCourse ({}) invoked.",seq);
+		try {
+			CourseVO result = this.mapper.getMyCourse(seq);	
+			return result;
+		}catch(Exception e) {
+			throw new ServiceException(e);
+		}
 	}
 
 	@Override
@@ -95,13 +134,13 @@ public class MyPageBoardServiceImpl
 		return null;
 	}
 
-	@Override
-	public Integer getMyPageReviewTotal(String email) throws ServiceException {
-		
-		log.trace("getTotal() invoked.");
-		
-		return this.mapper.getMyPageReviewTotal(email);
-	}	
+//	@Override
+//	public Integer getMyPageReviewTotal(String email) throws ServiceException {
+//		
+//		log.trace("getTotal() invoked.");
+//		
+//		return this.mapper.getMyPageReviewTotal(email);
+//	}	
 	
 
 	@Override
@@ -114,7 +153,16 @@ public class MyPageBoardServiceImpl
 	public void destroy() throws Exception {
 		// TODO Auto-generated method stub
 		
-	}// destroy
+	}
+
+	@Override
+	public Integer getMyPageReview(String email) throws ServiceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
 
 	
 

@@ -24,13 +24,13 @@
         userid = #{userid}
     </update>
 
-    <select id="selectUserByRememberMe" resultType="org.zerock.myapp.domain.UserVO">
-        SELECT
-        *
-        FROM
-        tbl_user
-        WHERE
-        rememberme = #{rememberme}
-    </select>
+<!--     <select id="selectUserByRememberMe" resultType="org.zerock.myapp.domain.UserVO"> -->
+<!--         SELECT -->
+<!--         * -->
+<!--         FROM -->
+<!--         tbl_user -->
+<!--         WHERE -->
+<!--         rememberme = #{rememberme} -->
+<!--     </select> -->
 
 </mapper>

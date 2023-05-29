@@ -9,12 +9,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.zerock</groupId>
-	<artifactId>seoulive</artifactId>
+	<artifactId>seouliveMainBackup12</artifactId>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 
 	<packaging>war</packaging>
 
-	<name>springinterceptor-20230502</name>
+	<name>seouliveMainBackup12</name>
 	<url>http://springmvc.example.com</url>
 	<description>Spring MVC project</description>
 
@@ -243,6 +243,23 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.5</version>
 		</dependency>
+		
+		<!-- 이메일 인증  -->
+		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+		<dependency>
+		    <groupId>com.sun.mail</groupId>
+		    <artifactId>javax.mail</artifactId>
+		    <version>1.4.7</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		
+		
 		     
 	</dependencies>
 

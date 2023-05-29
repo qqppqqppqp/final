@@ -4,6 +4,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,6 +14,7 @@ import org.zerock.seoulive.member.join.exception.ControllerException;
 import org.zerock.seoulive.member.join.service.MailSendService;
 import org.zerock.seoulive.member.join.service.UserService;
 
+import javax.servlet.ServletContext;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Objects;
@@ -46,12 +48,20 @@ public class UserController {
             value = "/register",
             params = {"email", "password", "birthDate", "gender", "nickName", "introduction"}
     )
-    String register(UserDTO dto) throws ControllerException {
+    String register(UserDTO dto,  @RequestParam("profileImg") MultipartFile profileImg) throws ControllerException {
         log.trace("register({}, {}) invoked.", dto);
 
         try {
             Objects.requireNonNull(dto);
+
+//            File savePath = new File("/Users/uneong/temp/upload/" + profileImg.getOriginalFilename());
+            File savePath = new File("static/img/profile/" + profileImg.getOriginalFilename());
+            profileImg.transferTo(savePath);
+
+            dto.setProfileImgName("static/img/profile/" + profileImg.getOriginalFilename());
+
             this.service.register(dto);
+
 
             return "redirect:/member/join/register";
         } catch(Exception e) {
@@ -81,7 +91,7 @@ public class UserController {
 //                String originFileName = file.getOriginalFilename();
 //                Long fileSize = file.getSize();
 //
-//                File savePath = new File("/Users/leedongyoung/upload/" + originFileName);
+//                File savePath = new File("/Users/uneong/temp/" + originFileName);
 //
 //                log.trace("reqParamName({}), originFileName({}), fileSize({})",
 //                        reqParamName, originFileName, fileSize);

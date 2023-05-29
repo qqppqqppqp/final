@@ -19,9 +19,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
-import org.zerock.seoulive.myapge.domain.Criteria;
-import org.zerock.seoulive.myapge.domain.tbl_likeVO;
+import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
+import org.zerock.seoulive.mypage.domain.Criteria;
+import org.zerock.seoulive.mypage.domain.tbl_likeVO;
 import org.zerock.seoulive.mypage.mapper.MyPageBoardMapper;
 
 import lombok.NoArgsConstructor;
@@ -124,6 +126,48 @@ public class myPageMapper {
 		
 	}	// end testGetMyPageReviewTotal
 	
+	@Test
+	@Order(13)
+	@DisplayName("testGetMyCourseList")
+	@Timeout(value=5,unit=TimeUnit.SECONDS)
+	public void testGetMyCourseList() {
+		log.trace("\t testGetMyCourseList() invoked.");
+		List<CourseVO> result = this.mapper.getMyCourseList("id@gmail.com");
+		log.info("\t result : {}",result);
+	}
+	
+	@Test
+	@Order(14)
+	@DisplayName("testGetMyCourse")
+	@Timeout(value=5,unit=TimeUnit.SECONDS)
+	public void testGetMyCourse() {
+		log.trace("\t testGetMyCourse() invoked.");
+		CourseVO result = this.mapper.getMyCourse(258);
+		log.info("\t result : {}",result);
+	}
+	
+	@Test
+	@Order(15)
+	@DisplayName("testGetMyTravelList")
+	@Timeout(value=5,unit=TimeUnit.SECONDS)
+	public void testGetMyTravelList() {
+		log.trace("\t testGetMyTravelList() invoked.");
+		String email = "id@gmail.com";
+		List<TravelBoardVO> list = this.mapper.getMyTravelList(email);
+		
+		log.info("\t list : {}",list);
+	}
+	
+	@Test
+	@Order(16)
+	@DisplayName("testGetMytravelBoard")
+	@Timeout(value=5,unit=TimeUnit.SECONDS)
+	public void testGetMytravelBoard() {
+		log.trace("testGetMytravelBoard() invoked.");
+		Integer seq = 4;
+		TravelBoardVO vo = this.mapper.getMyTravelBoard(seq);
+		log.info("\t vo : {}",vo);
+	}
 	
 	@AfterAll
 	public void afterAll() {

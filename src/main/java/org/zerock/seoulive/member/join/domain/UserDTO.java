@@ -13,7 +13,7 @@ public class UserDTO {
     private String gender;
     private String introduction;
     private String joinDate;
-    private String profileImg;
+    private String profileImgName;
 
     private boolean rememberMe;
     private MultipartFile file;

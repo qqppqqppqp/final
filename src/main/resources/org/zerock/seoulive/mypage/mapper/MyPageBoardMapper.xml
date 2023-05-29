@@ -24,12 +24,12 @@
 	
 	
 	
-	<select id="selectLikeList" resultType="org.zerock.seoulive.myapge.domain.tbl_likeVO">
+	<select id="selectLikeList" resultType="org.zerock.seoulive.mypage.domain.tbl_likeVO">
 		SELECT 
 	    	l.seq as like_seq,
 	    	m.email as email,
 		    l.board_seq as board_Number,
-		    l.board as board_Name
+		    'tbl_' || l.board as board_Name
 		FROM 
 	    	tbl_member m , tbl_like l
 		WHERE 
