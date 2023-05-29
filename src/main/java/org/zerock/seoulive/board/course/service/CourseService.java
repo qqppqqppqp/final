@@ -1,10 +1,17 @@
 package org.zerock.seoulive.board.course.service;
 
-import org.zerock.seoulive.board.course.domain.*;
+import java.util.List;
+
+import org.zerock.seoulive.board.course.domain.CourseCommVO;
+import org.zerock.seoulive.board.course.domain.CourseDTO;
+import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
+import org.zerock.seoulive.board.course.domain.CoursePageTO;
+import org.zerock.seoulive.board.course.domain.CourseTravelVO;
+import org.zerock.seoulive.board.course.domain.CourseVO;
+import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
+import org.zerock.seoulive.board.course.domain.CourseWriteVO;
 import org.zerock.seoulive.board.course.exception.ServiceException;
 import org.zerock.seoulive.board.travel.domain.TravelDTO;
-
-import java.util.List;
 
 public interface CourseService {
 	
@@ -37,6 +44,7 @@ public interface CourseService {
 	
 	// 9. 특정 게시물 상세조회 (READ)
 	public abstract CourseVO get(Integer seq) throws ServiceException;
+	public abstract void total(Integer seq) throws ServiceException;
 	
 	// 10. 상세조회 시 댓글 가져오기
 	public abstract List<CourseCommVO> commList(Integer seq) throws ServiceException;

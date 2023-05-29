@@ -73,14 +73,13 @@
 	<context:component-scan base-package="org.zerock.seoulive.exception"/>
 	<context:component-scan base-package="org.zerock.seoulive.controller" />
 
-	<context:component-scan base-package="org.zerock.seoulive.board.course.controller" />
-
+<!--	<context:component-scan base-package="org.zerock.seoulive.board.course.controller" />-->
 	<context:component-scan base-package="org.zerock.seoulive.board.travel.controller"/>
 	<context:component-scan base-package="org.zerock.seoulive.board.review.controller"/>
 	<context:component-scan base-package="org.zerock.seoulive.board.free.controller"/>
 	<context:component-scan base-package="org.zerock.seoulive.board.cs.controller"/>
 
-	<context:component-scan base-package="org.zerock.seoulive.member.join.controller"/>
+<!--	<context:component-scan base-package="org.zerock.seoulive.member.join.controller"/>-->
 	<context:component-scan base-package="org.zerock.seoulive.member.join.interceptor"/>
 	<context:component-scan base-package="org.zerock.seoulive.member.information.controller"/>
 
@@ -88,10 +87,6 @@
 
 	<!-- <context:component-scan base-package="org.zerock.seoulive.board.member.controller"/> -->
 	
-
-	<view-resolvers>
-		<jsp prefix="/WEB-INF/views/" suffix=".jsp"/>
-	</view-resolvers>
 
 
 </beans:beans>

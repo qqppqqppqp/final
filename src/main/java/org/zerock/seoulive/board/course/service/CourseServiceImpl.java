@@ -36,27 +36,7 @@ public class CourseServiceImpl
 	@Setter(onMethod_= {@Autowired})
 	private CourseDAO dao;		// 영속성 계층의 DAO 빈 주입받음
 	
-	
-	
-//	// 1. 게시판 목록을 얻어 반환해주는 기능 수행
-//	@Override
-//	public List<CourseDTO> getList(CoursePageTO page) throws ServiceException {
-//		log.trace("getList() invoked.");
-//		
-//		try {
-//			return this.dao.courseList(page);
-//		} catch(Exception e){
-//			throw new ServiceException(e);
-//		} // try-catch
-//	} // getList
-//
-//	// 2. 총 게시물 개수 반환
-//	@Override
-//	public Integer getTotal() throws ServiceException {
-//		log.trace("getTotal() invoked.");
-//		
-//		return this.dao.getTotalAmount();
-//	} // getTotal
+
 
 	// 3. 코스게시물이 가지고 있는 여행지 목록 반환
 	@Override
@@ -82,10 +62,8 @@ public class CourseServiceImpl
 	@Override
 	public Integer getTotalSearch(CoursePageTO page) throws ServiceException {
 		log.trace("getTotal() invoked.");
-		String searchType = page.getSearchType();
-		String keyword = page.getKeyword();
 		
-		return this.dao.getTotalSearch(searchType, keyword);
+		return this.dao.getTotalSearch(page.getSearchType(), page.getKeyword());
 	} // getTotal
 	
 	// 6. 게시물 작성
@@ -148,6 +126,16 @@ public class CourseServiceImpl
 			throw new ServiceException(e);
 		} // try-catch	
     } // get
+	@Override
+	public void total(Integer seq) throws ServiceException {
+		log.trace("get() invoked");
+        try {
+        	this.dao.total(seq);
+        } catch(Exception e){
+			throw new ServiceException(e);
+		} // try-catch
+	} // total
+	
 	
 	// 10. 댓글 리스트
 	@Override

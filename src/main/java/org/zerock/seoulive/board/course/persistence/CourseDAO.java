@@ -1,12 +1,20 @@
 package org.zerock.seoulive.board.course.persistence;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.zerock.seoulive.board.course.domain.*;
+import org.zerock.seoulive.board.course.domain.CourseCommVO;
+import org.zerock.seoulive.board.course.domain.CourseDTO;
+import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
+import org.zerock.seoulive.board.course.domain.CoursePageTO;
+import org.zerock.seoulive.board.course.domain.CourseTravelVO;
+import org.zerock.seoulive.board.course.domain.CourseVO;
+import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
+import org.zerock.seoulive.board.course.domain.CourseWriteVO;
+import org.zerock.seoulive.board.course.domain.SeqDTO;
 import org.zerock.seoulive.board.travel.domain.TravelDTO;
-
-import java.util.List;
 
 public interface CourseDAO {
 	
@@ -56,12 +64,12 @@ public interface CourseDAO {
 			FROM tbl_course 
 			WHERE ${searchType} LIKE '%' || #{keyword} || '%'
 			""")
-	public abstract int getTotalSearch(@Param("searchType") String searchType, @Param("keyword") String keyword);
+	public abstract int getTotalSearch(@Param("searchType") String searchType, @Param("keyword")String keyword);
 	
 	// 6. 새로운 게시물 등록
 	@Insert("""
-			INSERT INTO tbl_course (WRITER, TITLE, REVIEW, DURATION_START, DURATION_END, TOTAL)
-			VALUES (#{WRITER}, #{TITLE}, #{REVIEW}, #{DURATION_START}, #{DURATION_END}, 10)
+			INSERT INTO tbl_course (WRITER, TITLE, REVIEW, DURATION_START, DURATION_END)
+			VALUES (#{WRITER}, #{TITLE}, #{REVIEW}, #{DURATION_START}, #{DURATION_END})
 			""")
 	public abstract void insertCourse(CourseWriteDTO dto);
 	@Select("""
@@ -92,6 +100,12 @@ public interface CourseDAO {
 		
 	// 9. 특정 게시물 상세조회
 	public CourseVO read(Integer seq);
+	@Insert("""
+			UPDATE TBL_COURSE
+			SET TOTAL = TOTAL + 1
+			WHERE seq = #{seq}
+			""")
+	public void total(Integer seq);
 	
 	// 10. 댓글 가져오기
 	@Select("""

@@ -1,9 +1,9 @@
 package org.zerock.seoulive.board.course.controller;
 
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
-import org.apache.ibatis.annotations.Param;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,14 +12,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.zerock.seoulive.board.course.domain.*;
+import org.zerock.seoulive.board.course.domain.CourseCommVO;
+import org.zerock.seoulive.board.course.domain.CourseDTO;
+import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
+import org.zerock.seoulive.board.course.domain.CoursePageDTO;
+import org.zerock.seoulive.board.course.domain.CoursePageTO;
+import org.zerock.seoulive.board.course.domain.CourseTravelVO;
+import org.zerock.seoulive.board.course.domain.CourseVO;
+import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
+import org.zerock.seoulive.board.course.domain.CourseWriteVO;
 import org.zerock.seoulive.board.course.exception.ControllerException;
 import org.zerock.seoulive.board.course.service.CourseService;
 import org.zerock.seoulive.board.travel.domain.TravelDTO;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import lombok.NoArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 
 @Log4j2
@@ -29,7 +36,7 @@ import java.util.Map;
 @Controller
 public class CourseController {
 	
-	@Setter(onMethod_=@Autowired)
+	@Autowired
 	private CourseService service;
 	
 	
@@ -59,9 +66,6 @@ public class CourseController {
 		log.trace("list({}, {}) invoked.", page, model);
 		
 		try {
-			if(page.getSearchType() =="" || page.getSearchType() == null ){
-				page.setSearchType("TITLE");
-			}
 			List<CourseDTO> list = this.service.searchCourse(page);
 			
 			// Request Scope 공유속성 생성
@@ -76,6 +80,7 @@ public class CourseController {
 			model.addAttribute("pageMaker", pageDTO);
 
 		} catch(Exception e) {
+			e.getStackTrace();
 			throw new ControllerException(e);
 		} // try-catch
 	} // search
@@ -98,7 +103,7 @@ public class CourseController {
 		} // try-catch
 	} // register
 	
-	@PostMapping("/getSeq")
+	@PostMapping(path="/getSeq")
 	ResponseEntity<Map<String, Integer>> getSeq(Model model) throws ControllerException {
 		log.trace("getSeq() invoked.");
 		
@@ -139,7 +144,9 @@ public class CourseController {
 	
 	// 작성시 여행지 검색
 	@GetMapping("/travel_search")
-	public String searchTravelData(String keyword, String resultId, Model model) throws ControllerException {
+	public String searchTravelData(@RequestParam("keyword") String keyword, 
+									@RequestParam("resultId") String resultId, 
+									Model model) throws ControllerException {
 		
 		try {
 			
@@ -171,7 +178,7 @@ public class CourseController {
        log.trace("get() invoked");
 
        try {
-
+    	   		this.service.total(seq);
                CourseVO vo = this.service.get(seq);
                List<CourseTravelVO> travelList = this.service.getTravelList(seq);
                List<CourseCommVO> commList = this.service.commList(seq);

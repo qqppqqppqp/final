@@ -51,6 +51,9 @@
 <!--    <mybatis-spring:scan base-package="org.zerock.seoulive.board.course.persistence" />-->
 <!--	<context:component-scan base-package="org.zerock.seoulive.board.review.utils" />-->
 
+	<context:component-scan base-package="org.zerock.seoulive.controller" />
+	<context:component-scan base-package="org.zerock.seoulive.exception" />
+
 	<context:component-scan base-package="org.zerock.seoulive.board.course.controller" />
 	<context:component-scan base-package="org.zerock.seoulive.board.course" />
 	<context:component-scan base-package="org.zerock.seoulive.board.course.service" />
@@ -85,8 +88,8 @@
 	<aop:aspectj-autoproxy />
 	<!--		<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
 
-	<context:component-scan base-package="org.zerock.seoulive.member.join.service" />
-	<context:component-scan base-package="org.zerock.seoulive.board.course.service" />
+<!--	<context:component-scan base-package="org.zerock.seoulive.member.join.service" />-->
+<!--	<context:component-scan base-package="org.zerock.seoulive.board.course.service" />-->
 
 	<!--	<context:component-scan base-package="org.zerock.seoulive.persistence" />-->
 
