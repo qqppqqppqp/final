@@ -54,11 +54,15 @@ public class UserController {
             Objects.requireNonNull(dto);
 
             // 프로필 사진
-            File savePath = new File("/Users/uneong/temp/upload/" + profileImg.getOriginalFilename());
+            if(profileImg != null) {
+                File dir = new File(File.separator+"tmp/upload");
+                if(dir.exists() == false)   {  dir.mkdirs();  }
+                File savePath = new File(File.separator+"tmp/upload/" + profileImg.getOriginalFilename());
 //            File savePath = new File("file:///opt/uploadfiles/" + profileImg.getOriginalFilename());
-            profileImg.transferTo(savePath);
+                profileImg.transferTo(savePath);
 
-            dto.setProfileImgName("static/img/profile/" + profileImg.getOriginalFilename());
+                dto.setProfileImgName("static/img/profile/" + profileImg.getOriginalFilename());
+            }
 
             // 회원정보
             String hashedPw = BCrypt.hashpw(dto.getPassword(), BCrypt.gensalt());

@@ -2,6 +2,7 @@ package org.zerock.seoulive.board.free.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.zerock.seoulive.board.free.domain.FreeCommentDTO;
 import org.zerock.seoulive.board.free.persistence.FreeCommentDAO;
 import org.zerock.seoulive.board.free.service.FreeCommentService;

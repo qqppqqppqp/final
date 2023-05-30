@@ -1,6 +1,7 @@
 package org.zerock.seoulive.board.free.persistence;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.zerock.seoulive.board.free.domain.Criteria;
 import org.zerock.seoulive.board.free.domain.FreeDTO;
 

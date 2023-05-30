@@ -99,7 +99,7 @@
 
             <div class="join_wrap">
               <p>소개글</p>
-              <input type="text" name="introduction" placeholder="100자 이내 입력 (선택)">
+              <input type="text" name="introduction" placeholder="(선택) 100자 이내 입력 ">
             </div>
 
             <div class="join_wrap">
