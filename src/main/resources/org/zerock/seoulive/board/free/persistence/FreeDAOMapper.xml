@@ -38,16 +38,16 @@
     <select id="getListWithPaging"
             resultType="org.zerock.seoulive.board.free.domain.FreeDTO">
         <![CDATA[
-  select
-    *
-  from
-      (
-      select /*+INDEX_DESC(tbl_board) */
-        rownum rn, seq, writer, category, title, content, write_date, modify_date, total_count
-      from
-        tbl_free
-      where
-  ]]>
+          select
+            *
+          from
+              (
+              select /*+INDEX_DESC(tbl_board) */
+                rownum rn, seq, writer, category, title, content, write_date, modify_date, total_count
+              from
+                tbl_free
+              where
+        ]]>
         <trim prefix="(" suffix=") AND " prefixOverrides="OR">
             <foreach item='type' collection="typeArr">
                 <trim prefix="OR">
