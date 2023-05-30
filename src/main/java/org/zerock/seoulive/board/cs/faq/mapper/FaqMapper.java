@@ -1,6 +1,6 @@
 package org.zerock.seoulive.board.cs.faq.mapper;
 
-import org.zerock.seoulive.board.cs.faq.domain.Criteria;
+import org.zerock.seoulive.board.cs.faq.domain.FaqCriteria;
 import org.zerock.seoulive.board.cs.faq.domain.FaqDTO;
 import org.zerock.seoulive.board.cs.faq.domain.FaqVO;
 
@@ -9,7 +9,7 @@ import java.util.List;
 public interface FaqMapper {
 
     // 1. 목록 조회
-    public abstract List<FaqVO> selectList(Criteria cri);
+    public abstract List<FaqVO> selectList(FaqCriteria cri);
 
     // 2. 게시물 등록
     public abstract Integer insert(FaqDTO dto);
@@ -24,7 +24,7 @@ public interface FaqMapper {
     public abstract Integer update(FaqDTO dto);
 
     // 5. 총 게시물 갯수
-    public abstract Integer getTotalAmount(Criteria cri);
+    public abstract Integer getTotalAmount(FaqCriteria cri);
 
     // 6. 최신글 게시물 갯수
     public abstract List<FaqVO> getRecentList(int count);

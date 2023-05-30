@@ -1,12 +1,9 @@
 package org.zerock.seoulive.board.cs.faq.domain;
 
 
-import jdk.jfr.DataAmount;
 import lombok.Data;
-import lombok.Value;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Data
 public class FaqVO {

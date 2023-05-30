@@ -15,14 +15,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ</title>
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/faq/FAQList.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/faq/FAQList.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout/layout.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
 
-    <script src="${pageContext.request.contextPath}/resources/static/js/faq.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/faq/faq.js"></script>
 
     <script>
         $(document).ready(function (){

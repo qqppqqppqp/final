@@ -7,10 +7,10 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.zerock.seoulive.board.cs.faq.domain.Criteria;
+import org.zerock.seoulive.board.cs.faq.domain.FaqCriteria;
 import org.zerock.seoulive.board.cs.faq.domain.FaqDTO;
 import org.zerock.seoulive.board.cs.faq.domain.FaqVO;
-import org.zerock.seoulive.board.cs.faq.exception.ServiceException;
+import org.zerock.seoulive.exception.ServiceException;
 import org.zerock.seoulive.board.cs.faq.mapper.FaqMapper;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class FaqServiceImpl implements FaqService, InitializingBean, DisposableB
 
     // 목록 얻기
     @Override
-    public List<FaqVO> getList(Criteria cri) throws ServiceException {
+    public List<FaqVO> getList(FaqCriteria cri) throws ServiceException {
         log.trace("getList({}) invoked.", cri);
 
         try{
@@ -91,7 +91,7 @@ public class FaqServiceImpl implements FaqService, InitializingBean, DisposableB
     } // remove
 
     @Override
-    public Integer getTotal(Criteria cri) throws ServiceException {
+    public Integer getTotal(FaqCriteria cri) throws ServiceException {
         log.trace("getTotal() invoked.");
 
         return this.dao.getTotalAmount(cri);

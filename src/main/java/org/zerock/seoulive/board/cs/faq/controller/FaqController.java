@@ -1,23 +1,20 @@
 package org.zerock.seoulive.board.cs.faq.controller;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.zerock.seoulive.board.cs.faq.domain.Criteria;
+import org.zerock.seoulive.board.cs.faq.domain.FaqCriteria;
 import org.zerock.seoulive.board.cs.faq.domain.FaqDTO;
 import org.zerock.seoulive.board.cs.faq.domain.FaqVO;
-import org.zerock.seoulive.board.cs.faq.domain.PageDTO;
-import org.zerock.seoulive.board.cs.faq.exception.ControllerException;
+import org.zerock.seoulive.board.cs.faq.domain.FaqPageDTO;
+import org.zerock.seoulive.exception.ControllerException;
 import org.zerock.seoulive.board.cs.faq.service.FaqService;
 
 import java.util.List;
@@ -36,13 +33,13 @@ public class FaqController {
 
     // 목록 조회
     @GetMapping(value = "/list")
-    void list(Criteria cri, Model model) throws ControllerException{
+    void list(FaqCriteria cri, Model model) throws ControllerException {
         log.trace("list({} ,{}) invoked", cri, model);
         try {
             List<FaqVO> list = this.service.getList(cri);
             model.addAttribute("__LIST__", list);
 
-            PageDTO pageDTO = new PageDTO(cri, this.service.getTotal(cri));
+            FaqPageDTO pageDTO = new FaqPageDTO(cri, this.service.getTotal(cri));
             model.addAttribute("pageMaker", pageDTO);
         } catch (Exception e){
             throw new ControllerException(e);

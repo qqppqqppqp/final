@@ -8,9 +8,9 @@ import lombok.ToString;
 @ToString
 @Getter
 @NoArgsConstructor
-public class PageDTO {
+public class FaqPageDTO {
 
-	private Criteria cri;
+	private FaqCriteria cri;
 
 	private int totalAmount;		// 총 레코드 건수
 
@@ -25,7 +25,7 @@ public class PageDTO {
 
 
 
-	public PageDTO(Criteria cri, int totalAmount) {
+	public FaqPageDTO(FaqCriteria cri, int totalAmount) {
 		this.cri = cri;
 
 		this.totalAmount = totalAmount;

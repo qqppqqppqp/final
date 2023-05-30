@@ -19,7 +19,7 @@
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@o9o6yubutmsjch3b_high?TNS_ADMIN=/opt/OracleCloudWallet/VFX"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@o9o6yubutmsjch3b_high?TNS_ADMIN=/Users/sejungahn/opt/OracleCloudWallet/VFX2"/>
 		<property name="username" value="SEOULIVE"/>
 		<property name="password" value="Oracle12345678"/>
 
@@ -61,6 +61,8 @@
 	<context:component-scan base-package="org.zerock.seoulive.board.travel.persistence" />
 	<context:component-scan base-package="org.zerock.seoulive.board.travel.service" />
 
+	<context:component-scan base-package="org.zerock.seoulive.board.cs.faq.service" />
+
 	<context:component-scan base-package="org.zerock.seoulive.member.etc.service" />
 	<context:component-scan base-package="org.zerock.seoulive.member.join.service" />
 
@@ -72,6 +74,7 @@
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.course.mapper" />
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.review.mapper" />
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.travel.mapper" />
+	<mybatis-spring:scan base-package="org.zerock.seoulive.board.cs.faq.mapper"/>
 	<mybatis-spring:scan base-package="org.zerock.seoulive.mypage.mapper" />
 	<mybatis-spring:scan base-package="org.zerock.seoulive.member.etc.mapper" />
 	<mybatis-spring:scan base-package="org.zerock.seoulive.member.join.mapper" />

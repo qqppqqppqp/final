@@ -9,7 +9,7 @@
     <select id="selectList" resultType="org.zerock.seoulive.board.cs.faq.domain.FaqVO">
         SELECT
         rownum,
-        t.*
+        t.seq, t.writer, t.title, t.content, t.category, t.write_date
         FROM
         tbl_faq t
         <where>
@@ -20,6 +20,7 @@
                 1=1
             </if>
         </where>
+        ORDER BY t.write_date ASC
         OFFSET (#{currPage} - 1) * #{amount} ROWS
         FETCH NEXT #{amount} ROWS ONLY
     </select>
@@ -30,7 +31,7 @@
         </selectKey>
 
         INSERT INTO tbl_faq(title, content, writer, category)
-            VALUES(#{title}, #{content}, #{writer}, #{category})
+        VALUES(#{title}, #{content}, #{writer}, #{category})
     </insert>
 
     <select id="select" resultType="org.zerock.seoulive.board.cs.faq.domain.FaqVO">
@@ -70,14 +71,14 @@
 
     <select id="getRecentList" resultType="org.zerock.seoulive.board.cs.faq.domain.FaqVO">
         <![CDATA[
-            SELECT *
-            FROM (
-                     SELECT rownum AS rnum, seq, title, content, writer, category, write_date, modify_date
-                     FROM tbl_faq
-                     ORDER BY write_date DESC
-                 )
-            WHERE rnum <= 5
+        SELECT *
+        FROM (
+                 SELECT seq, title, content, writer, category, write_date, modify_date
+                 FROM tbl_faq
+                 ORDER BY seq DESC
+             )
+        WHERE rownum <= 5
+        ORDER BY seq ASC
         ]]>
-
     </select>
 </mapper>
