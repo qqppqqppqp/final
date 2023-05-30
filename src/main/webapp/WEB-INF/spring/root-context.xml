@@ -63,7 +63,9 @@
 
 	<context:component-scan base-package="org.zerock.seoulive.board.travel.controller" />
 	<context:component-scan base-package="org.zerock.seoulive.board.travel.service" />
+	
 	<context:component-scan base-package="org.zerock.seoulive.board.cs.faq.controller" />
+	<context:component-scan base-package="org.zerock.seoulive.board.cs.faq.service" />
 
 	<context:component-scan base-package="org.zerock.seoulive.member.information.service" />
 	<context:component-scan base-package="org.zerock.seoulive.member.join.service" />
