@@ -13,8 +13,8 @@
 
     <mappers>
 
-        <mapper resource="org/zerock/seoulive/board/free/persistence/FreeDAOMapper.xml" />
-        <mapper resource="org/zerock/seoulive/board/free/persistence/FreeCommentDAOMapper.xml" />
+<!--        <mapper resource="org/zerock/seoulive/board/free/persistence/FreeDAOMapper.xml" />-->
+<!--        <mapper resource="org/zerock/seoulive/board/free/persistence/FreeCommentDAOMapper.xml" />-->
         <mapper resource="org/zerock/seoulive/member/join/mapper/UserMapper.xml" />
 
         <mapper resource="org/zerock/seoulive/member/join/mapper/UserMapper.xml" />

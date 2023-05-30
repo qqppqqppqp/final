@@ -28,24 +28,30 @@ function changeFn() {
     if (selectedValue === "공연") {
         $(".tab [data-tab='menu2']").addClass("on");
         $("#menu2").addClass("on");
+        console.log("공연");
     } else if (selectedValue === "야외활동") {
         $(".tab [data-tab='menu3']").addClass("on");
         $("#menu3").addClass("on");
+        console.log("야외활동");
     } else if (selectedValue === "팝업스토어") {
         $(".tab [data-tab='menu4']").addClass("on");
         $("#menu4").addClass("on");
+        console.log("팝업스토어");
     } else if (selectedValue === "전시회") {
         $(".tab [data-tab='menu5']").addClass("on");
         $("#menu5").addClass("on");
+        console.log("전시회");
     } else {
         // 선택된 값에 해당하는 탭이 없는 경우 전체 탭 활성화
         $(".tab li:first-child").addClass("on");
         $("#menu1").addClass("on");
+        console.log("전체");
     }
 } // changeFn()
 
-
-
+$('.tab li').on('click',function () {
+    console.log($(this).val());
+})
 
 // calendar
 const days = ["일", "월", "화", "수", "목", "금", "토"];
@@ -227,3 +233,5 @@ lastDateCheck()
 dateMaker();
 
 table.onclick = clickDate;
+
+
