@@ -8,8 +8,8 @@
     <meta charset="UTF-8">
     <title>리뷰 List</title>
     <!-- layout css -->
-    <link rel="stylesheet" href="../../../../resources/static/css/review/list.css">
-    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/review/list.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
 
     <script src="https://kit.fontawesome.com/7ae3a6a91c.js" crossorigin="anonymous"></script>
 

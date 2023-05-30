@@ -4,10 +4,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.zerock.seoulive.board.travel.domain.Criteria;
 import org.zerock.seoulive.board.travel.domain.DTO;
+import org.zerock.seoulive.board.travel.domain.TravelBoardLikeDTO;
 import org.zerock.seoulive.board.travel.domain.VO;
+import org.zerock.seoulive.board.travel.exception.ServiceException;
 import org.zerock.seoulive.board.travel.mapper.Mapper;
-import org.zerock.seoulive.exception.ServiceException;
 
 import java.util.List;
 
@@ -20,9 +22,9 @@ public class ServiceImpl implements Service {
     private Mapper dao;
 
     @Override
-    public List<VO> getList() throws ServiceException {
+    public List<VO> getList(Criteria cri) throws ServiceException {
         try {
-            return this.dao.selectList();
+            return this.dao.selectList(cri);
         }
         catch(Exception e) {
             throw new ServiceException(e);
@@ -50,6 +52,15 @@ public class ServiceImpl implements Service {
         }
     }
 
+    public void total(Integer seq) throws ServiceException {
+        try {
+            this.dao.total(seq);
+        }
+        catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    }
+
     @Override
     public Boolean modify(DTO dto) throws ServiceException {
         try {
@@ -70,5 +81,15 @@ public class ServiceImpl implements Service {
         catch (Exception e) {
             throw new ServiceException(e);
         }
+    }
+
+    @Override
+    public Integer getTotal(Criteria cri) throws ServiceException {
+        return this.dao.getTotalAmount(cri);
+    } // getTotal
+
+    @Override
+    public void boardLike(TravelBoardLikeDTO likeDTO) {
+
     }
 }

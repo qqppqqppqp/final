@@ -178,6 +178,19 @@ being apllied to the gragient for a smoother result */
 .fil0 { fill: #ffffff; }
 .like-button:checked+svg .fil0 { fill: #ff4949; }
 
+/* 좋아요 하트 */
+
+.area_txt .fa-heart{
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+.area_txt .fa-heart.off {
+    color: #e6e6e6;
+}
+.area_txt .fa-heart.on{
+    color: #ff3333;
+}
 
 
 /* 리뷰 글쓰기 */

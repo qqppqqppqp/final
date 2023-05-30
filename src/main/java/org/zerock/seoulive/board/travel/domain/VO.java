@@ -10,8 +10,9 @@ import java.util.Date;
 public class VO {
 
     private Integer seq;
-    private String category;
+    private String writer;
     private String title;
+    private String category;
     private String content;
     private String address;
     private Integer total;
@@ -28,8 +29,9 @@ public class VO {
         DTO dto = new DTO();
 
         dto.setSeq(seq);
-        dto.setCategory(category);
+        dto.setWriter(writer);
         dto.setTitle(title);
+        dto.setCategory(category);
         dto.setContent(content);
         dto.setAddress(address);
         dto.setTotal(total);

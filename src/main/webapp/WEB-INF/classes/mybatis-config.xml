@@ -19,10 +19,9 @@
 
         <mapper resource="org/zerock/seoulive/member/join/mapper/UserMapper.xml" />
         <mapper resource="org/zerock/seoulive/member/information/mapper/MemberBoardMapper.xml"/>
-        <mapper resource="org/zerock/seoulive/member/etc/mapper/MemberBoardMapper.xml"/>
 
-<!--        <mapper resource="org/zerock/seoulive/board/course/mapper/courseViewMapper.xml" />-->
-<!--        <mapper resource="org/zerock/seoulive/board/course/mapper/commentMapper.xml" />-->
+        <mapper resource="org/zerock/seoulive/board/course/mapper/courseViewMapper.xml" />
+        <mapper resource="org/zerock/seoulive/board/course/mapper/commentMapper.xml" />
         <mapper resource="org/zerock/seoulive/board/course/persistence/CourseMapper.xml" />
         <mapper resource="org/zerock/seoulive/board/course/persistence/CourseDAOMapper.xml" />
 

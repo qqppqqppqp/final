@@ -8,8 +8,9 @@ import java.util.Date;
 public class DTO {
 
     private Integer seq;
-    private String category;
+    private String writer;
     private String title;
+    private String category;
     private String content;
     private String address;
     private Integer total;

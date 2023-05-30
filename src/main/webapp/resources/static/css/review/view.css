@@ -64,11 +64,16 @@ button{
 
 }
 /* 좋아요 하트 */
-.fa-heart.off {
+.area_txt i.fa-heart.off {
     color: #e6e6e6;
 }
-.fa-heart.on{
+.area_txt i.fa-heart.on{
     color: #ff3333;
+}
+.area_txt i.fa-heart{
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
 }
 .swiper {
     width: 70%;

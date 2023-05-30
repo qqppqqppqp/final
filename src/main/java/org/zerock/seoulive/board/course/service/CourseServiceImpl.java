@@ -1,27 +1,19 @@
 package org.zerock.seoulive.board.course.service;
 
-import java.util.List;
-import java.util.Objects;
-
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.zerock.seoulive.board.course.domain.CourseCommVO;
-import org.zerock.seoulive.board.course.domain.CourseDTO;
-import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
-import org.zerock.seoulive.board.course.domain.CoursePageTO;
-import org.zerock.seoulive.board.course.domain.CourseTravelVO;
-import org.zerock.seoulive.board.course.domain.CourseVO;
-import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
-import org.zerock.seoulive.board.course.domain.CourseWriteVO;
+import org.zerock.seoulive.board.course.domain.*;
 import org.zerock.seoulive.board.course.exception.ServiceException;
 import org.zerock.seoulive.board.course.persistence.CourseDAO;
 import org.zerock.seoulive.board.travel.domain.TravelDTO;
 
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import java.util.List;
+import java.util.Objects;
 
 @Log4j2
 @NoArgsConstructor

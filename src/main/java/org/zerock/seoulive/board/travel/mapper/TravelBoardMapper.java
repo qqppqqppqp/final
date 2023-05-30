@@ -1,12 +1,11 @@
 package org.zerock.seoulive.board.travel.mapper;
 
 import oracle.sql.NUMBER;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.zerock.seoulive.board.travel.domain.Criteria;
 import org.zerock.seoulive.board.travel.domain.TravelBoardDTO;
 import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
-import org.zerock.seoulive.board.travel.domain.Criteria;
 
 import java.util.List;
 

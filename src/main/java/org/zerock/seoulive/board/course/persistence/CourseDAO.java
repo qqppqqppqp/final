@@ -1,20 +1,12 @@
 package org.zerock.seoulive.board.course.persistence;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.zerock.seoulive.board.course.domain.CourseCommVO;
-import org.zerock.seoulive.board.course.domain.CourseDTO;
-import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
-import org.zerock.seoulive.board.course.domain.CoursePageTO;
-import org.zerock.seoulive.board.course.domain.CourseTravelVO;
-import org.zerock.seoulive.board.course.domain.CourseVO;
-import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
-import org.zerock.seoulive.board.course.domain.CourseWriteVO;
-import org.zerock.seoulive.board.course.domain.SeqDTO;
+import org.zerock.seoulive.board.course.domain.*;
 import org.zerock.seoulive.board.travel.domain.TravelDTO;
+
+import java.util.List;
 
 public interface CourseDAO {
 	

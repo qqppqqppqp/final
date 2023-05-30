@@ -1,9 +1,7 @@
 package org.zerock.seoulive.board.course.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import lombok.NoArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,21 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.zerock.seoulive.board.course.domain.CourseCommVO;
-import org.zerock.seoulive.board.course.domain.CourseDTO;
-import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
-import org.zerock.seoulive.board.course.domain.CoursePageDTO;
-import org.zerock.seoulive.board.course.domain.CoursePageTO;
-import org.zerock.seoulive.board.course.domain.CourseTravelVO;
-import org.zerock.seoulive.board.course.domain.CourseVO;
-import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
-import org.zerock.seoulive.board.course.domain.CourseWriteVO;
+import org.zerock.seoulive.board.course.domain.*;
 import org.zerock.seoulive.board.course.exception.ControllerException;
 import org.zerock.seoulive.board.course.service.CourseService;
 import org.zerock.seoulive.board.travel.domain.TravelDTO;
 
-import lombok.NoArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Log4j2

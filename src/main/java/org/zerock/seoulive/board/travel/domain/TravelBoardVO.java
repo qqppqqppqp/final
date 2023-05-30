@@ -1,10 +1,10 @@
 package org.zerock.seoulive.board.travel.domain;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-
 import lombok.Value;
 import lombok.extern.log4j.Log4j2;
+
+import java.sql.Date;
+import java.sql.Timestamp;
 
 @Value
 @Log4j2
