@@ -4,7 +4,7 @@ import org.zerock.seoulive.board.travel.domain.Criteria;
 import org.zerock.seoulive.board.travel.domain.DTO;
 import org.zerock.seoulive.board.travel.domain.TravelBoardLikeDTO;
 import org.zerock.seoulive.board.travel.domain.VO;
-import org.zerock.seoulive.exception.ServiceException;
+import org.zerock.seoulive.board.travel.exception.ServiceException;
 
 import java.util.List;
 

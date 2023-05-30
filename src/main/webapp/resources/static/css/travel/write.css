@@ -62,27 +62,6 @@ form {
     font-weight: bold;
 }
 .travel_thema input[type="radio"] {
-    margin: auto;
-}
-/* 제목 */
-.travel_title {
-    margin: 5px auto;
-}
-.travel_title input {
-    width: 1200px;
-    height: 25px;
-    margin: 5px auto;
-    font-size: 14px;
-}
-/* 테마 */
-.travel_thema label {
-    text-align: left;
-    cursor: pointer;
-}
-.travel_thema input[type="checkbox"]:checked + span {
-    font-weight: bold;
-}
-.travel_thema input[type="checkbox"] {
     position: absolute;
     overflow: hidden;
     clip:rect(0,0,0,0);
@@ -184,7 +163,7 @@ textarea {
     width: 100px;
     height: 100px;
     margin: 0 5px 5px 0;
-    background-image: url('bg_upload.png');
+    background-image: url(../../../../resources/static/img/bg_upload.png) ;
     background-repeat: no-repeat;
     background-position: center;
     border: none;
@@ -242,62 +221,4 @@ textarea {
     background: #d8d8d8;
     border-color: #d8d8d8;
     padding: 2px 8px 0 8px;
-}
-.cal_input {
-    margin: 10px auto;
-}
-.cal_input .cal_time_input {
-    margin: 5px auto;
-}
-/* 내용 */
-.content {
-    width: 1200px;
-    margin: 10px auto;
-}
-.content input {
-    width: 100%;
-    height: 150px;
-    font-size: 14px;
-}
-/* 주소 */
-/* .location {
-    margin: auto;
-} */
-/* 첨부 파일 */
-.travel_filebox {
-    margin-top: 15px;
-}
-.travel_filebox label {
-    padding: 5px;
-    color: #333;
-    background-color: white;
-    cursor: pointer;
-    border: 1px solid #d6d6d6;
-    border-radius: 5px;
-    font-size: 12px;
-}
-.travel_filebox input[type="file"] {
-    position: absolute;
-    overflow: hidden;
-    clip:rect(0,0,0,0);
-}
-/* 미리보기 */
-#preview_imgs img {
-    margin: 5px;
-    width: 300px;
-    height: 300px;
-}
-/* 버튼 */
-.travel_button {
-    margin: 15px auto;
-}
-.travel_button input {
-    width: 60px;
-    padding: 3px;
-    color: #333;
-    background-color: white;
-    cursor: pointer;
-    border: 1px solid #d6d6d6;
-    border-radius: 5px;
-    font-size: 12px;
 }

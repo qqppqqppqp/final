@@ -8,10 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.seoulive.board.travel.domain.Criteria;
 import org.zerock.seoulive.board.travel.domain.DTO;
+import org.zerock.seoulive.board.travel.domain.PageDTO;
 import org.zerock.seoulive.board.travel.domain.VO;
+import org.zerock.seoulive.board.travel.exception.ControllerException;
 import org.zerock.seoulive.board.travel.service.Service;
-import org.zerock.seoulive.exception.ControllerException;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,29 +24,29 @@ import java.util.Objects;
 @Log4j2
 @NoArgsConstructor
 @Controller
-@RequestMapping("/board/travel")
+@RequestMapping("/board/travel/*")
 public class TravelController {
 
     @Setter(onMethod_ = {@Autowired})
     private Service service;
 
     // 게시판 목록조회
-//    @GetMapping("/list")
-//    public void list(Criteria cri, Model model) throws ControllerException {
-//        log.trace("list({}, {}) invoked.", cri, model);
-//
-//        try {
-//            List<VO> list = this.service.getList(cri);
-//
-//            model.addAttribute("__LIST__",list);
-//
-//            PageDTO pageDTO = new PageDTO(cri, this.service.getTotal(cri));
-//            model.addAttribute("pageMaker", pageDTO);
-//            model.addAttribute("list", service.getList(cri));
-//        } catch (Exception e) {
-//            throw new ControllerException(e);
-//        } // try-catch
-//    }
+    @GetMapping("/list")
+    public void list(Criteria cri, Model model) throws ControllerException {
+        log.trace("list({}, {}) invoked.", cri, model);
+
+        try {
+            List<VO> list = this.service.getList(cri);
+
+            model.addAttribute("__LIST__",list);
+
+            PageDTO pageDTO = new PageDTO(cri, this.service.getTotal(cri));
+            model.addAttribute("pageMaker", pageDTO);
+            model.addAttribute("list", service.getList(cri));
+        } catch (Exception e) {
+            throw new ControllerException(e);
+        } // try-catch
+    }
 
     // 날짜 데이터 받아오기
     @RequestMapping(value = "/board/travel/listByDate", method = RequestMethod.GET)

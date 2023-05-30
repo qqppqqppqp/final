@@ -24,12 +24,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
 <%--    <script src="../../../../resources/static/js/travel/view.js"></script>--%>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/travel/view.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css"/>
+    <link rel="stylesheet" href="../../../../resources/static/css/travel/view.css"/>
+    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
-    <link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
 
     <script>
         $(function() {
@@ -61,31 +59,6 @@
         });
     </script>
 
-<%--    <link rel="icon" href="ico/SLlogo1.png">--%>
-
-    <!-- header, footer 시작  -->
-<%--    <link rel="stylesheet" href="css/reset.css">--%>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
-    <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
-    <!-- layout css -->
-<%--    <link rel="stylesheet" href="css/layout/header.css">css--%>
-<%--    <link rel="stylesheet" href="css/layout/footer.css">--%>
-<%--    <!-- main css -->--%>
-<%--    <link rel="stylesheet" href="css/main/main.css">--%>
-<%--    <link rel="stylesheet" href="https://kit.fontawesome.com/4b84ea08f3.css" crossorigin="anonymous">--%>
-    <!-- header, footer 끝  -->
-
-
-    <!-- 여행지 view 시작 -->
-    <link rel="stylesheet" href="../../../../resources/static/css/travel/view.css"/>
-    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/e046991a5a.js" crossorigin="anonymous"></script>
-    <!-- 여행지 view 끝 -->
     <jsp:include page="../../layout/header.jsp"/>
 </head>
 <body>
@@ -103,19 +76,7 @@
     </div>
     <br>
     <div class="theme">
-        <span>${__BOARD__.address}</span>
-
-
-<!-- 여행지 view 시작  -->
-<div id="wrap">
-    <br>
-    <div class="name">
-        <h2>창경궁</h2>
-    </div>
-    <br>
-    <div class="theme">
-        <!-- <h2>테마</h2> -->
-        <span>서울시 종로구</span>
+        <span class="spanBold">${__BOARD__.address}</span>
     </div>
     <div class="etc">
         <a href="#"><i class="fa-regular fa-heart" style="color: #E76649"></i></a>
@@ -123,15 +84,12 @@
         <i class="fas fa-eye"> ${__BOARD__.total}</i>
     </div>
     <div class="reg_Date">
-        <span>등록일 : <fmt:formatDate value="${__BOARD__.write_Date}" pattern="yyyy. MM. dd. HH:mm:ss"/></span>
+        <span class="spanBold">등록일 : <fmt:formatDate value="${__BOARD__.write_Date}" pattern="yyyy. MM. dd. HH:mm:ss"/></span>
     </div>
     <div class="mod_Date">
-        <span>수정일 : <fmt:formatDate value="${__BOARD__.modify_Date}" pattern="yyyy. MM. dd. HH:mm:ss"/></span>
+        <span class="spanBold">수정일 : <fmt:formatDate value="${__BOARD__.modify_Date}" pattern="yyyy. MM. dd. HH:mm:ss"/></span>
     </div>
 
-    </div>
-
-    <!-- <h3>사진</h3> -->
     <hr>
 
     <div class="swiper">
@@ -173,9 +131,6 @@
             <br>
             <li> 위치 : ${__BOARD__.address}</li>
             <br>
-            <li>시간</li>
-            <li>날짜</li>
-            <li>위치</li>
         </ul>
 
     </div>
@@ -221,41 +176,6 @@
     <br>
     </div>
 <%--    </form>--%>
-    <div class="map">
-        <img src="../../../../resources/static/img/IMG_1003.png" height="100%" width="100%">
-    </div>
-
-    <h3>추천 여행지</h3>
-    <hr>
-    <div class="recom">
-
-        <div class="recom1">
-            <img src="../../../../resources/static/img/IMG_1004.png" height="100%" width="100%">
-            <div class="recom-name"><h3>추천 여행지 #1</h3></div>
-        </div>
-
-        <div class="recom2">
-            <img src="../../../../resources/static/img/IMG_1005.png" height="100%" width="100%">
-            <div class="recom-name"><h3>추천 여행지 #2</h3></div>
-        </div>
-
-        <div class="recom3">
-            <img src="../../../../resources/static/img/IMG_1006.png" height="100%" width="100%">
-            <div class="recom-name"><h3>추천 여행지 #3</h3></div>
-        </div>
-
-
-    </div>
-    <br>
-
-    <div class="list">
-        <div><input type="button" value="수정"></div>
-        <div><input type="button" value="삭제"></div>
-        <div><input type="button" value="목록"><a href="/board/travel/list">목록</a></div>
-    </div>
-    <br>
-
-
 </div>
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
@@ -295,13 +215,6 @@
     const btnStart = document.querySelector(".btnStart");
     const btnStop = document.querySelector(".btnStop");
 
-=======
-    // btnStart.addEventListener("click", ()=> {
-    //     swiper.autoplay.start();
-    // });
-    // btnStop.addEventListener("click", ()=> {
-    //     swiper.autoplay.stop();
-    // });
 </script>
 <!-- 여행지 view 끝  -->
 

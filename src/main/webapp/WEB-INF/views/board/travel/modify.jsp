@@ -17,15 +17,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>여행지 modify</title>
 
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/travel/write.css"/>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css"/>
+  <link rel="stylesheet" href="../../../../resources/static/css/travel/write.css"/>
+  <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css"/>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-  <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
-  <link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
 
   <script>
     $(function() {
@@ -78,10 +75,10 @@
   <div class="cal_input">
     <div class="cal_date_input">
       <label for="start_date_input"> 시작일자 </label>
-      <input type=text id="start_date_input" name="start_date" value="${__BOARD__.start_date}">
+      <input type=text id="start_date_input" name="start_date" autocomplete="off" value="${__BOARD__.start_date}">
       <br>
       <label for="end_date_input"> 종료일자 </label>
-      <input type="text" id="end_date_input" name="end_date" value="${__BOARD__.end_date}">
+      <input type="text" id="end_date_input" name="end_date" autocomplete="off" value="${__BOARD__.end_date}">
       <br>
     </div>
     <div class="cal_time_input">
@@ -158,7 +155,7 @@
 <%-- 캘린더 스크립트 --%>
 <script>
   $( function() {
-    var dateFormat = "yymmdd",
+    var dateFormat = "yy-mm-dd",
             from = $("#start_date_input").datepicker({
               defaultDate: "+1w",
               changeMonth: true,
