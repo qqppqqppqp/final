@@ -1,12 +1,21 @@
 package org.zerock.seoulive.board.course.persistence;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.zerock.seoulive.board.course.domain.*;
+import org.zerock.seoulive.board.course.domain.CourseCommVO;
+import org.zerock.seoulive.board.course.domain.CourseDTO;
+import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
+import org.zerock.seoulive.board.course.domain.CoursePageTO;
+import org.zerock.seoulive.board.course.domain.CourseTravelVO;
+import org.zerock.seoulive.board.course.domain.CourseVO;
+import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
+import org.zerock.seoulive.board.course.domain.CourseWriteVO;
+import org.zerock.seoulive.board.course.domain.SeqDTO;
 import org.zerock.seoulive.board.travel.domain.TravelDTO;
-
-import java.util.List;
 
 public interface CourseDAO {
 	
@@ -85,10 +94,24 @@ public interface CourseDAO {
 	
 	// 8. 게시물 찜
 	@Insert("""
-			INSERT INTO tbl_like (EMAIL, BOARD_SEQ, BOARD)
-			VALUES ('seoulive', #{BOARD_SEQ}, #{BOARD})
+			INSERT INTO tbl_like (email, board_seq, board)
+			VALUES (#{user}, #{board_seq}, #{board})
 			""")
 	public abstract void courseLike(CourseLikeDTO dto);
+	@Delete("""
+			DELETE FROM tbl_like 
+			WHERE board = #{board}
+			  AND board_seq = #{board_seq}
+			  AND email = #{user}
+			""")
+	public abstract void courseUnlike(CourseLikeDTO dto);
+	@Select("""
+			SELECT board_seq
+			FROM tbl_like
+			WHERE email = #{user}
+			  AND board = 'course'
+			""")
+	public abstract List<CourseLikeDTO> courseLikeList(CourseLikeDTO dto);
 		
 	// 9. 특정 게시물 상세조회
 	public CourseVO read(Integer seq);

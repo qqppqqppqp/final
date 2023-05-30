@@ -8,12 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.zerock.seoulive.board.travel.domain.Criteria;
 import org.zerock.seoulive.board.travel.domain.DTO;
-import org.zerock.seoulive.board.travel.domain.PageDTO;
 import org.zerock.seoulive.board.travel.domain.VO;
-import org.zerock.seoulive.board.travel.exception.ControllerException;
 import org.zerock.seoulive.board.travel.service.Service;
+import org.zerock.seoulive.exception.ControllerException;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

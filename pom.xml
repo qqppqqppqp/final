@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.zerock</groupId>
-	<artifactId>seouliveMainBackup12</artifactId>
+	<artifactId>seoulive</artifactId>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 
 	<packaging>war</packaging>

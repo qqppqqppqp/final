@@ -28,7 +28,7 @@
 
     <body>
 
-      <form action="/member/join/register" method="post">
+      <form action="/member/join/write" method="post">
         <div class="join_container">
           <div class="join_container inner">
             <div class="join_wrap">
@@ -125,7 +125,7 @@
 
           $.ajax({
             type: 'get',
-            url: '<c:url value = "/member/join/register/mailCheck?email="/>' + email, // GET방식이라 Url 뒤에 email을 붙힐수있다.
+            url: '<c:url value = "/member/join/write/mailCheck?email="/>' + email, // GET방식이라 Url 뒤에 email을 붙힐수있다.
             success: function (data) {
               console.log("data : " + data);
               checkInput.attr('disabled', false);

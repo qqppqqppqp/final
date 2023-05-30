@@ -41,6 +41,8 @@ public interface CourseService {
 	
 	// 8. 찜 기능
 	public abstract void courseLike(CourseLikeDTO dto) throws ServiceException;
+	public abstract void courseUnlike(CourseLikeDTO dto) throws ServiceException;
+	public abstract List<CourseLikeDTO> courseLikeList(CourseLikeDTO dto) throws ServiceException;
 	
 	// 9. 특정 게시물 상세조회 (READ)
 	public abstract CourseVO get(Integer seq) throws ServiceException;

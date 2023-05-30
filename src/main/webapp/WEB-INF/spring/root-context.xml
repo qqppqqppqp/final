@@ -50,27 +50,6 @@
 
 <!--	<context:component-scan base-package="org.zerock.seoulive.board.review.utils" />-->
 
-	<context:component-scan base-package="org.zerock.seoulive.controller" />
-	<context:component-scan base-package="org.zerock.seoulive.exception" />
-
-<!--	<context:component-scan base-package="org.zerock.seoulive.board.course" />-->
-	<context:component-scan base-package="org.zerock.seoulive.board.course.service" />
-	<context:component-scan base-package="org.zerock.seoulive.board.course.persistence" />
-
-	<context:component-scan base-package="org.zerock.seoulive.board.review.service" />
-
-	<context:component-scan base-package="org.zerock.seoulive.board.free.service" />
-
-	<context:component-scan base-package="org.zerock.seoulive.board.travel.controller" />
-	<context:component-scan base-package="org.zerock.seoulive.board.travel.service" />
-	
-	<context:component-scan base-package="org.zerock.seoulive.board.cs.faq.controller" />
-	<context:component-scan base-package="org.zerock.seoulive.board.cs.faq.service" />
-
-	<context:component-scan base-package="org.zerock.seoulive.member.information.service" />
-	<context:component-scan base-package="org.zerock.seoulive.member.join.service" />
-
-	<context:component-scan base-package="org.zerock.seoulive.mypage.service" />
 
 
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.free.persistence" />
@@ -89,8 +68,20 @@
 	<aop:aspectj-autoproxy />
 	<!--		<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
 
-	<!--	<context:component-scan base-package="org.zerock.seoulive.member.join.service" />-->
-	<!--	<context:component-scan base-package="org.zerock.seoulive.board.course.service" />-->
+	<context:component-scan base-package="org.zerock.seoulive.board.course.service" />
+	<context:component-scan base-package="org.zerock.seoulive.board.course.persistence" />
+	<context:component-scan base-package="org.zerock.seoulive.board.review.service" />
+	<context:component-scan base-package="org.zerock.seoulive.board.free.service" />
+	<!--	<context:component-scan base-package="org.zerock.seoulive.board.travel.controller" />-->
+	<context:component-scan base-package="org.zerock.seoulive.board.travel.service" />
+	<!--	<context:component-scan base-package="org.zerock.seoulive.board.cs.faq.controller" />-->
+	<context:component-scan base-package="org.zerock.seoulive.board.cs.faq.service" />
+
+	<context:component-scan base-package="org.zerock.seoulive.member.information.service" />
+	<context:component-scan base-package="org.zerock.seoulive.member.join.service" />
+
+	<context:component-scan base-package="org.zerock.seoulive.mypage.service" />
+
 
 	<!--	<context:component-scan base-package="org.zerock.seoulive.persistence" />-->
 

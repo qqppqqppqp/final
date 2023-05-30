@@ -18,8 +18,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/course/course_write.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/reset.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/header.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>

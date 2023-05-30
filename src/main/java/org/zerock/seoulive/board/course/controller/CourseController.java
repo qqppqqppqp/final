@@ -1,6 +1,7 @@
 package org.zerock.seoulive.board.course.controller;
 
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,10 +25,11 @@ import java.util.Map;
 @NoArgsConstructor
 
 @RequestMapping("/board/course")
+
 @Controller
 public class CourseController {
 	
-	@Autowired
+	@Setter(onMethod_ = @Autowired)
 	private CourseService service;
 	
 	
@@ -79,7 +81,7 @@ public class CourseController {
 	
 	
 	// 2. 새로운 게시물 등록
-	@PostMapping(path="/register")
+	@PostMapping(path="/write")
 	String register(CourseWriteDTO dto) throws ControllerException {
 		log.trace("register({}) invoked.", dto);
 		
@@ -149,19 +151,45 @@ public class CourseController {
 			throw new ControllerException(e);
 		} // try-catch
 	}
-	
+
 	@PostMapping("/course_like")
-	public void courseLike(CourseLikeDTO dto) throws ControllerException {
+	ResponseEntity<String> courseLike(CourseLikeDTO dto) throws ControllerException {
 		log.trace("register({}) invoked.", dto);
-		
+
 		try {
-			
+
 			this.service.courseLike(dto);
-			
+			return ResponseEntity.ok("");
 		} catch(Exception e) {
 			throw new ControllerException(e);
 		} // try-catch
-	} // register
+	} // courseLike
+	@PostMapping("/course_unlike")
+	ResponseEntity<String> courseUnlike(CourseLikeDTO dto) throws ControllerException {
+		log.trace("register({}) invoked.", dto);
+
+		try {
+
+			this.service.courseUnlike(dto);
+
+			return ResponseEntity.ok("");
+		} catch(Exception e) {
+			throw new ControllerException(e);
+		} // try-catch
+	} // courseUnlike
+	@PostMapping("/get_like_list")
+	ResponseEntity<List<CourseLikeDTO>> courseLikeList(CourseLikeDTO dto) throws ControllerException {
+		log.trace("register({}) invoked.", dto);
+
+		try {
+			List<CourseLikeDTO> favoriteList = this.service.courseLikeList(dto);
+			System.out.println(favoriteList);
+			return ResponseEntity.ok(favoriteList);
+		} catch(Exception e) {
+			e.getStackTrace();
+			throw new ControllerException(e);
+		} // try-catch
+	} // courseUnlike
 	
 	//상세조회
     @GetMapping(path ={ "/get", "/modify"}, params = {"seq"})
