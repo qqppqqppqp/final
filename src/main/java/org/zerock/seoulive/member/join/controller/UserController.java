@@ -36,7 +36,7 @@ public class UserController {
 
     } // joinMain
 
-    @GetMapping("/join/write")
+    @GetMapping("/join/email")
     void register() {   // 단순 등록화면 요청
         log.trace("register() invoked.");
 
@@ -44,7 +44,7 @@ public class UserController {
 
     // 회원가입 처리
     @PostMapping(
-            value = "/join/write",
+            value = "/join/email",
             params = {"email", "password", "birthDate", "gender", "nickname", "introduction"}
     )
     String register(UserDTO dto, @RequestParam("profileImg") MultipartFile profileImg, RedirectAttributes rttrs) throws ControllerException {
@@ -73,7 +73,7 @@ public class UserController {
     } // register
 
     //이메일 인증
-    @GetMapping("/join/write/mailCheck")
+    @GetMapping("/join/email/mailCheck")
     @ResponseBody
     public String mailCheck(String email) {
         log.trace("mailCheck({}) invoked.", email);

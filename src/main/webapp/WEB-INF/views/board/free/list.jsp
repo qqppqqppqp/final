@@ -21,7 +21,10 @@
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
 
     <%-- 자바스크립트 --%>
-    <script src="../../../../resources/static/js/free/list.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/static/js/free/list.js"></script>
+
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
 
 </head>
 <jsp:include page="../../layout/header.jsp"/>

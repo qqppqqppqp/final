@@ -24,6 +24,9 @@
 
     <script src="${pageContext.request.contextPath}/resources/js/faq/faq.js"></script>
 
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
+
     <script>
         $(document).ready(function (){
 

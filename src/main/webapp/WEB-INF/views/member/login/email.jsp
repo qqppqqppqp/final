@@ -65,7 +65,7 @@
     </div>
 
     <div class="join">
-      <a href="/member/join/register">회원가입</a>
+      <a href="/member/join/email">회원가입</a>
     </div>
   </div>
 

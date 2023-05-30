@@ -10,14 +10,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>여행지view</title>
-    <link rel="stylesheet" href="../../../../resources/static/css/review/view.css">
-    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/review/view.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
     <!--    swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <!-- <script type="text/javascript" src="/js/reviewvi.js"></script> -->
     <script src="https://kit.fontawesome.com/6ba5041685.js" crossorigin="anonymous"></script>
+
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
 
     <script>
 

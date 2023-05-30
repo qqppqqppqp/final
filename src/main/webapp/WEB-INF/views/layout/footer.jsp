@@ -4,7 +4,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
 <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
 
-<<style src="/resources/static/css/layout/footer.css">
+<style src="/resources/static/css/layout/footer.css">
 
 </style>
 

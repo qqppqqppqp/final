@@ -55,7 +55,7 @@
     $(function() {
       // 이메일 회원가입
       $('.btn_email').click(function() {
-        location.href = "/member/join/register";
+        location.href = "/member/join/email";
       });
       // 로그인
       $('.a_wrap').click(function() {

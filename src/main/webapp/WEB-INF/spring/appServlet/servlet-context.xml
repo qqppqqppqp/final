@@ -61,7 +61,7 @@
 
 
 	<view-controller path="/member/join/main" status-code="200" view-name="member/join/main"/>
-	<view-controller path="/member/join/register" status-code="200" view-name="member/join/register"/>
+	<view-controller path="/member/join/register" status-code="200" view-name="email"/>
 	<view-controller path="/member/login/main" status-code="200" view-name="member/login/main"/>
 	<view-controller path="/member/login/email" status-code="200" view-name="member/login/email"/>
 	<view-controller path="/member/logout" status-code="200" view-name="member/logout"/>

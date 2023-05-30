@@ -26,6 +26,9 @@
 
 <script src="https://kit.fontawesome.com/889f069cfd.js" crossorigin="anonymous"></script>
 
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
+<link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
+
 <style>
         #map {
 

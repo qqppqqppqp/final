@@ -24,10 +24,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
 <%--    <script src="../../../../resources/static/js/travel/view.js"></script>--%>
-    <link rel="stylesheet" href="../../../../resources/static/css/travel/view.css"/>
-    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/travel/view.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
 
     <script>
         $(function() {

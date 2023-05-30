@@ -10,15 +10,18 @@
     <title>SEOULLIVE</title>
     <!-- layout css -->
     <!-- layout css -->
-    <link rel="stylesheet" href="../../../../resources/static/css/review/list.css">
-    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/review/list.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
 
+    <script src="${pageContext.request.contextPath}/resources/static/review/js/review.js"></script>
 
-    <script src="../../../../resources/static/review/js/review.js"></script>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
+
     <script>
         function chk_form() {
             document.getElementById('frm').submit();
