@@ -9,6 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="java.util.Date" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,10 +20,12 @@
 
   <link rel="stylesheet" href="../../../../resources/static/css/travel/write.css"/>
   <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css"/>
+<%--  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">--%>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+
 
   <script>
     $(function() {
@@ -39,7 +42,7 @@
   <jsp:include page="../../layout/header.jsp"/>
 </head>
 <body>
-<form action="write" method="post">
+<form action="writeAction.jsp" method="post" enctype="multipart/form-data">
 
   <!-- 글쓰기 헤더 -->
   <div class="travel_header">
@@ -119,7 +122,7 @@
   <div class="file_upload">
     <div>
       <button class="upload"></button>
-      <input type="file" class="real-upload" accept="image/*" style="display: none;" multiple>
+      <input type="file" name="fileName" class="real-upload" accept="image/*" style="display: none;" multiple>
       <ul class="image-preview">
       </ul>
     </div>
@@ -154,7 +157,8 @@
 
 <%-- 캘린더 스크립트 --%>
 <script>
-  $( function() {
+  $(function() {
+    console.log("datepicker invoked.")
     var dateFormat = "yymmdd",
             from = $("#start_date_input").datepicker({
                       defaultDate: "+1w",

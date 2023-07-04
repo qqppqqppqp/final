@@ -5,8 +5,8 @@
 
 response.sendRedirect("../main/index.jsp"); %>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>--%>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>--%>
 <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
 <script>console.log("<%= session.getAttribute("__AUTH__") %>");</script>
 

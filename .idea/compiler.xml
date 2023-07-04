@@ -10,5 +10,8 @@
         <module name="seoulive" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="final" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
